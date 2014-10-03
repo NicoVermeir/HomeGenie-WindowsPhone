@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+#if SILVERLIGHT
 using System.Windows.Media;
+#else
+using Windows.UI;   
+#endif
 
-namespace HomeGenie.Utility
+namespace HomeGenie.SDK.Utility
 {
     public class HSBColor
     {
@@ -15,10 +16,9 @@ namespace HomeGenie.Utility
 
         public static HSBColor FromColor(Color rgbColor)
         {
-            HSBColor result = new HSBColor();
+            HSBColor result = new HSBColor {A = rgbColor.A};
 
             // preserve alpha
-            result.A = rgbColor.A;
 
             // convert R, G, B to numbers from 0 to 1
             double r = rgbColor.R / 255d;
@@ -52,46 +52,44 @@ namespace HomeGenie.Utility
 
         public Color ToColor()
         {
-            Color result = new Color();
+            Color result = new Color {A = A};
 
-            result.A = this.A;
+            int hi = (int)Math.Floor(H / 60) % 6;
+            double f = H / 60 - Math.Floor(H / 60);
 
-            int hi = (int)Math.Floor(this.H / 60) % 6;
-            double f = this.H / 60 - Math.Floor(this.H / 60);
-
-            double p = this.B * (1 - this.S);
-            double q = this.B * (1 - f * this.S);
-            double t = this.B * (1 - (1 - f) * this.S);
+            double p = B * (1 - S);
+            double q = B * (1 - f * S);
+            double t = B * (1 - (1 - f) * S);
 
             switch (hi)
             {
                 case 0:
-                    result.R = (byte)(this.B * 255);
+                    result.R = (byte)(B * 255);
                     result.G = (byte)(t * 255);
                     result.B = (byte)(p * 255);
                     break;
                 case 1:
                     result.R = (byte)(q * 255);
-                    result.G = (byte)(this.B * 255);
+                    result.G = (byte)(B * 255);
                     result.B = (byte)(p * 255);
                     break;
                 case 2:
                     result.R = (byte)(p * 255);
-                    result.G = (byte)(this.B * 255);
+                    result.G = (byte)(B * 255);
                     result.B = (byte)(t * 255);
                     break;
                 case 3:
                     result.R = (byte)(p * 255);
                     result.G = (byte)(q * 255);
-                    result.B = (byte)(this.B * 255);
+                    result.B = (byte)(B * 255);
                     break;
                 case 4:
                     result.R = (byte)(t * 255);
                     result.G = (byte)(p * 255);
-                    result.B = (byte)(this.B * 255);
+                    result.B = (byte)(B * 255);
                     break;
                 case 5:
-                    result.R = (byte)(this.B * 255);
+                    result.R = (byte)(B * 255);
                     result.G = (byte)(p * 255);
                     result.B = (byte)(q * 255);
                     break;

@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GalaSoft.MvvmLight.Threading;
+using HomeGenie.SDK.Http;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using HomeGenie;
@@ -23,36 +25,8 @@ namespace HomeGenie
 {
     public partial class App : Application
     {
-        private static MainViewModel viewModel = null;
-        private static HTTPRequestQueue _httpreqhandler = new HTTPRequestQueue();
-
         /// Holds the push channel that is created or found.
         private static HttpNotificationChannel pushChannel;
-
-        /// <summary>
-        /// Oggetto ViewModel statico utilizzato dalle visualizzazioni con cui eseguire l'associazione.
-        /// </summary>
-        /// <returns>Oggetto MainViewModel.</returns>
-        public static MainViewModel ViewModel
-        {
-            get
-            {
-                // Ritardare la creazione del modello di visualizzazione finché necessario
-                if (viewModel == null)
-                    viewModel = new MainViewModel();
-
-                return viewModel;
-            }
-        }
-
-        #region Utility App Methods
-
-        public static HTTPRequestQueue HttpManager
-        {
-            get { return _httpreqhandler; }
-        }
-
-        #endregion
 
         /// <summary>
         /// Offre facile accesso al frame radice dell'applicazione Windows Phone.
@@ -73,11 +47,6 @@ namespace HomeGenie
 
             // Inizializzazione specifica del telefono
             InitializePhoneApplication();
-
-
-            _httpreqhandler.Start();
-            ViewModel.SetDispatcher(RootVisual.Dispatcher);
-
 
             // Visualizza informazioni di profilatura delle immagini durante il debug.
             if (System.Diagnostics.Debugger.IsAttached)
@@ -111,10 +80,10 @@ namespace HomeGenie
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Verificare che lo stato dell'applicazione sia ripristinato in modo appropriato
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
+            //if (!App.ViewModel.IsDataLoaded)
+            //{
+            //    App.ViewModel.LoadData();
+            //}
         }
 
         // Codice da eseguire quando l'applicazione viene disattivata (inviata in background)
@@ -171,6 +140,8 @@ namespace HomeGenie
 
             // Accertarsi che l'inizializzazione non venga ripetuta
             phoneApplicationInitialized = true;
+
+            DispatcherHelper.Initialize();
         }
 
         // Non aggiungere altro codice a questo metodo
@@ -194,9 +165,6 @@ namespace HomeGenie
 
 
         #region Notifications
-
-
-
 
         public static void SetupPushChannel()
         {
@@ -334,12 +302,10 @@ namespace HomeGenie
 
             }
 
-            ViewModel.Dispatcher.BeginInvoke(() =>
+            DispatcherHelper.CheckBeginInvokeOnUI(() =>
             {
-                ToastPrompt toast = new ToastPrompt();
+                ToastPrompt toast = new ToastPrompt {Title = title, Message = text};
                 //toast.Completed += toast_Completed;
-                toast.Title = title;
-                toast.Message = text;
                 //toast.ImageSource = new BitmapImage(new Uri("Assets/toasticon.png", UriKind.RelativeOrAbsolute));
                 toast.Show();
             });
@@ -349,7 +315,7 @@ namespace HomeGenie
         static void PushChannel_ErrorOccurred(object sender, NotificationChannelErrorEventArgs e)
         {
             // Error handling logic for your particular application would be here.
-            ViewModel.Dispatcher.BeginInvoke(() =>
+            DispatcherHelper.CheckBeginInvokeOnUI(() =>
                 MessageBox.Show(String.Format("A push notification {0} error occurred.  {1} ({2}) {3}",
                     e.ErrorType, e.Message, e.ErrorCode, e.ErrorAdditionalData))
                     );

@@ -5,9 +5,11 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using HomeGenie.SDK.Http;
+using HomeGenie.SDK.Objects;
+using HomeGenie.SDK.Utility;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using HomeGenie.ViewModel.Objects;
 using System.IO.IsolatedStorage;
 using System.Globalization;
 using HomeGenie.ViewModel.Converters;
@@ -42,13 +44,13 @@ namespace HomeGenie.Controls
             Module module = (Module)((FrameworkElement)sender).DataContext;
             //
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.On//" + DateTime.Now.Ticks.ToString(); ;
-            App.HttpManager.AddToQueue("Control.On", url, (WebRequestCompletedArgs args) =>
-            {
-                //this.Dispatcher.BeginInvoke(() =>
-                //{
-                    App.ViewModel.UpdateCurrentGroup();
-                //});
-            });
+            //App.HttpManager.AddToQueue("Control.On", url, (WebRequestCompletedArgs args) =>
+            //{
+            //    //this.Dispatcher.BeginInvoke(() =>
+            //    //{
+            //        App.ViewModel.UpdateCurrentGroup();
+            //    //});
+            //});
         }
 
         private void ModuleOff_Click(object sender, RoutedEventArgs e)
@@ -57,13 +59,13 @@ namespace HomeGenie.Controls
             Module module = (Module)((FrameworkElement)sender).DataContext;
             //
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Off//" + DateTime.Now.Ticks.ToString(); ;
-            App.HttpManager.AddToQueue("Control.Off", url, (WebRequestCompletedArgs args) =>
-            {
-                //this.Dispatcher.BeginInvoke(() =>
-                //{
-                    App.ViewModel.UpdateCurrentGroup();
-                //});
-            });
+            //App.HttpManager.AddToQueue("Control.Off", url, (WebRequestCompletedArgs args) =>
+            //{
+            //    //this.Dispatcher.BeginInvoke(() =>
+            //    //{
+            //        App.ViewModel.UpdateCurrentGroup();
+            //    //});
+            //});
         }
 
         private void ModuleSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -89,13 +91,13 @@ namespace HomeGenie.Controls
             //
             Slider slider = (Slider)sender;
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Level/" + Math.Round(slider.Value * 100).ToString() + "/" + DateTime.Now.Ticks.ToString(); ;
-            App.HttpManager.AddToQueue("Control.Level", url, (WebRequestCompletedArgs args) =>
-            {
-                //this.Dispatcher.BeginInvoke(() =>
-                //{
-                    App.ViewModel.UpdateCurrentGroup();
-                //});
-            });
+            //App.HttpManager.AddToQueue("Control.Level", url, (WebRequestCompletedArgs args) =>
+            //{
+            //    //this.Dispatcher.BeginInvoke(() =>
+            //    //{
+            //        App.ViewModel.UpdateCurrentGroup();
+            //    //});
+            //});
         }
 
         private void ColorPicker_ColorChanged(object sender, Color color)
@@ -109,8 +111,8 @@ namespace HomeGenie.Controls
 
         private void ColorSlider_ColorChanged(object sender, Color color)
         {
-            Utility.HSBColor hsbcolorcp = Utility.HSBColor.FromColor(ColorPicker.Color);
-            Utility.HSBColor hsbcolorcs = Utility.HSBColor.FromColor(color);
+            HSBColor hsbcolorcp = HSBColor.FromColor(ColorPicker.Color);
+            HSBColor hsbcolorcs = HSBColor.FromColor(color);
             hsbcolorcp.H = hsbcolorcs.H;
             //hsbcolorcp.S = hsbcolorcs.S;
             ColorPicker.Color = hsbcolorcp.ToColor();
@@ -129,19 +131,19 @@ namespace HomeGenie.Controls
             _submitcommanddelay.Stop();
             Module module = (Module)((FrameworkElement)this).DataContext;
             //
-            Utility.HSBColor hsbcolor = Utility.HSBColor.FromColor(ColorPicker.Color);
+            HSBColor hsbcolor = HSBColor.FromColor(ColorPicker.Color);
             //
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.ColorHsb/" +
                 (hsbcolor.H / 360d).ToString(CultureInfo.InvariantCulture) + ',' +
                 (hsbcolor.S).ToString(CultureInfo.InvariantCulture) + ',' +
                 (hsbcolor.B).ToString(CultureInfo.InvariantCulture) + "/" + DateTime.Now.Ticks.ToString();
-            App.HttpManager.AddToQueue("Control.ColorHsb", url, (WebRequestCompletedArgs args) =>
-            {
-                //this.Dispatcher.BeginInvoke(() =>
-                //{
-                    App.ViewModel.UpdateCurrentGroup();
-                //});
-            });
+            //App.HttpManager.AddToQueue("Control.ColorHsb", url, (WebRequestCompletedArgs args) =>
+            //{
+            //    //this.Dispatcher.BeginInvoke(() =>
+            //    //{
+            //        App.ViewModel.UpdateCurrentGroup();
+            //    //});
+            //});
         }
 
 
