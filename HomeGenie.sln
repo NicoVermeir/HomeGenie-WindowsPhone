@@ -5,11 +5,15 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeGenie", "HomeGenie\HomeGenie.csproj", "{DE472B91-A6C2-48B0-9B34-947FB0ECC755}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. SDK", "00. SDK", "{625568BE-F558-4336-8AC6-A0284C4F8409}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10. SDK", "10. SDK", "{625568BE-F558-4336-8AC6-A0284C4F8409}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeGenie.SDK.Runtime", "HomeGenie.SDK.Runtime\HomeGenie.SDK.Runtime.csproj", "{A0E0BB21-5673-4721-9244-412B7DB366B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeGenie.SDK.Silverlight", "HomeGenie.SDK.Silverlight\HomeGenie.SDK.Silverlight.csproj", "{EA5F314D-92A9-45C9-882D-78F17D844C59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Common", "00. Common", "{71A376CA-DE1F-49F7-B057-DCDF14AFEA98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeGenie.Common", "HomeGenie.Common\HomeGenie.Common.csproj", "{9028FF9F-0B56-4999-8F5D-7810F9421B85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,14 @@ Global
 		{EA5F314D-92A9-45C9-882D-78F17D844C59}.Release|ARM.Build.0 = Release|ARM
 		{EA5F314D-92A9-45C9-882D-78F17D844C59}.Release|x86.ActiveCfg = Release|x86
 		{EA5F314D-92A9-45C9-882D-78F17D844C59}.Release|x86.Build.0 = Release|x86
+		{9028FF9F-0B56-4999-8F5D-7810F9421B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9028FF9F-0B56-4999-8F5D-7810F9421B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9028FF9F-0B56-4999-8F5D-7810F9421B85}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9028FF9F-0B56-4999-8F5D-7810F9421B85}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9028FF9F-0B56-4999-8F5D-7810F9421B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9028FF9F-0B56-4999-8F5D-7810F9421B85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9028FF9F-0B56-4999-8F5D-7810F9421B85}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9028FF9F-0B56-4999-8F5D-7810F9421B85}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +78,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A0E0BB21-5673-4721-9244-412B7DB366B8} = {625568BE-F558-4336-8AC6-A0284C4F8409}
 		{EA5F314D-92A9-45C9-882D-78F17D844C59} = {625568BE-F558-4336-8AC6-A0284C4F8409}
+		{9028FF9F-0B56-4999-8F5D-7810F9421B85} = {71A376CA-DE1F-49F7-B057-DCDF14AFEA98}
 	EndGlobalSection
 EndGlobal

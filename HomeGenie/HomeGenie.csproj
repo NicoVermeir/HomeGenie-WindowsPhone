@@ -136,6 +136,9 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="Common\DataTemplateSelector.cs" />
     <Compile Include="Common\ModuleTemplateSelector.cs" />
+    <Compile Include="Controls\DimmerModuleControl.xaml.cs">
+      <DependentUpon>DimmerModuleControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ModuleControls.xaml.cs">
       <DependentUpon>ModuleControls.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,8 @@
     <Compile Include="SetupPage.xaml.cs">
       <DependentUpon>SetupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Controls\ControlViewModelBase.cs" />
+    <Compile Include="ViewModel\Controls\DimmerViewModel.cs" />
     <Compile Include="ViewModel\Converters\HsbColorConverter.cs" />
     <Compile Include="ViewModel\Converters\IntToVisibilityConverter.cs" />
     <Compile Include="ViewModel\Converters\LatestPropertyDateTimeConverter.cs" />
@@ -196,6 +201,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\DimmerModuleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ModuleControls.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -306,9 +315,7 @@
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\Widgets\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
@@ -322,6 +329,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HomeGenie.Common\HomeGenie.Common.csproj">
+      <Project>{9028ff9f-0b56-4999-8f5d-7810f9421b85}</Project>
+      <Name>HomeGenie.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HomeGenie.SDK.Silverlight\HomeGenie.SDK.Silverlight.csproj">
       <Project>{ea5f314d-92a9-45c9-882d-78f17d844c59}</Project>
       <Name>HomeGenie.SDK.Silverlight</Name>

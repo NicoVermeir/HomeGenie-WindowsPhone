@@ -1,98 +1,42 @@
 ﻿<phone:PhoneApplicationPage x:Class="HomeGenie.GroupsPage"
                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                            xmlns:common="clr-namespace:HomeGenie.Common"
-                            xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                            xmlns:controls="clr-namespace:HomeGenie.Controls"
                             xmlns:converters="clr-namespace:HomeGenie.ViewModel.Converters"
                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                             xmlns:local="clr-namespace:HomeGenie"
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                            xmlns:objects="clr-namespace:HomeGenie.SDK.Objects;assembly=HomeGenie.SDK.Silverlight"
                             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-                            xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
-                            DataContext="{Binding Main,
-                                                  Source={StaticResource Locator}}"
-                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
-                            FontSize="{StaticResource PhoneFontSizeNormal}"
-                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            x:Name="ElementRoot"
                             Orientation="Portrait"
                             SupportedOrientations="Portrait"
                             d:DesignHeight="768"
                             d:DesignWidth="480"
                             shell:SystemTray.IsVisible="True"
                             mc:Ignorable="d">
+
+    <phone:PhoneApplicationPage.DataContext>
+        <Binding Path="Main" Source="{StaticResource Locator}" />
+    </phone:PhoneApplicationPage.DataContext>
     <shell:SystemTray.ProgressIndicator>
         <shell:ProgressIndicator IsIndeterminate="True" IsVisible="{Binding IsDataLoading}" />
     </shell:SystemTray.ProgressIndicator>
 
-    <UserControl.Resources>
+    <phone:PhoneApplicationPage.Resources>
         <local:LocalizedStrings x:Key="LocalizedStrings" />
-        <converters:ModuleIconUrlConverter x:Key="IconUrlConverter" />
-        <converters:ModuleAddinVisibilityConverter x:Key="ModuleAddinVisibility" />
-        <converters:PropertyAddinVisibilityConverter x:Key="PropertyAddinVisibility" />
-        <converters:ModuleVisibilityConverter x:Key="ModuleVisibility" />
-        <converters:ModulePropertyConverter x:Key="PropertyConverter" />
-        <converters:LatestPropertyDateTimeConverter x:Key="LastUpdatedPropertyConverter" />
-        <converters:SecurityArmedConverter x:Key="SecurityArmedConverter" />
-        <converters:HsbColorConverter x:Key="HsbColorConverter" />
-        <converters:ModuleDomainConverter x:Key="ModuleDomainConverter" />
 
         <DataTemplate x:Key="DimmerTemplate">
-            <Grid d:DataContext="{d:DesignInstance Type=objects:Module}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Row="0">
-                    <TextBlock HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Style="{StaticResource PhoneTextLargeStyle}"
-                               Text="{Binding Name}" />
-                    <TextBlock HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Style="{StaticResource PhoneTextSubtleStyle}"
-                               Text="{Binding Description}" />
-                </StackPanel>
-
-                <Image x:Name="ModuleIcon"
-                       Grid.Row="1"
-                       Grid.Column="0"
-                       Width="100"
-                       MaxHeight="100"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top">
-                    <local:BindingUtil.MultiBindings>
-                        <local:MultiBindings>
-                            <local:MultiBinding Converter="{StaticResource IconUrlConverter}"
-                                                Mode="OneWay"
-                                                TargetProperty="Source">
-                                <local:BindingCollection>
-                                    <Binding ElementName="ModuleIcon" />
-                                    <Binding Path="IconUrl" />
-                                </local:BindingCollection>
-                            </local:MultiBinding>
-                        </local:MultiBindings>
-                    </local:BindingUtil.MultiBindings>
-
-                </Image>
-            </Grid>
-
+            <controls:DimmerModuleControl />
         </DataTemplate>
-    </UserControl.Resources>
+    </phone:PhoneApplicationPage.Resources>
 
     <phone:Pivot x:Name="PivotView"
                  Title="{Binding LocalizedResources.MainPage_Title,
                                  Source={StaticResource LocalizedStrings}}"
                  ItemsSource="{Binding Items}"
                  SelectedItem="{Binding CurrentGroup,
-                                        Mode=TwoWay}"
-                 d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+                                        Mode=TwoWay}">
 
         <phone:Pivot.HeaderTemplate>
             <DataTemplate>
@@ -111,10 +55,10 @@
     </phone:Pivot>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsMenuEnabled="True"
+        <shell:ApplicationBar x:Uid="ProgramsMenu"
+                              IsMenuEnabled="True"
                               IsVisible="False"
-                              Mode="Minimized"
-                              x:Uid="ProgramsMenu">
+                              Mode="Minimized">
             <shell:ApplicationBarIconButton x:Name="OpenSettings"
                                             Click="OpenSettings_Click"
                                             IconUri="/Assets/ApplicationBar/setup.png"
@@ -133,5 +77,4 @@
                                             Text="info" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
-
 </phone:PhoneApplicationPage>

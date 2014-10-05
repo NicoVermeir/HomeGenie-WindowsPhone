@@ -15,8 +15,9 @@ namespace HomeGenie.ViewModel
         private readonly ISettingsService _settingsService;
         private readonly ServerMethods _api;
 
-        public ObservableCollection<Group> Items { get; private set; }
         private Group _currentgroup;
+
+        public ObservableCollection<Group> Items { get; private set; }
 
         public Group CurrentGroup
         {
@@ -52,10 +53,10 @@ namespace HomeGenie.ViewModel
         /// </summary>
         public void LoadData()
         {
-
             if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
             {
-                _settingsService.SetValue("RemoteServerAddress", "127.0.0.1");
+                _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
+                //_settingsService.SetValue("RemoteServerAddress", "127.0.0.1");
             }
             if (!_settingsService.DoesSettingExist("RemoteServerUsername"))
             {

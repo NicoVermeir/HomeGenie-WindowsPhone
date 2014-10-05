@@ -27,6 +27,24 @@ namespace HomeGenie.SDK
                 "/api/HomeAutomation.HomeGenie/Config/Groups.ModulesList/" + groupname, callback);
         }
 
+        public void SetModuleOn(Module module, Action<WebRequestCompletedArgs> callback)
+        {
+            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.On//" + DateTime.Now.Ticks.ToString();
+            Calljsonapi("Control.On", url, callback);
+        }
+
+        public void SetModuleOff(Module module, Action<WebRequestCompletedArgs> callback)
+        {
+            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Off//" + DateTime.Now.Ticks.ToString(); ;
+            Calljsonapi("Control.Off", url, callback);
+        }
+        
+        public void SetLevel(Module module, double value, Action<WebRequestCompletedArgs> callback)
+        {
+            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Level/" + Math.Round(value * 100).ToString() + "/" + DateTime.Now.Ticks.ToString(); ;
+            Calljsonapi("Control.Level", url, callback);
+        }
+
         private void Calljsonapi<T>(string reqid, string apiurl, Action<T> callback)
         {
             string url = apiurl + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);

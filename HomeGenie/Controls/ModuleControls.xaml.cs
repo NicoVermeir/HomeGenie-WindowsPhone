@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
-using HomeGenie.SDK.Http;
 using HomeGenie.SDK.Objects;
 using HomeGenie.SDK.Utility;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using System.IO.IsolatedStorage;
 using System.Globalization;
 using HomeGenie.ViewModel.Converters;
 using System.Windows.Media;
