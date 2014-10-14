@@ -14,6 +14,7 @@
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using HomeGenie.DesignTimeData;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Contracts;
 using HomeGenie.SDK.Http;
@@ -35,20 +36,20 @@ namespace HomeGenie.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
+            if (ViewModelBase.IsInDesignModeStatic)
+            {
+                // Create design time view services and models
+                SimpleIoc.Default.Register<IHomeGenieApi, HomeGenieDesignTimeApi>();
+                SimpleIoc.Default.Register<ISettingsService, SettingsDesignTimeService>();
+            }
+            else
+            {
+                // Create run time view services and models
+                SimpleIoc.Default.Register<IHomeGenieApi, HomeGenieApi>();
+                SimpleIoc.Default.Register<HTTPRequestQueue>();
+                SimpleIoc.Default.Register<ISettingsService, SettingsService>();
+            }
 
-            SimpleIoc.Default.Register<ServerMethods>();
-            SimpleIoc.Default.Register<HTTPRequestQueue>();
-            SimpleIoc.Default.Register<ISettingsService, SettingsService>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 

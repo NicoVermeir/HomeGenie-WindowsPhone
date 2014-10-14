@@ -7,11 +7,11 @@ using Newtonsoft.Json;
 
 namespace HomeGenie.SDK
 {
-    public class ServerMethods
+    public class HomeGenieApi : IHomeGenieApi
     {
         private readonly HTTPRequestQueue _httpManager;
 
-        public ServerMethods()
+        public HomeGenieApi()
         {
             _httpManager = new HTTPRequestQueue();
         }
@@ -29,19 +29,19 @@ namespace HomeGenie.SDK
 
         public void SetModuleOn(Module module, Action<WebRequestCompletedArgs> callback)
         {
-            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.On//" + DateTime.Now.Ticks.ToString();
+            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.On//" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
             Calljsonapi("Control.On", url, callback);
         }
 
         public void SetModuleOff(Module module, Action<WebRequestCompletedArgs> callback)
         {
-            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Off//" + DateTime.Now.Ticks.ToString(); ;
+            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Off//" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
             Calljsonapi("Control.Off", url, callback);
         }
         
         public void SetLevel(Module module, double value, Action<WebRequestCompletedArgs> callback)
         {
-            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Level/" + Math.Round(value * 100).ToString() + "/" + DateTime.Now.Ticks.ToString(); ;
+            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Level/" + Math.Round(value * 100).ToString(CultureInfo.InvariantCulture) + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
             Calljsonapi("Control.Level", url, callback);
         }
 

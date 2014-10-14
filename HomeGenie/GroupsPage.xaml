@@ -1,6 +1,7 @@
 ﻿<phone:PhoneApplicationPage x:Class="HomeGenie.GroupsPage"
                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:common="clr-namespace:HomeGenie.Common"
                             xmlns:controls="clr-namespace:HomeGenie.Controls"
                             xmlns:converters="clr-namespace:HomeGenie.ViewModel.Converters"
                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -29,6 +30,10 @@
         <DataTemplate x:Key="DimmerTemplate">
             <controls:DimmerModuleControl />
         </DataTemplate>
+
+        <DataTemplate x:Key="ProgramTemplate">
+            <controls:ProgramModuleControl />
+        </DataTemplate>
     </phone:PhoneApplicationPage.Resources>
 
     <phone:Pivot x:Name="PivotView"
@@ -47,8 +52,16 @@
             <DataTemplate>
                 <phone:LongListSelector x:Name="ListView"
                                         Margin="0,0,0,0"
-                                        ItemTemplate="{StaticResource DimmerTemplate}"
-                                        ItemsSource="{Binding Modules}" />
+                                        ItemsSource="{Binding Modules}">
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <common:ModuleTemplateSelector Content="{Binding}" HorizontalContentAlignment="Stretch"
+                                                           DimmerTemplate="{StaticResource DimmerTemplate}"
+                                                           ProgramTemplate="{StaticResource ProgramTemplate}" />
+                            <!--  <controls:ProgramModuleControl />  -->
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                </phone:LongListSelector>
             </DataTemplate>
         </phone:Pivot.ItemTemplate>
 

@@ -13,7 +13,7 @@ namespace HomeGenie.ViewModel
     public class MainViewModel : HomeGenieViewModelBase
     {
         private readonly ISettingsService _settingsService;
-        private readonly ServerMethods _api;
+        private readonly IHomeGenieApi _api;
 
         private Group _currentgroup;
 
@@ -35,12 +35,13 @@ namespace HomeGenie.ViewModel
             }
         }
 
-        public MainViewModel(ISettingsService settingsService, ServerMethods api)
+        public MainViewModel(ISettingsService settingsService, IHomeGenieApi api)
         {
             _settingsService = settingsService;
             _api = api;
             Items = new ObservableCollection<Group>();
-            if (_settingsService.DoesSettingExist("CurrentGroup"))
+
+            if (!IsInDesignMode && _settingsService.DoesSettingExist("CurrentGroup"))
             {
                 _currentgroup = (Group)_settingsService.GetValue("CurrentGroup");
             }
@@ -53,28 +54,30 @@ namespace HomeGenie.ViewModel
         /// </summary>
         public void LoadData()
         {
-            if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
+            if (!IsInDesignMode)
             {
-                _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
-                //_settingsService.SetValue("RemoteServerAddress", "127.0.0.1");
+                if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
+                {
+                    _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
+                    //_settingsService.SetValue("RemoteServerAddress", "127.0.0.1");
+                }
+                if (!_settingsService.DoesSettingExist("RemoteServerUsername"))
+                {
+                    _settingsService.SetValue("RemoteServerUsername", "admin");
+                }
+                if (!_settingsService.DoesSettingExist("RemoteServerPassword"))
+                {
+                    _settingsService.SetValue("RemoteServerPassword", "");
+                }
+                if (!_settingsService.DoesSettingExist("RemoteServerUpdateInterval"))
+                {
+                    _settingsService.SetValue("RemoteServerUpdateInterval", "20");
+                }
+                if (!_settingsService.DoesSettingExist("EnableNotifications"))
+                {
+                    _settingsService.SetValue("EnableNotifications", true);
+                }
             }
-            if (!_settingsService.DoesSettingExist("RemoteServerUsername"))
-            {
-                _settingsService.SetValue("RemoteServerUsername", "admin");
-            }
-            if (!_settingsService.DoesSettingExist("RemoteServerPassword"))
-            {
-                _settingsService.SetValue("RemoteServerPassword", "");
-            }
-            if (!_settingsService.DoesSettingExist("RemoteServerUpdateInterval"))
-            {
-                _settingsService.SetValue("RemoteServerUpdateInterval", "20");
-            }
-            if (!_settingsService.DoesSettingExist("EnableNotifications"))
-            {
-                _settingsService.SetValue("EnableNotifications", true);
-            }
-
             IsDataLoading = true;
             UpdateGroups();
         }
@@ -89,7 +92,7 @@ namespace HomeGenie.ViewModel
 
                     if (groups != null)
                     {
-                        List<Group> newgroups = new List<Group>();
+                        var newgroups = new List<Group>();
                         foreach (Group g in groups)
                         {
                             Group existinggroup = Items.FirstOrDefault(eg => eg.Name == g.Name);
@@ -106,14 +109,26 @@ namespace HomeGenie.ViewModel
                             }
                         }
 
-                        DispatcherHelper.CheckBeginInvokeOnUI(() =>
+                        if (!IsInDesignMode)
+                        {
+                            DispatcherHelper.CheckBeginInvokeOnUI(() =>
+                            {
+                                foreach (Group g in newgroups)
+                                {
+                                    Items.Add(g);
+                                }
+                                IsDataLoading = false;
+                            });
+                        }
+                        else
                         {
                             foreach (Group g in newgroups)
                             {
                                 Items.Add(g);
                             }
-                            IsDataLoading = false;
-                        });
+                            CurrentGroup = Items.First();
+                            UpdateGroupModules();
+                        }
                     }
                 });
             }
@@ -131,7 +146,8 @@ namespace HomeGenie.ViewModel
             {
                 Group g = Items.First(hz => hz.Name == CurrentGroup.Name);
                 if (modules != null)
-                    DispatcherHelper.CheckBeginInvokeOnUI(() =>
+
+                    if (IsInDesignMode)
                     {
                         foreach (Module m in modules)
                         {
@@ -147,7 +163,28 @@ namespace HomeGenie.ViewModel
                                 g.Modules.Add(m);
                             }
                         }
-                    });
+                    }
+                    else
+                    {
+                        DispatcherHelper.CheckBeginInvokeOnUI(() =>
+                        {
+                            foreach (Module m in modules)
+                            {
+                                Module existinmodule = g.Modules.FirstOrDefault(gm => gm.Domain == m.Domain && gm.Address == m.Address);
+
+                                if (existinmodule != null)
+                                {
+                                    existinmodule.Name = m.Name;
+                                    existinmodule.Properties = m.Properties;
+                                }
+                                else
+                                {
+                                    g.Modules.Add(m);
+                                }
+                            }
+                        });
+                    }
+
             });
         }
     }

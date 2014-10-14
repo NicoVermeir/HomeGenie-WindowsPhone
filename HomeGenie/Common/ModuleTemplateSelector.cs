@@ -6,10 +6,11 @@ namespace HomeGenie.Common
     public class ModuleTemplateSelector : DataTemplateSelector
     {
         public DataTemplate DimmerTemplate { get; set; }
+        public DataTemplate ProgramTemplate { get; set; }
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            Module module = item as Module;
+            var module = item as Module;
 
             if (module == null)
                 return null;
@@ -19,7 +20,7 @@ namespace HomeGenie.Common
                 case Module.DeviceTypes.Dimmer:
                     return DimmerTemplate;
                 case Module.DeviceTypes.Program:
-                    return DimmerTemplate;
+                    return ProgramTemplate;
                 default:
                     return null;
             }

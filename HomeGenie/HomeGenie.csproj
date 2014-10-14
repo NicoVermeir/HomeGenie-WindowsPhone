@@ -142,6 +142,11 @@
     <Compile Include="Controls\ModuleControls.xaml.cs">
       <DependentUpon>ModuleControls.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ProgramModuleControl.xaml.cs">
+      <DependentUpon>ProgramModuleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignTimeData\HomeGenieDesignTimeApi.cs" />
+    <Compile Include="DesignTimeData\SettingsDesignTimeService.cs" />
     <Compile Include="GroupsPage.xaml.cs">
       <DependentUpon>GroupsPage.xaml</DependentUpon>
     </Compile>
@@ -211,6 +216,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ProgramModuleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GroupsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -348,4 +357,5 @@
   </Target>
   -->
   <ProjectExtensions />
+  <Import Project="$(XamlSpyInstallPath)MSBuild\FirstFloor.XamlSpy.WindowsPhone.targets" Condition="'$(XamlSpyInstallPath)' != '' and '$(Configuration)' == 'DEBUG'" />
 </Project>

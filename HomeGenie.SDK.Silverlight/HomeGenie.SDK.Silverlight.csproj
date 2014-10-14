@@ -89,6 +89,7 @@
     <Compile Include="Http\LoadDataError.cs" />
     <Compile Include="Http\QueueRequest.cs" />
     <Compile Include="Http\WebRequestCompletedArgs.cs" />
+    <Compile Include="IHomeGenieApi.cs" />
     <Compile Include="ServerMethods.cs" />
     <Compile Include="Objects\Data.cs" />
     <Compile Include="Objects\Group.cs" />
