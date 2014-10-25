@@ -7,6 +7,7 @@ using HomeGenie.SDK;
 using HomeGenie.SDK.Contracts;
 using HomeGenie.SDK.Http;
 using HomeGenie.SDK.Objects;
+using HomeGenie.ViewModel.Controls;
 
 namespace HomeGenie.ViewModel
 {
@@ -18,6 +19,7 @@ namespace HomeGenie.ViewModel
         private Group _currentgroup;
 
         public ObservableCollection<Group> Items { get; private set; }
+        public ObservableCollection<IModuleVM> ModulesForCurrentGroup { get; set; }
 
         public Group CurrentGroup
         {
@@ -46,6 +48,7 @@ namespace HomeGenie.ViewModel
                 _currentgroup = (Group)_settingsService.GetValue("CurrentGroup");
             }
 
+            ModulesForCurrentGroup = new ObservableCollection<IModuleVM>();
             LoadData();
         }
 
@@ -170,22 +173,41 @@ namespace HomeGenie.ViewModel
                         {
                             foreach (Module m in modules)
                             {
-                                Module existinmodule = g.Modules.FirstOrDefault(gm => gm.Domain == m.Domain && gm.Address == m.Address);
-
-                                if (existinmodule != null)
-                                {
-                                    existinmodule.Name = m.Name;
-                                    existinmodule.Properties = m.Properties;
-                                }
-                                else
-                                {
-                                    g.Modules.Add(m);
-                                }
+                                AddModuleToGroup(m, g);
                             }
                         });
                     }
 
             });
+        }
+
+        private void AddModuleToGroup(Module module, Group group)
+        {
+            Module existinmodule = group.Modules.FirstOrDefault(gm => gm.Domain == module.Domain && gm.Address == module.Address);
+
+            if (existinmodule != null)
+            {
+                existinmodule.Name = module.Name;
+                existinmodule.Properties = module.Properties;
+            }
+            else
+            {
+                group.Modules.Add(module);
+                InstantiateModule(module);
+            }
+        }
+
+        private void InstantiateModule(Module module)
+        {
+            switch (module.DeviceType)
+            {
+                case Module.DeviceTypes.Dimmer:
+                    ModulesForCurrentGroup.Add(new DimmerViewModel { Module = module, Group = CurrentGroup });
+                    break;
+                case Module.DeviceTypes.Program:
+                    ModulesForCurrentGroup.Add(new ProgramViewModel { Module = module, Group = CurrentGroup });
+                    break;
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using HomeGenie.SDK.Objects;
+using HomeGenie.ViewModel.Controls;
 
 namespace HomeGenie.Common
 {
@@ -10,20 +10,19 @@ namespace HomeGenie.Common
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            var module = item as Module;
+            var module = item as IModuleVM;
 
-            if (module == null)
-                return null;
-
-            switch (module.DeviceType)
+            if (module is IDimmerVM)
             {
-                case Module.DeviceTypes.Dimmer:
-                    return DimmerTemplate;
-                case Module.DeviceTypes.Program:
-                    return ProgramTemplate;
-                default:
-                    return null;
+                return DimmerTemplate;
             }
+
+            if (module is IProgramVM)
+            {
+                return ProgramTemplate;
+            }
+
+            return null;
         }
     }
 }

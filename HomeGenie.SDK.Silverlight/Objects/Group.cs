@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace HomeGenie.SDK.Objects
 {
@@ -10,13 +10,11 @@ namespace HomeGenie.SDK.Objects
             get { return _name; }
             set { _name = value; }
         }
-        //
-        public ObservableCollection<Module> Modules { get; set; }
+        public IList<Module> Modules { get; set; }
 
-        //
         public Group()
         {
-            Modules = new ObservableCollection<Module>();
+            Modules = new List<Module>();
         }
     }
 }

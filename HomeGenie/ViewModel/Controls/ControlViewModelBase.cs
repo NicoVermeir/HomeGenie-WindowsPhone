@@ -7,10 +7,11 @@ using HomeGenie.SDK.Objects;
 
 namespace HomeGenie.ViewModel.Controls
 {
-    public abstract class ControlViewModelBase : ObservableObject
+    public abstract class ControlViewModelBase : ObservableObject, IModuleVM
     {
         private Module _module;
         internal Action<WebRequestCompletedArgs> Callback;
+        public Group Group { get; set; }
 
         protected ControlViewModelBase()
         {

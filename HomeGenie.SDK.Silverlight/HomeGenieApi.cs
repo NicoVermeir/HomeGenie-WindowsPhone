@@ -38,11 +38,17 @@ namespace HomeGenie.SDK
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Off//" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
             Calljsonapi("Control.Off", url, callback);
         }
-        
+
         public void SetLevel(Module module, double value, Action<WebRequestCompletedArgs> callback)
         {
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Level/" + Math.Round(value * 100).ToString(CultureInfo.InvariantCulture) + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
             Calljsonapi("Control.Level", url, callback);
+        }
+
+        public void RunProgram(Module module, Group group, Action<WebRequestCompletedArgs> callback)
+        {
+            string url = "/api/HomeAutomation.HomeGenie/Automation/Programs.Run/" + module.Address + "/" + group.Name + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
+            Calljsonapi("Programs.Run[" + module.Address + "]", url, callback);
         }
 
         private void Calljsonapi<T>(string reqid, string apiurl, Action<T> callback)

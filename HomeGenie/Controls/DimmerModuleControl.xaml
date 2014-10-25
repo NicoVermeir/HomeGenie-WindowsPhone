@@ -2,9 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-             DataContext="{Binding }"
+             DataContext="{Binding}"
              FontFamily="{StaticResource PhoneFontFamilyNormal}"
              FontSize="{StaticResource PhoneFontSizeNormal}"
              Foreground="{StaticResource PhoneForegroundBrush}"
@@ -57,13 +58,11 @@
                 Minimum="0"
                 Value="{Binding SliderValue,
                                 Mode=TwoWay}">
-            <!--
-                <i:Interaction.Triggers>
+            <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonUp">
-                <command:EventToCommand Command="{Binding SliderLevelChangedCommand}" />
+                    <i:InvokeCommandAction Command="{Binding SliderLevelChangedCommand}" />
                 </i:EventTrigger>
-                </i:Interaction.Triggers>
-            -->
+            </i:Interaction.Triggers>
         </Slider>
     </Grid>
 </UserControl>

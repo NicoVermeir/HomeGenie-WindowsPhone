@@ -40,7 +40,7 @@ namespace HomeGenie.DesignTimeData
             return modules;
         }
 
-        private List<Module> CreateModulesForGroup(string groupName)
+        private List<Module> CreateModulesForGroup()
         {
             var modules = new List<Module>();
             for (int i = 0; i < 5; i++)
@@ -59,7 +59,7 @@ namespace HomeGenie.DesignTimeData
 
         public void UpdateGroupModule(string groupname, Action<List<Module>> callback)
         {
-            var modules = CreateModulesForGroup(groupname);
+            var modules = CreateModulesForGroup();
             callback(modules);
         }
 
@@ -74,6 +74,11 @@ namespace HomeGenie.DesignTimeData
         }
 
         public void SetLevel(Module module, double value, Action<WebRequestCompletedArgs> callback)
+        {
+            
+        }
+
+        public void RunProgram(Module module, Group @group, Action<WebRequestCompletedArgs> callback)
         {
             
         }

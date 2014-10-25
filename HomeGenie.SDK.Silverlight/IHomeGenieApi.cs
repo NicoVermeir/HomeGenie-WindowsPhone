@@ -12,5 +12,6 @@ namespace HomeGenie.SDK
         void SetModuleOn(Module module, Action<WebRequestCompletedArgs> callback);
         void SetModuleOff(Module module, Action<WebRequestCompletedArgs> callback);
         void SetLevel(Module module, double value, Action<WebRequestCompletedArgs> callback);
+        void RunProgram(Module module, Group group, Action<WebRequestCompletedArgs> callback);
     }
 }

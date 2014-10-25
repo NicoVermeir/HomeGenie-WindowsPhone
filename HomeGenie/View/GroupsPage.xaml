@@ -47,7 +47,8 @@
             <DataTemplate>
                 <phone:LongListSelector x:Name="ListView"
                                         Margin="0,0,0,0"
-                                        ItemsSource="{Binding Modules}">
+                                        ItemsSource="{Binding ElementName=ElementRoot,
+                                                              Path=DataContext.ModulesForCurrentGroup}">
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
                             <common:ModuleTemplateSelector HorizontalContentAlignment="Stretch"

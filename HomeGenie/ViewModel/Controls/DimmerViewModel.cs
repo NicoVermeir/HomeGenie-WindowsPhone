@@ -7,7 +7,7 @@ using HomeGenie.SDK.Objects;
 
 namespace HomeGenie.ViewModel.Controls
 {
-    public class DimmerViewModel : ControlViewModelBase
+    public class DimmerViewModel : ControlViewModelBase, IDimmerVM
     {
         private double _sliderValue;
         private readonly IHomeGenieApi _api;
@@ -31,12 +31,6 @@ namespace HomeGenie.ViewModel.Controls
             };
 
             _api = SimpleIoc.Default.GetInstance<IHomeGenieApi>();
-        }
-
-        public void InitVM(Module module)
-        {
-            Module = module;
-            SetValues();
         }
 
         public bool IsSwitchedOn

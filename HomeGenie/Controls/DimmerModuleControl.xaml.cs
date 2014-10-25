@@ -1,6 +1,4 @@
 ﻿using System.Windows.Controls;
-using HomeGenie.SDK.Objects;
-using HomeGenie.ViewModel.Controls;
 
 namespace HomeGenie.Controls
 {
@@ -8,16 +6,7 @@ namespace HomeGenie.Controls
     {
         public DimmerModuleControl()
         {
-            //InitializeComponent();
-            //Loaded += (sender, args) =>
-            //{
-            //    DataContext = new DimmerModuleControl();
-            //};
-        }
-
-        private Module GetModule()
-        {
-            return DataContext as Module;
+            InitializeComponent();
         }
     }
 }
