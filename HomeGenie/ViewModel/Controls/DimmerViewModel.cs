@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
 using HomeGenie.SDK;
@@ -21,21 +20,22 @@ namespace HomeGenie.ViewModel.Controls
             get { return _sliderLevelChangedCommand ?? (_sliderLevelChangedCommand = new RelayCommand(UpdateLevel)); }
         }
 
-        public DimmerViewModel(Module module)
+        public DimmerViewModel()
         {
-            if (ViewModelBase.IsInDesignModeStatic)
+            Module = new Module
             {
-                module = new Module
-                {
-                    Address = "",
-                    Description = "",
-                    DeviceType = Module.DeviceTypes.Dimmer,
-                    Name = "design time module"
-                };
-            }
+                Address = "",
+                Description = "",
+                DeviceType = Module.DeviceTypes.Dimmer,
+                Name = "design time module"
+            };
 
-            Module = module;
             _api = SimpleIoc.Default.GetInstance<IHomeGenieApi>();
+        }
+
+        public void InitVM(Module module)
+        {
+            Module = module;
             SetValues();
         }
 
@@ -70,7 +70,7 @@ namespace HomeGenie.ViewModel.Controls
             }
             else
             {
-                _api.SetModuleOff(Module, Callback);                
+                _api.SetModuleOff(Module, Callback);
             }
         }
 

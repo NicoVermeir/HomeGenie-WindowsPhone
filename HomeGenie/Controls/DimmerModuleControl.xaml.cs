@@ -8,12 +8,11 @@ namespace HomeGenie.Controls
     {
         public DimmerModuleControl()
         {
-            InitializeComponent();
-
-            Loaded += (sender, args) =>
-            {
-                DataContext = new DimmerViewModel(GetModule());
-            };
+            //InitializeComponent();
+            //Loaded += (sender, args) =>
+            //{
+            //    DataContext = new DimmerModuleControl();
+            //};
         }
 
         private Module GetModule()

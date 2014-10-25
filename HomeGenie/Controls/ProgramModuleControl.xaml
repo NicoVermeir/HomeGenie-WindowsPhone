@@ -33,15 +33,13 @@
                        Text="{Binding Module.DeviceType}" />
         </StackPanel>
 
-        <Viewbox Grid.Column="1"
-                 Width="50"
-                 Height="50"
-                 Margin="0,0,12,0"
-                 HorizontalAlignment="Right">
-            <Grid Width="50" Height="50">
-                <Grid.Background>
-                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
-                </Grid.Background>
+        <Button Grid.Column="1"
+                Width="50"
+                Height="50"
+                Margin="0,0,12,0"
+                HorizontalAlignment="Right"
+                Background="{StaticResource PhoneAccentBrush}">
+            <Viewbox>
                 <Path Width="40"
                       Height="40"
                       Data="F1M-224.553,1265L-246.174,1283.52 -267.792,1302.04 -267.792,1265 -267.792,1227.97 -246.174,1246.49 -224.553,1265z"
@@ -57,8 +55,9 @@
                         </TransformGroup>
                     </Path.RenderTransform>
                 </Path>
-            </Grid>
-        </Viewbox>
+            </Viewbox>
+        </Button>
+
 
     </Grid>
 </UserControl>

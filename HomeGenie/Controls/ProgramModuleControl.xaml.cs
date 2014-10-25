@@ -11,7 +11,7 @@ namespace HomeGenie.Controls
             InitializeComponent();
             Loaded += (sender, args) =>
             {
-                DataContext = new DimmerViewModel(GetModule());
+                DataContext = new DimmerViewModel();
             };
         }
 
