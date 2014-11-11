@@ -1,4 +1,5 @@
-﻿using HomeGenie.SDK.Contracts;
+﻿using Windows.Storage;
+using HomeGenie.SDK.Contracts;
 
 namespace HomeGenie.SDK.Services
 {
@@ -6,17 +7,18 @@ namespace HomeGenie.SDK.Services
     {
         public bool DoesSettingExist(string settingName)
         {
-            throw new System.NotImplementedException();
+            var value = ApplicationData.Current.RoamingSettings.Values[settingName];
+            return value != null;
         }
 
         public object GetValue(string settingName)
         {
-            throw new System.NotImplementedException();
+            return ApplicationData.Current.RoamingSettings.Values[settingName];
         }
 
         public void SetValue(string settingName, object value)
         {
-            throw new System.NotImplementedException();
+            ApplicationData.Current.RoamingSettings.Values[settingName] = value;
         }
     }
 }

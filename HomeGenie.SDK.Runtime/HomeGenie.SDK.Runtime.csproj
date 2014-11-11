@@ -44,14 +44,23 @@
     <Compile Include="..\HomeGenie.SDK.Silverlight\Contracts\IStorageService.cs">
       <Link>Contracts\IStorageService.cs</Link>
     </Compile>
+    <Compile Include="..\HomeGenie.SDK.Silverlight\HomeGenieApi.cs">
+      <Link>HomeGenieApi.cs</Link>
+    </Compile>
     <Compile Include="..\HomeGenie.SDK.Silverlight\Http\HttpRequestQueue.cs">
       <Link>Http\HttpRequestQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\HomeGenie.SDK.Silverlight\Http\LoadDataError.cs">
+      <Link>Http\LoadDataError.cs</Link>
     </Compile>
     <Compile Include="..\HomeGenie.SDK.Silverlight\Http\QueueRequest.cs">
       <Link>Http\QueueRequest.cs</Link>
     </Compile>
     <Compile Include="..\HomeGenie.SDK.Silverlight\Http\WebRequestCompletedArgs.cs">
       <Link>Http\WebRequestCompletedArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\HomeGenie.SDK.Silverlight\IHomeGenieApi.cs">
+      <Link>IHomeGenieApi.cs</Link>
     </Compile>
     <Compile Include="..\HomeGenie.SDK.Silverlight\Objects\Data.cs">
       <Link>Objects\Data.cs</Link>
