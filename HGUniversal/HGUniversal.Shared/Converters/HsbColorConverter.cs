@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Data;
 using HomeGenie.SDK.Objects;
 using HomeGenie.SDK.Utility;
 
-namespace HGUniversal.ViewModel.Converters
+namespace HGUniversal.Converters
 {
     public class HsbColorConverter : IValueConverter
     {

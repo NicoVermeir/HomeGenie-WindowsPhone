@@ -1,7 +1,7 @@
 using System;
 using Windows.UI.Xaml.Data;
 
-namespace HGUniversal.ViewModel.Converters
+namespace HGUniversal.Converters
 {
     public class ModuleDomainConverter : IValueConverter
     {

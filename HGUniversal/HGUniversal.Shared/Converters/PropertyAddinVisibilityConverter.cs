@@ -4,7 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 using HomeGenie.SDK.Objects;
 
-namespace HGUniversal.ViewModel.Converters
+namespace HGUniversal.Converters
 {
     public class PropertyAddinVisibilityConverter : IValueConverter
     {

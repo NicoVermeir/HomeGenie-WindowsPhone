@@ -5,7 +5,7 @@ using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using HGUniversal.ViewModel.Converters;
+using HGUniversal.Converters;
 using HomeGenie.SDK.Objects;
 using HomeGenie.SDK.Utility;
 

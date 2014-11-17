@@ -1,12 +1,11 @@
 ﻿// This code is licensed under a Creative Commons Attribution 3.0 Unported License. Any work that includes this code must provide attribution
 // by means of a link. It is suggested that commercial applications that make use of code from this blog include a reference to the relevant blog post in their 'about' page.
 
-using System.Windows;
-using System.Windows.Data;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
+using HomeGenie;
 
-namespace HomeGenie
+namespace HGUniversal.MultiBinding
 {
   /// <summary>
   /// Provides a mechanism for attaching a MultiBinding to an element

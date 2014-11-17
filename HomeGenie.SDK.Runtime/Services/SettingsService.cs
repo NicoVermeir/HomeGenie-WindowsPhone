@@ -1,5 +1,6 @@
 ﻿using Windows.Storage;
 using HomeGenie.SDK.Contracts;
+using Newtonsoft.Json;
 
 namespace HomeGenie.SDK.Services
 {
@@ -16,9 +17,14 @@ namespace HomeGenie.SDK.Services
             return ApplicationData.Current.RoamingSettings.Values[settingName];
         }
 
+        public T GetValue<T>(string settingName)
+        {
+            return JsonConvert.DeserializeObject<T>(ApplicationData.Current.RoamingSettings.Values[settingName].ToString());
+        }
+
         public void SetValue(string settingName, object value)
         {
-            ApplicationData.Current.RoamingSettings.Values[settingName] = value;
+            ApplicationData.Current.RoamingSettings.Values[settingName] = JsonConvert.SerializeObject(value);
         }
     }
 }

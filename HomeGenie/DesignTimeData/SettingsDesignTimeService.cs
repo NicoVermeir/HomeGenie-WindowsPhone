@@ -14,6 +14,11 @@ namespace HomeGenie.DesignTimeData
             return new object();
         }
 
+        public T GetValue<T>(string settingName)
+        {
+            return default(T);
+        }
+
         public void SetValue(string settingName, object value)
         {
             

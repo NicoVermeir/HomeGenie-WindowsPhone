@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using GalaSoft.MvvmLight.Ioc;
 using HomeGenie.SDK.Contracts;
 
-namespace HGUniversal.ViewModel.Converters
+namespace HGUniversal.Converters
 {
     public class ModuleIconUrlConverter : IMultiValueConverter
     {

@@ -34,3 +34,4 @@ C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debu
 C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\qualifiers.txt
 C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\nvmwy41\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\HomeGenie.SDK.Runtime.csprojResolveAssemblyReference.cache

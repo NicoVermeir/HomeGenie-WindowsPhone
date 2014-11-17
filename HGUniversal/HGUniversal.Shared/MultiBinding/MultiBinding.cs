@@ -3,18 +3,18 @@
 
 
 using System;
-using System.Diagnostics;
-using System.Windows.Data;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
+using System.Windows.Data;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
 
-namespace HomeGenie
+namespace HGUniversal.MultiBinding
 {
     /// <summary>
     /// Implements MultiBinding by creating a BindingSlave instance for each of the Bindings.

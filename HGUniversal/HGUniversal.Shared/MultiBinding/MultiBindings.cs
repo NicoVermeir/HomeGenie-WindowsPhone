@@ -10,83 +10,83 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
 
-namespace HomeGenie
+namespace HGUniversal.MultiBinding
 {
-  /// <summary>
-  /// Manages the construction of multiple MultiBinding instances
-  /// </summary>
-  [ContentProperty(Name="Bindings")]
-  public class MultiBindings : FrameworkElement
-  {
-    private FrameworkElement _targetElement;
-
     /// <summary>
-    /// Gets / sets the collection of MultiBindings
+    /// Manages the construction of multiple MultiBinding instances
     /// </summary>
-    public ObservableCollection<MultiBinding> Bindings { get; set; }
-
-    public MultiBindings()
+    [ContentProperty(Name = "Bindings")]
+    public class MultiBindings : FrameworkElement
     {
-      Bindings = new ObservableCollection<MultiBinding>();
-    }
+        private FrameworkElement _targetElement;
 
-    /// <summary>
-    /// Sets the DataContext of each of the MultiBinding instances
-    /// </summary>
-    public void SetDataContext(object dataContext)
-    {
-      foreach (MultiBinding relay in Bindings)
-      {
-        relay.DataContext = dataContext;
-      }
-    }
+        /// <summary>
+        /// Gets / sets the collection of MultiBindings
+        /// </summary>
+        public ObservableCollection<MultiBinding> Bindings { get; set; }
 
-    /// <summary>
-    /// Initialises each of the MultiBindings, and binds their ConvertedValue
-    /// to the given target property.
-    /// </summary>
-    public void Initialize(FrameworkElement targetElement)
-    {
-      _targetElement = targetElement;
-
-      foreach (MultiBinding relay in Bindings)
-      {
-        relay.Initialise(targetElement);
-
-        // find the target dependency property
-        Type targetType = null;
-        string targetProperty = null;
-
-        // assume it is an attached property if the dot syntax is used.
-        if (relay.TargetProperty.Contains("."))
+        public MultiBindings()
         {
-            // split to find the type and property name
-            string[] parts = relay.TargetProperty.Split('.');
-            targetType = Type.GetType("System.Windows.Controls." + parts[0] +
-                                      ", System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e");
-            targetProperty = parts[1];
-        }
-        else
-        {
-          targetType = targetElement.GetType();
-          targetProperty = relay.TargetProperty;
+            Bindings = new ObservableCollection<MultiBinding>();
         }
 
-        FieldInfo[] sourceFields = targetType.GetRuntimeFields().ToArray();
-        FieldInfo targetDependencyPropertyField =
-            sourceFields.First(i => i.Name == targetProperty + "Property");
-        var targetDependencyProperty =
-            targetDependencyPropertyField.GetValue(null) as DependencyProperty;
-
-        // bind the ConvertedValue of our MultiBinding instance to the target property
-        // of our targetElement
-        var binding = new Binding
+        /// <summary>
+        /// Sets the DataContext of each of the MultiBinding instances
+        /// </summary>
+        public void SetDataContext(object dataContext)
         {
-          Source = relay,
-          Mode = relay.Mode
-        };
-        targetElement.SetBinding(targetDependencyProperty, binding);
-      }
+            foreach (MultiBinding relay in Bindings)
+            {
+                relay.DataContext = dataContext;
+            }
+        }
+
+        /// <summary>
+        /// Initialises each of the MultiBindings, and binds their ConvertedValue
+        /// to the given target property.
+        /// </summary>
+        public void Initialize(FrameworkElement targetElement)
+        {
+            _targetElement = targetElement;
+
+            foreach (MultiBinding relay in Bindings)
+            {
+                relay.Initialise(targetElement);
+
+                // find the target dependency property
+                Type targetType = null;
+                string targetProperty = null;
+
+                // assume it is an attached property if the dot syntax is used.
+                if (relay.TargetProperty.Contains("."))
+                {
+                    // split to find the type and property name
+                    string[] parts = relay.TargetProperty.Split('.');
+                    targetType = Type.GetType("System.Windows.Controls." + parts[0] +
+                                              ", System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e");
+                    targetProperty = parts[1];
+                }
+                else
+                {
+                    targetType = targetElement.GetType();
+                    targetProperty = relay.TargetProperty;
+                }
+
+                FieldInfo[] sourceFields = targetType.GetRuntimeFields().ToArray();
+                FieldInfo targetDependencyPropertyField =
+                    sourceFields.First(i => i.Name == targetProperty + "Property");
+                var targetDependencyProperty =
+                    targetDependencyPropertyField.GetValue(null) as DependencyProperty;
+
+                // bind the ConvertedValue of our MultiBinding instance to the target property
+                // of our targetElement
+                var binding = new Binding
+                {
+                    Source = relay,
+                    Mode = relay.Mode
+                };
+                targetElement.SetBinding(targetDependencyProperty, binding);
+            }
+        }
     }
-  }
 }

@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ModuleTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DimmerModuleControl.xaml.cs">
       <DependentUpon>DimmerModuleControl.xaml</DependentUpon>
     </Compile>
@@ -24,6 +25,21 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ProgramModuleControl.xaml.cs">
       <DependentUpon>ProgramModuleControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WidgetControl.xaml.cs">
+      <DependentUpon>WidgetControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\HsbColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IntToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\LatestPropertyDateTimeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ModuleAddinVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ModuleDomainConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ModuleIconUrlConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ModulePropertyConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ModuleVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PropertyAddinVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SecurityArmedConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\HomeGenieDesignTimeApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\SettingsDesignTimeService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\BindingUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\IMultiValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\MultiBinding.cs" />
@@ -34,16 +50,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IModuleVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IProgramVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\ProgramViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\HsbColorConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\IntToVisibilityConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\LatestPropertyDateTimeConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModuleAddinVisibilityConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModuleDomainConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModuleIconUrlConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModulePropertyConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModuleVisibilityConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\PropertyAddinVisibilityConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\SecurityArmedConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\HomeGenieViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
@@ -58,6 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\ProgramModuleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\WidgetControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

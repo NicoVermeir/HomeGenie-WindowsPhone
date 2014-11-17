@@ -1,11 +1,10 @@
 using System;
-using System.Globalization;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 using HomeGenie.SDK.Objects;
 
-namespace HomeGenie.ViewModel.Converters
+namespace HGUniversal.Converters
 {
     public class ModuleVisibilityConverter : IValueConverter
     {

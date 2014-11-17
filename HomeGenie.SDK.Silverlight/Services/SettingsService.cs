@@ -15,6 +15,11 @@ namespace HomeGenie.SDK.Services
             return IsolatedStorageSettings.ApplicationSettings[settingName];
         }
 
+        public T GetValue<T>(string settingName)
+        {
+            throw new System.NotSupportedException();
+        }
+
         public void SetValue(string settingName, object value)
         {
             if (DoesSettingExist(settingName))

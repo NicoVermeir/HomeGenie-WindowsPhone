@@ -1,24 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
-using GalaSoft.MvvmLight.Threading;
+// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
-namespace HGUniversal
+namespace HGUniversal.WindowsPhone
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     public sealed partial class App : Application
     {
-#if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
-#endif
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -68,7 +75,6 @@ namespace HGUniversal
 
             if (rootFrame.Content == null)
             {
-#if WINDOWS_PHONE_APP
                 // Removes the turnstile navigation for startup.
                 if (rootFrame.ContentTransitions != null)
                 {
@@ -81,7 +87,6 @@ namespace HGUniversal
 
                 rootFrame.ContentTransitions = null;
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
-#endif
 
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
@@ -94,10 +99,8 @@ namespace HGUniversal
 
             // Ensure the current window is active
             Window.Current.Activate();
-            DispatcherHelper.Initialize();
         }
 
-#if WINDOWS_PHONE_APP
         /// <summary>
         /// Restores the content transitions after the app has launched.
         /// </summary>
@@ -109,7 +112,6 @@ namespace HGUniversal
             rootFrame.ContentTransitions = this.transitions ?? new TransitionCollection() { new NavigationThemeTransition() };
             rootFrame.Navigated -= this.RootFrame_FirstNavigated;
         }
-#endif
 
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
