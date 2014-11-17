@@ -21,7 +21,6 @@ C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\bin\Debu
 C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\bin\Debug\HomeGenie.SDK.Runtime.pri
 C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\HomeGenie.SDK.Runtime.csprojResolveAssemblyReference.cache
 C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\HomeGenie.SDK.Runtime.dll
 C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\HomeGenie.SDK.Runtime.pdb
 C:\Users\Nico\Source\Repos\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\priconfig.xml

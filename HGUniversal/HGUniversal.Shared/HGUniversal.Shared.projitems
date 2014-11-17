@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>606157f1-28e4-4040-ab76-d03410dfea65</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>HGUniversal</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DimmerModuleControl.xaml.cs">
+      <DependentUpon>DimmerModuleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ModuleControls.xaml.cs">
+      <DependentUpon>ModuleControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ProgramModuleControl.xaml.cs">
+      <DependentUpon>ProgramModuleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\BindingUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\IMultiValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\MultiBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\MultiBindings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\ControlViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\DimmerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IDimmerVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IModuleVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IProgramVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\ProgramViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\HsbColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\IntToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\LatestPropertyDateTimeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModuleAddinVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModuleDomainConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModuleIconUrlConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModulePropertyConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\ModuleVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\PropertyAddinVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Converters\SecurityArmedConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\HomeGenieViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\DimmerModuleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ModuleControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ProgramModuleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>
