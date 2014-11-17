@@ -71,13 +71,7 @@
                                Text="{Binding Properties,
                                               Converter={StaticResource PropertyConverter},
                                               ConverterParameter=Status.Level+}" />
-
-
-
-
-
                 </Grid>
-
 
                 <!--  Control Buttons  -->
                 <Grid Grid.Row="2"
@@ -90,9 +84,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-
-
-
 
                     <TextBlock Grid.Row="1"
                                FontFamily="Microsoft MHei"
@@ -119,7 +110,6 @@
 
                 </Grid>
 
-
                 <Grid Grid.Row="3" Visibility="{Binding DeviceType, Converter={StaticResource ModuleAddinVisibility}, ConverterParameter=Dimmer:Light:Switch:Siren}">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -143,22 +133,9 @@
                                 HorizontalAlignment="Stretch"
                                 BorderThickness="1"
                                 Content="ON" />
-
-
-
                     </Grid>
-
-
-
                 </Grid>
             </Grid>
-
-
-
-
         </Grid>
-
-
-
     </Grid>
 </UserControl>
