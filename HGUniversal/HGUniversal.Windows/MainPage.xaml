@@ -126,7 +126,7 @@
                                              Mode=TwoWay}" />
             <GridView Grid.Column="1"
                       Background="#FFEAE7E7"
-                      ItemsSource="{Binding ModulesForCurrentGroup}">
+                      ItemsSource="{Binding ModulesForCurrentGroup}" IsSwipeEnabled="False" SelectionMode="Single">
                 <GridView.ItemTemplateSelector>
                     <common:ModuleTemplateSelector DimmerTemplate="{StaticResource DimmerTemplate}"
                                                    ProgramTemplate="{StaticResource ProgramTemplate}"

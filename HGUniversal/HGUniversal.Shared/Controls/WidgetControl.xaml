@@ -15,434 +15,18 @@
         <converters1:SecurityArmedConverter x:Key="SecurityArmedConverter" />
     </UserControl.Resources>
     <Grid Margin="0,0,0,0">
-        <Border Height="1"
-                VerticalAlignment="Bottom"
-                BorderThickness="1"
-                Opacity="0.25" />
-
-
-        <Grid Margin="0,20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="0,0,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0"
-                            Margin="0,0,0,0"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Top"
-                            Orientation="Vertical">
-
-
-                    <TextBlock VerticalAlignment="Bottom"
-                               FontFamily="Segoe WP Black"
-                               FontSize="32"
-                               Text="{Binding Module.Name}"
-                               TextWrapping="NoWrap" />
-
-
-                    <StackPanel Margin="0,0,0,0"
-                                VerticalAlignment="Bottom"
-                                Orientation="Horizontal">
-                        <TextBlock FontFamily="Microsoft MHei"
-                                   FontWeight="ExtraBlack"
-                                   Text="{Binding Module.DeviceType}"
-                                   TextWrapping="Wrap" />
-                        <TextBlock FontFamily="Microsoft MHei"
-                                   Text="{Binding Module.Domain}"
-                                   TextWrapping="Wrap" />
-                        <TextBlock FontFamily="Microsoft MHei"
-                                   Text="{Binding Module.Address}"
-                                   TextWrapping="Wrap" />
+        <GridView x:Name="gridView"
+                  Margin="0,54,0,236"
+                  ItemsSource="{Binding Module.Properties}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding DisplayName}" />
+                        <TextBlock Text="{Binding DisplayValue}" />
                     </StackPanel>
-                </StackPanel>
-
-            </Grid>
-
-
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
-                <StackPanel Grid.Row="0" HorizontalAlignment="Right">
-
-
-                    <TextBlock HorizontalAlignment="Right"
-                               FontFamily="Microsoft MHei"
-                               Text="{Binding Module.Properties,
-                                              Converter={StaticResource PropertyConverter},
-                                              ConverterParameter=Conditions.DisplayLocation}"
-                               Visibility="{Binding Module.Properties,
-                                                    Converter={StaticResource PropertyAddinVisibility},
-                                                    ConverterParameter=Conditions.DisplayLocation}" />
-
-
-                    <TextBlock HorizontalAlignment="Right"
-                               FontFamily="Microsoft MHei"
-                               Text="{Binding Module.Properties,
-                                              Converter={StaticResource PropertyConverter},
-                                              ConverterParameter=Conditions.Description}"
-                               Visibility="{Binding Module.Properties,
-                                                    Converter={StaticResource PropertyAddinVisibility},
-                                                    ConverterParameter=Conditions.Description}" />
-                </StackPanel>
-
-
-                <StackPanel Grid.Row="1"
-                            Margin="0,5,5,0"
-                            HorizontalAlignment="Right"
-                            Orientation="Horizontal">
-                    <!--  Status.ColorHsb  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Status.ColorHsb}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="bla"
-                                       TextAlignment="Center" />
-                            <Border Width="80"
-                                    Height="26"
-                                    Margin="1,0">
-                                <Border.Background>
-                                    <SolidColorBrush Color="{Binding Module.Properties, Converter={StaticResource HsbColorConverter}, ConverterParameter=Status.ColorHsb}" />
-                                </Border.Background>
-                            </Border>
-                        </StackPanel>
-                    </Border>
-
-                    <!--  Meter.Watts  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Meter.Watts}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="watts"
-                                       TextAlignment="Center" />
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Meter.Watts+}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-                    <!--  Status.Level  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Status.Level}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Level"
-                                       TextAlignment="Center" />
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Status.Level+}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-                    <!--  Status.Battery  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Status.Battery}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Battery" />
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Status.Battery+}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-                    <!--  Sensor.Temperature  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Sensor.Temperature}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Temperature" />
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Sensor.Temperature+}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-                    <!--  Sensor.Humidity  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Sensor.Humidity}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Humidity" />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Sensor.Humidity+}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-                    <!--  Sensor.Luminance  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Sensor.Luminance}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Luminance" />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Sensor.Luminance+}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-                    <!--  ConfigureOptions.Latitude  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=ConfigureOptions.Latitude}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Lat." />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=ConfigureOptions.Latitude}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-                    <!--  ConfigureOptions.Longitude  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=ConfigureOptions.Longitude}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Long." />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=ConfigureOptions.Longitude}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-
-
-                    <!--  Conditions.FeelsLikeC  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Conditions.FeelsLikeC}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Temperature ℃" />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Conditions.FeelsLikeC}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-
-
-                    <!--  Astronomy.Sunrise  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Astronomy.Sunrise}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Sunrise" />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Astronomy.Sunrise}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-                    <!--  Astronomy.Sunset  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Astronomy.Sunset}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Sunset" />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Astronomy.Sunset}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-                    <!--  Conditions.PrecipitationHourMetric  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Conditions.PrecipitationHourMetric}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Precipitation h/m" />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Conditions.PrecipitationHourMetric}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-                    <!--  Conditions.PressureMb  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=Conditions.PressureMb}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Pressure mb" />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource PropertyConverter},
-                                                      ConverterParameter=Conditions.PressureMb}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-
-
-                    <!--  HomeGenie.SecurityArmed  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=HomeGenie.SecurityArmed}">
-                        <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                            <TextBlock FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="Status" />
-                            <TextBlock Margin="14,0"
-                                       FontFamily="Microsoft MHei"
-                                       FontWeight="Black"
-                                       Text="{Binding Module.Properties,
-                                                      Converter={StaticResource SecurityArmedConverter}}"
-                                       TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-
-
-
-                    <!--  HomeGenie.SecuritySystem Arm/Disarm Toggle Button  -->
-                    <Border Margin="5,5,5,5"
-                            BorderThickness="1"
-                            CornerRadius="3"
-                            Visibility="{Binding Module.Properties,
-                                                 Converter={StaticResource PropertyAddinVisibility},
-                                                 ConverterParameter=HomeGenie.SecurityArmed}">
-                        <ToggleButton x:Name="ArmDisarmButton" Content="Arm" />
-                    </Border>
-                </StackPanel>
-            </Grid>
-        </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
         <TextBlock Margin="0,0,0,15"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center" />
@@ -455,6 +39,35 @@
                Visibility="Collapsed" />
 
 
+        <StackPanel Grid.Column="0"
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical">
+
+
+            <TextBlock VerticalAlignment="Bottom"
+                       FontFamily="Segoe WP Black"
+                       FontSize="32"
+                       Text="{Binding Module.Name}"
+                       TextWrapping="NoWrap" />
+
+
+            <StackPanel Margin="0,0,0,0"
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal">
+                <TextBlock FontFamily="Microsoft MHei"
+                           FontWeight="ExtraBlack"
+                           Text="{Binding Module.DeviceType}"
+                           TextWrapping="Wrap" />
+                <TextBlock FontFamily="Microsoft MHei"
+                           Text="{Binding Module.Domain}"
+                           TextWrapping="Wrap" />
+                <TextBlock FontFamily="Microsoft MHei"
+                           Text="{Binding Module.Address}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 
 </UserControl>
