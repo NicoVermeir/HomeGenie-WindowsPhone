@@ -20,7 +20,8 @@ namespace HomeGenie.SDK.Http
         {
             ISettingsService settingsService = new SettingsService();
             Id = id;
-            Url = "http://" + (string)settingsService.GetValue("RemoteServerAddress") + url;
+            Url = string.Format("http://{0}{1}", settingsService.GetValue<string>("RemoteServerAddress"), url);
+            //Url = "http://" + (string)settingsService.GetValue("RemoteServerAddress") + url;
             Callback = callback;
         }
     }

@@ -16,18 +16,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Common\ModuleTemplateSelector.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\DimmerModuleControl.xaml.cs">
-      <DependentUpon>DimmerModuleControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ModuleControls.xaml.cs">
-      <DependentUpon>ModuleControls.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ProgramModuleControl.xaml.cs">
-      <DependentUpon>ProgramModuleControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\WidgetControl.xaml.cs">
-      <DependentUpon>WidgetControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\HsbColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\LatestPropertyDateTimeConverter.cs" />
@@ -53,23 +41,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\HomeGenieViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\DimmerModuleControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\ModuleControls.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\ProgramModuleControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\WidgetControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 </Project>

@@ -1,9 +1,11 @@
 ﻿<Page x:Class="HGUniversal.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:common="using:HGUniversal.Common"
       xmlns:controls="using:HGUniversal.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      x:Name="ElementRoot"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       DataContext="{Binding Main,
                             Source={StaticResource Locator}}"
@@ -17,6 +19,35 @@
         <DataTemplate x:Key="ProgramTemplate">
             <controls:ProgramModuleControl />
         </DataTemplate>
+
+        <DataTemplate x:Key="WidgetTemplate">
+            <controls:WidgetControl />
+        </DataTemplate>
     </Page.Resources>
-    <Grid />
+
+    <Pivot x:Name="PivotView"
+           Title="HomeGenie"
+           ItemsSource="{Binding Items}"
+           SelectedItem="{Binding CurrentGroup,
+                                  Mode=TwoWay}">
+        <Pivot.HeaderTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Name}" />
+            </DataTemplate>
+        </Pivot.HeaderTemplate>
+        <Pivot.ItemTemplate>
+            <DataTemplate>
+                <ListView x:Name="ListView"
+                          Margin="0,0,0,0"
+                          ItemsSource="{Binding ElementName=ElementRoot,
+                                                Path=DataContext.ModulesForCurrentGroup}">
+                    <ListView.ItemTemplateSelector>
+                        <common:ModuleTemplateSelector DimmerTemplate="{StaticResource DimmerTemplate}"
+                                                   ProgramTemplate="{StaticResource ProgramTemplate}"
+                                                   WidgetTemplate="{StaticResource WidgetTemplate}" />
+                    </ListView.ItemTemplateSelector>
+                </ListView>
+            </DataTemplate>
+        </Pivot.ItemTemplate>
+    </Pivot>
 </Page>

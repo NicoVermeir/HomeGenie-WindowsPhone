@@ -56,6 +56,7 @@ namespace HomeGenie.SDK.Objects
                 OnPropertyChanged("IconUrl");
             }
         }
+
         //
         public string IconUrl
         {

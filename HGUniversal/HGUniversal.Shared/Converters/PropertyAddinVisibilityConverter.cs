@@ -1,5 +1,4 @@
 using System;
-using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 using HomeGenie.SDK.Objects;
@@ -11,26 +10,39 @@ namespace HGUniversal.Converters
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             var resvis = Visibility.Collapsed;
-            string types = ":" + ((string)parameter) + ":";
+
             try
             {
+                ModuleParameter param = value as ModuleParameter;
+                if (param == null)
+                    return Visibility.Collapsed;
+
                 bool hidesecuritylevel = false;
-                foreach (ModuleParameter p in (ObservableCollection<ModuleParameter>)value)
+
+                if (!string.IsNullOrWhiteSpace(param.Value))
                 {
-                    if (p.Name == (string)parameter && p.Value != null && p.Value != "")
-                    {
-                        resvis = Visibility.Visible;
-                        //break;
-                    }
-                    else if (p.Name == "HomeGenie.SecurityArmed" && (string)parameter == "Status.Level")
-                    {
-                        hidesecuritylevel = true;
-                    }
+                    resvis = Visibility.Visible;
+                }
+                
+                if (param.Name == "HomeGenie.SecurityArmed")
+                {
+                    hidesecuritylevel = true;
+                }
+
+                if (param.Name.Contains("ConfigureOptions"))
+                    return Visibility.Collapsed;
+
+                switch (param.Name)
+                {
+                    case "VirtualModule.ParentId":
+                    case "Widget.DisplayModule":
+                        return Visibility.Collapsed;
                 }
                 if (hidesecuritylevel) resvis = Visibility.Collapsed;
             }
             catch (Exception)
             {
+                return Visibility.Collapsed;
             }
             return resvis;
         }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Data;
 using HomeGenie.SDK.Objects;
 
@@ -9,72 +8,64 @@ namespace HGUniversal.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            bool addunitsymbol = false;
-            object resval = null;
             try
             {
-                string param = (string)parameter;
-                if (param.EndsWith("+"))
+                ModuleParameter param = value as ModuleParameter;
+                if (param == null)
+                    return value;
+
+                double val;
+
+                if (double.TryParse(param.Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out val))
                 {
-                    addunitsymbol = true;
-                    param = param.TrimEnd('+');
-                }
-                foreach (ModuleParameter p in (ObservableCollection<ModuleParameter>)value)
-                {
-                    if (p.Name == param)
+                    val = Math.Round(val, 2);
+                    param.Value = val.ToString();
+
+                    switch (param.Name)
                     {
-                        double val = 0;
-                        if (double.TryParse(p.Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out val))
-                        {
-                            resval = Math.Round(val, 2);
-                            if (addunitsymbol)
+                        case "Sensor.Temperature":
+                            param.Value = param.Value + " °C";
+                            break;
+                        case "Sensor.TemperatureF":
+                            param.Value = param.Value + " F";
+                            break;
+                        case "Meter.Watts":
+                            param.Value = param.Value + " W";
+                            break;
+                        case "Status.Level":
+                            int level = (int) (val*100d);
+
+                            switch (level)
                             {
-                                switch (p.Name)
-                                {
-                                    case "Sensor.Temperature":
-                                        resval = resval.ToString() + " °C";
-                                        break;
-                                    case "Sensor.TemperatureF":
-                                        resval = resval.ToString() + " F";
-                                        break;
-                                    case "Meter.Watts":
-                                        resval = resval.ToString() + " W";
-                                        break;
-                                    case "Status.Level":
-                                        resval = (double)resval * 100d;
-                                        switch ((int)((double)resval))
-                                        {
-                                            case 0:
-                                                resval = "OFF";
-                                                break;
-                                            case 100:
-                                                resval = "ON";
-                                                break;
-                                            default:
-                                                resval = resval.ToString() + " %";
-                                                break;
-                                        }
-                                        break;
-                                    case "Status.Battery":
-                                    case "Sensor.Luminance":
-                                    case "Sensor.Humidity":
-                                        resval = resval.ToString() + " %";
-                                        break;
-                                }
+                                case 0:
+                                    param.Value = "OFF";
+                                    break;
+                                case 100:
+                                    param.Value = "ON";
+                                    break;
+                                default:
+                                    param.Value = param.Value.ToString() + " %";
+                                    break;
                             }
-                        }
-                        else
-                        {
-                            resval = p.Value;
-                        }
-                        break;
+                            break;
+                        case "Status.Battery":
+                        case "Sensor.Luminance":
+                        case "Sensor.Humidity":
+                            param.Value = param.Value.ToString() + " %";
+                            break;
+
                     }
+                }
+                else
+                {
+                    return param;
                 }
             }
             catch (Exception)
             {
+                return value;
             }
-            return resval;
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

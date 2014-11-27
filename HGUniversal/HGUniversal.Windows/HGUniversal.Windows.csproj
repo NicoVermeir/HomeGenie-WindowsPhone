@@ -108,6 +108,18 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Controls\DimmerModuleControl.xaml.cs">
+      <DependentUpon>DimmerModuleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ModuleControls.xaml.cs">
+      <DependentUpon>ModuleControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProgramModuleControl.xaml.cs">
+      <DependentUpon>ProgramModuleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WidgetControl.xaml.cs">
+      <DependentUpon>WidgetControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -154,6 +166,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\DimmerModuleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ModuleControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ProgramModuleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\WidgetControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

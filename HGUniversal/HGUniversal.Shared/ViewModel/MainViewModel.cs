@@ -29,11 +29,8 @@ namespace HGUniversal.ViewModel
             }
             set
             {
-                if (_currentgroup == value) return;
-                _settingsService.SetValue("CurrentGroup", value);
-                _currentgroup = value;
-                UpdateGroupModules();
-                RaisePropertyChanged();
+                if(Set(() => CurrentGroup, ref _currentgroup, value))
+                    UpdateGroupModules();
             }
         }
 
@@ -42,11 +39,6 @@ namespace HGUniversal.ViewModel
             _settingsService = settingsService;
             _api = api;
             Items = new ObservableCollection<Group>();
-
-            //if (!IsInDesignMode && _settingsService.DoesSettingExist("CurrentGroup"))
-            //{
-            //    _currentgroup = _settingsService.GetValue<Group>("CurrentGroup");
-            //}
 
             ModulesForCurrentGroup = new ObservableCollection<IModuleVM>();
             LoadData();
@@ -59,11 +51,11 @@ namespace HGUniversal.ViewModel
         {
             if (!IsInDesignMode)
             {
-                if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
-                {
+                //if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
+                //{
                     //_settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
                     _settingsService.SetValue("RemoteServerAddress", "10.17.79.73");
-                }
+                //}
                 if (!_settingsService.DoesSettingExist("RemoteServerUsername"))
                 {
                     _settingsService.SetValue("RemoteServerUsername", "admin");

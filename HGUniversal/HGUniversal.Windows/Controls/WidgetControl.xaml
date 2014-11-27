@@ -22,7 +22,7 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding DisplayName}" />
-                        <TextBlock Text="{Binding DisplayValue}" />
+                        <TextBlock Text="{Binding DisplayValue, Converter={StaticResource PropertyConverter}}" />
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
