@@ -29,7 +29,7 @@ namespace HGUniversal.ViewModel
             }
             set
             {
-                if(Set(() => CurrentGroup, ref _currentgroup, value))
+                if (Set(() => CurrentGroup, ref _currentgroup, value))
                     UpdateGroupModules();
             }
         }
@@ -190,8 +190,8 @@ namespace HGUniversal.ViewModel
             else
             {
                 group.Modules.Add(module);
-                InstantiateModule(module);
             }
+            InstantiateModule(module);
         }
 
         private void InstantiateModule(Module module)

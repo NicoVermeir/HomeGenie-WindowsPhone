@@ -8,6 +8,7 @@ namespace HGUniversal.Common
     public class ModuleTemplateSelector : DataTemplateSelector
     {
         public DataTemplate DimmerTemplate { get; set; }
+        public DataTemplate ColorLightTemplate { get; set; }
         public DataTemplate ProgramTemplate { get; set; }
         public DataTemplate WidgetTemplate { get; set; }
 
@@ -17,7 +18,7 @@ namespace HGUniversal.Common
 
             if (module is IDimmerVM)
             {
-                return DimmerTemplate;
+                return SelectDimmerTemplate(module);
             }
 
             if (module is IProgramVM)
@@ -26,6 +27,14 @@ namespace HGUniversal.Common
             }
 
             return base.SelectTemplateCore(item, container);
+        }
+
+        private DataTemplate SelectDimmerTemplate(IModuleVM module)
+        {
+            var properties = module.Module.Properties.FirstOrDefault(
+                p => p.Name == "Widget.DisplayModule" && (p.Value == "" || p.Value == "homegenie/generic/colorlight"));
+
+            return properties == null ? DimmerTemplate : ColorLightTemplate;
         }
 
         private DataTemplate SelectProgramTemplate(IModuleVM module)

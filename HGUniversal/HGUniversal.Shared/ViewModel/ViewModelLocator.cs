@@ -1,3 +1,4 @@
+using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using HomeGenie.SDK;
@@ -33,6 +34,7 @@ namespace HGUniversal.ViewModel
                 SimpleIoc.Default.Register<IHomeGenieApi, HomeGenieApi>();
                 SimpleIoc.Default.Register<HTTPRequestQueue>();
                 SimpleIoc.Default.Register<ISettingsService, SettingsService>();
+                SimpleIoc.Default.Register<INavigationService, NavigationService>();
             }
 
             SimpleIoc.Default.Register<MainViewModel>();

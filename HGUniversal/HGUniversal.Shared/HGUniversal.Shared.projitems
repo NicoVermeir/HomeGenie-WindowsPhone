@@ -32,8 +32,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\IMultiValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\MultiBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\MultiBindings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\ColorLightModuleViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\ControlViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\DimmerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IColorLightModuleVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IDimmerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IModuleVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IProgramVM.cs" />

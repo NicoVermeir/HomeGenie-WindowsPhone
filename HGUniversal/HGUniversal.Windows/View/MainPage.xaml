@@ -1,4 +1,4 @@
-﻿<Page x:Class="HGUniversal.MainPage"
+﻿<Page x:Class="HGUniversal.View.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:common="using:HGUniversal.Common"
@@ -126,7 +126,9 @@
                                              Mode=TwoWay}" />
             <GridView Grid.Column="1"
                       Background="#FFEAE7E7"
-                      ItemsSource="{Binding ModulesForCurrentGroup}" IsSwipeEnabled="False" SelectionMode="Single">
+                      IsSwipeEnabled="False"
+                      ItemsSource="{Binding ModulesForCurrentGroup}"
+                      SelectionMode="Single">
                 <GridView.ItemTemplateSelector>
                     <common:ModuleTemplateSelector DimmerTemplate="{StaticResource DimmerTemplate}"
                                                    ProgramTemplate="{StaticResource ProgramTemplate}"

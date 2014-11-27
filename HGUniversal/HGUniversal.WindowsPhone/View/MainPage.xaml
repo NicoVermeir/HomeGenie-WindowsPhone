@@ -1,4 +1,4 @@
-﻿<Page x:Class="HGUniversal.MainPage"
+﻿<Page x:Class="HGUniversal.View.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:common="using:HGUniversal.Common"
@@ -23,6 +23,10 @@
         <DataTemplate x:Key="WidgetTemplate">
             <controls:WidgetControl />
         </DataTemplate>
+
+        <DataTemplate x:Key="ColorLightTemplate">
+            <controls:ColorLightModuleControl />
+        </DataTemplate>
     </Page.Resources>
 
     <Pivot x:Name="PivotView"
@@ -42,9 +46,10 @@
                           ItemsSource="{Binding ElementName=ElementRoot,
                                                 Path=DataContext.ModulesForCurrentGroup}">
                     <ListView.ItemTemplateSelector>
-                        <common:ModuleTemplateSelector DimmerTemplate="{StaticResource DimmerTemplate}"
-                                                   ProgramTemplate="{StaticResource ProgramTemplate}"
-                                                   WidgetTemplate="{StaticResource WidgetTemplate}" />
+                        <common:ModuleTemplateSelector ColorLightTemplate="{StaticResource ColorLightTemplate}"
+                                                       DimmerTemplate="{StaticResource DimmerTemplate}"
+                                                       ProgramTemplate="{StaticResource ProgramTemplate}"
+                                                       WidgetTemplate="{StaticResource WidgetTemplate}" />
                     </ListView.ItemTemplateSelector>
                 </ListView>
             </DataTemplate>
