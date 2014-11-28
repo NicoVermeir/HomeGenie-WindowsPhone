@@ -1,0 +1,190 @@
+﻿<ViewModel:MainViewModel xmlns:ViewModel="using:HGUniversal.ViewModel" xmlns:Objects="using:HomeGenie.SDK.Objects" IsInDesignMode="False" IsInDesignModeStatic="True" IsDataLoading="True">
+	<ViewModel:MainViewModel.CurrentGroup>
+		<Objects:Group Name="Per eget faucibus">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Sed vestibulum enim" Domain="Varius fringilla vivamus parturient aliquam" DeviceType="Generic" Description="Turpis class" IconUrl="Malesuada ligula dis penatibus" Name="Adipiscing elit fermentum" RoutingNode="Vestibulum pulvinar feugiat">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Inceptos nullam adipiscing" DecimalValue="821.59" LastValue="Aptent parturient auctor interdum vestibulum" LastDecimalValue="477.73" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Erat habitant aenean aliquet mauris" UpdateTime="11/17/2014 13:15:24" Value="Vestibulum blandit" ValueIncrement="244.59"/>
+						<Objects:ModuleParameter Description="Eros commodo conubia" DecimalValue="292.79" LastValue="Dictum nibh sit nisi" LastDecimalValue="726.05" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Congue sem cursus" UpdateTime="11/17/2014 13:15:24" Value="Lobortis vestibulum" ValueIncrement="202.04"/>
+						<Objects:ModuleParameter Description="Cubilia nunc" DecimalValue="719.53" LastValue="Hendrerit nascetur" LastDecimalValue="805.64" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Habitasse curae" UpdateTime="11/17/2014 13:15:24" Value="Donec nisl" ValueIncrement="455.62"/>
+						<Objects:ModuleParameter Description="Etiam lectus himenaeos" DecimalValue="697.17" LastValue="Placerat vestibulum quam" LastDecimalValue="391.43" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Vel pharetra adipiscing odio orci" UpdateTime="11/17/2014 13:15:24" Value="Dapibus parturient egestas pede" ValueIncrement="667.39"/>
+						<Objects:ModuleParameter Description="Quis parturient libero" DecimalValue="948.33" LastValue="Lorem imperdiet" LastDecimalValue="162.71" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Vestibulum nam fusce" UpdateTime="11/17/2014 13:15:24" Value="Sed adipiscing euismod" ValueIncrement="256.13"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Cras litora vestibulum nec luctus" Domain="Urna leo proin mus senectus" DeviceType="Program" Description="Hac morbi gravida nulla" IconUrl="Eget rutrum ipsum" Name="Est porttitor sagittis" RoutingNode="Sapien rhoncus justo dis">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Sociosqu iaculis tincidunt magnis tristique" DecimalValue="173.29" LastValue="Lacinia mattis mauris" LastDecimalValue="689.54" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Non duis nunc" UpdateTime="11/17/2014 13:15:24" Value="Adipiscing per parturient" ValueIncrement="723.81"/>
+						<Objects:ModuleParameter Description="Vulputate curabitur torquent ultrices" DecimalValue="861.71" LastValue="Laoreet phasellus consequat vehicula" LastDecimalValue="710.7" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Mollis ultricies augue" UpdateTime="11/17/2014 13:15:24" Value="Suscipit sed montes venenatis" ValueIncrement="702.42"/>
+						<Objects:ModuleParameter Description="Natoque praesent" DecimalValue="813.56" LastValue="Vestibulum vestibulum sit" LastDecimalValue="204.82" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Sem dolor" UpdateTime="11/17/2014 13:15:24" Value="Convallis fames volutpat maecenas dignissim" ValueIncrement="578.98"/>
+						<Objects:ModuleParameter Description="Elementum parturient facilisis vestibulum potenti" DecimalValue="828.9" LastValue="Eleifend ante platea primis" LastDecimalValue="256.55" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Posuere nostra amet ornare" UpdateTime="11/17/2014 13:15:24" Value="Accumsan bibendum adipiscing dictumst" ValueIncrement="510.72"/>
+						<Objects:ModuleParameter Description="Habitasse nam sed diam hendrerit" DecimalValue="869.86" LastValue="Facilisi faucibus felis habitant inceptos" LastDecimalValue="759.57" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Arcu pretium vel" UpdateTime="11/17/2014 13:15:24" Value="Fermentum fringilla" ValueIncrement="918.25"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Semper leo aliquam sociis porttitor" Domain="Hac viverra" DeviceType="Switch" Description="Est sodales malesuada penatibus" IconUrl="Sociosqu suscipit vestibulum est quam" Name="Himenaeos vestibulum elit imperdiet" RoutingNode="Fermentum quis porta torquent">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Magna non tincidunt erat" DecimalValue="494.28" LastValue="Taciti lobortis tristique per" LastDecimalValue="185.34" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Enim interdum integer mus lacus" UpdateTime="11/17/2014 13:15:24" Value="Quisque adipiscing lorem nec vivamus" ValueIncrement="228.29"/>
+						<Objects:ModuleParameter Description="Tellus ultricies sem massa nisi" DecimalValue="965.53" LastValue="Sit metus morbi" LastDecimalValue="990.22" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Sed nascetur eros pharetra" UpdateTime="11/17/2014 13:15:24" Value="Parturient placerat aliquam nibh" ValueIncrement="395.94"/>
+						<Objects:ModuleParameter Description="Adipiscing pulvinar vel netus venenatis" DecimalValue="286.96" LastValue="Tempus nam commodo conubia" LastDecimalValue="544.79" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Neque aliquet vestibulum blandit" UpdateTime="11/17/2014 13:15:24" Value="Vestibulum tempor" ValueIncrement="356.48"/>
+						<Objects:ModuleParameter Description="Curabitur phasellus dapibus sed" DecimalValue="812.73" LastValue="Dis nisl nunc" LastDecimalValue="621.95" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Vulputate sagittis parturient tortor" UpdateTime="11/17/2014 13:15:24" Value="Senectus cubilia turpis" ValueIncrement="634.98"/>
+						<Objects:ModuleParameter Description="Dignissim elementum" DecimalValue="525.37" LastValue="Orci pede egestas facilisis euismod" LastDecimalValue="926.43" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Consequat nulla odio" UpdateTime="11/17/2014 13:15:24" Value="Convallis varius vestibulum" ValueIncrement="464.59"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Aenean himenaeos" Domain="Adipiscing hendrerit" DeviceType="Siren" Description="Feugiat fringilla habitasse vehicula hac" IconUrl="Faucibus integer quisque vulputate" Name="Urna ultrices" RoutingNode="Eros vivamus habitant curabitur">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Praesent accumsan vestibulum nullam" DecimalValue="457.48" LastValue="Imperdiet malesuada vestibulum adipiscing penatibus" LastDecimalValue="482.62" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Mauris purus parturient volutpat" UpdateTime="11/17/2014 13:15:24" Value="Maecenas gravida" ValueIncrement="149.69"/>
+						<Objects:ModuleParameter Description="Adipiscing duis leo" DecimalValue="889.77" LastValue="Aptent velit bibendum mus" LastDecimalValue="441.12" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Cras parturient iaculis vestibulum" UpdateTime="11/17/2014 13:15:24" Value="Risus vestibulum" ValueIncrement="795.11"/>
+						<Objects:ModuleParameter Description="Ante donec lacinia arcu auctor" DecimalValue="765.09" LastValue="Etiam diam congue parturient" LastDecimalValue="906.98" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Nunc porttitor vitae class amet" UpdateTime="11/17/2014 13:15:24" Value="Nec non curae dictumst" ValueIncrement="616.07"/>
+						<Objects:ModuleParameter Description="Sed tristique natoque" DecimalValue="946.58" LastValue="Sem adipiscing eget" LastDecimalValue="664.16" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Eleifend tincidunt vestibulum" UpdateTime="11/17/2014 13:15:24" Value="Laoreet per cursus vestibulum" ValueIncrement="665.6"/>
+						<Objects:ModuleParameter Description="Lectus sodales facilisi erat fusce" DecimalValue="782.07" LastValue="Sit viverra aliquam vestibulum" LastDecimalValue="897.14" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Dictum parturient posuere potenti elit" UpdateTime="11/17/2014 13:15:24" Value="Enim pretium rhoncus ultricies venenatis" ValueIncrement="997.21"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Adipiscing interdum" Domain="Inceptos vestibulum" DeviceType="Sensor" Description="Aliquam nisi" IconUrl="Himenaeos dapibus" Name="Lorem vel nibh" RoutingNode="Metus imperdiet accumsan duis">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Convallis parturient" DecimalValue="801.27" LastValue="Aliquet dis" LastDecimalValue="935.77" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Lobortis phasellus nam sed" UpdateTime="11/17/2014 13:15:24" Value="Consequat morbi" ValueIncrement="299.07"/>
+						<Objects:ModuleParameter Description="Odio ligula hac litora" DecimalValue="568.88" LastValue="Augue dolor luctus pharetra" LastDecimalValue="897.15" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Libero nulla blandit est proin" UpdateTime="11/17/2014 13:15:24" Value="Vestibulum nisl nunc nascetur dignissim" ValueIncrement="907.81"/>
+						<Objects:ModuleParameter Description="Vestibulum pede habitasse adipiscing" DecimalValue="652.39" LastValue="Pulvinar mauris ipsum mollis sagittis" LastDecimalValue="197.18" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Fames felis elementum facilisis orci" UpdateTime="11/17/2014 13:15:24" Value="Placerat magnis fermentum mattis fringilla" ValueIncrement="170.78"/>
+						<Objects:ModuleParameter Description="Sociosqu suscipit torquent" DecimalValue="816.81" LastValue="Conubia hendrerit" LastDecimalValue="502.58" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Leo parturient senectus mus" UpdateTime="11/17/2014 13:15:24" Value="Commodo justo nec montes lacus" ValueIncrement="733.58"/>
+						<Objects:ModuleParameter Description="Nostra magna massa ornare" DecimalValue="326.72" LastValue="Per urna maecenas praesent cras" LastDecimalValue="897.96" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Non ultrices quam lorem" UpdateTime="11/17/2014 13:15:24" Value="Vehicula quis vestibulum volutpat cubilia" ValueIncrement="257.62"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Morbi sapien" Domain="Ante primis rutrum bibendum" DeviceType="Shutter" Description="Amet sem sit malesuada" IconUrl="Vestibulum auctor rhoncus" Name="Nunc platea sed" RoutingNode="Eros sodales mus ultricies vestibulum">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Sociis arcu porttitor netus" DecimalValue="510.41" LastValue="Tincidunt nam" LastDecimalValue="388.19" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Vel dictumst" UpdateTime="11/17/2014 13:15:24" Value="Neque penatibus semper" ValueIncrement="957.03"/>
+						<Objects:ModuleParameter Description="Dis diam eget est" DecimalValue="461.03" LastValue="Eleifend euismod tempor" LastDecimalValue="471.42" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Nulla egestas sed taciti vestibulum" UpdateTime="11/17/2014 13:15:24" Value="Adipiscing tellus porta parturient" ValueIncrement="278.39"/>
+						<Objects:ModuleParameter Description="Vestibulum purus gravida tortor" DecimalValue="223.14" LastValue="Turpis facilisi adipiscing risus" LastDecimalValue="980.08" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Feugiat elit vestibulum" UpdateTime="11/17/2014 13:15:24" Value="Hac tempus" ValueIncrement="773.92"/>
+						<Objects:ModuleParameter Description="Nullam parturient vitae class curae" DecimalValue="612.22" LastValue="Vestibulum laoreet donec leo" LastDecimalValue="729.18" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Varius aenean parturient iaculis vestibulum" UpdateTime="11/17/2014 13:15:24" Value="Vestibulum lacinia adipiscing mauris velit" ValueIncrement="418.45"/>
+						<Objects:ModuleParameter Description="Enim potenti parturient aptent" DecimalValue="730.34" LastValue="Erat pretium" LastDecimalValue="118.94" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Vestibulum adipiscing natoque posuere" UpdateTime="11/17/2014 13:15:24" Value="Etiam tristique faucibus fusce" ValueIncrement="278.35"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Per cursus vestibulum" Domain="Non aliquam parturient nisl inceptos" DeviceType="Temperature" Description="Viverra nisi nec habitant" IconUrl="Vehicula cras" Name="Congue nibh adipiscing" RoutingNode="Parturient duis nunc litora">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Dictum lectus" DecimalValue="359.26" LastValue="Curabitur nunc" LastDecimalValue="504.89" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Venenatis integer vulputate" UpdateTime="11/17/2014 13:15:24" Value="Lorem quisque morbi" ValueIncrement="426.05"/>
+						<Objects:ModuleParameter Description="Adipiscing libero dolor lobortis" DecimalValue="435.91" LastValue="Convallis nascetur pharetra placerat" LastDecimalValue="111.46" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Nulla proin phasellus interdum" UpdateTime="11/17/2014 13:15:24" Value="Consequat vestibulum odio augue" ValueIncrement="647.65"/>
+						<Objects:ModuleParameter Description="Blandit dignissim" DecimalValue="556.77" LastValue="Pulvinar elementum sagittis quam senectus" LastDecimalValue="956.48" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Orci parturient sed pede" UpdateTime="11/17/2014 13:15:24" Value="Vivamus aliquam aliquet" ValueIncrement="686.17"/>
+						<Objects:ModuleParameter Description="Felis habitasse vel" DecimalValue="978.9" LastValue="Vestibulum ipsum" LastDecimalValue="805.08" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Sem facilisis sit fames fermentum" UpdateTime="11/17/2014 13:15:24" Value="Sociosqu fringilla" ValueIncrement="129.27"/>
+						<Objects:ModuleParameter Description="Sed torquent adipiscing urna" DecimalValue="161.52" LastValue="Ligula justo ultrices conubia hendrerit" LastDecimalValue="172.96" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Nam vestibulum commodo" UpdateTime="11/17/2014 13:15:24" Value="Quis suscipit" ValueIncrement="385.43"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Mattis maecenas est praesent parturient" Domain="Adipiscing ante dis arcu lorem" DeviceType="MediaTransmitter" Description="Magnis vestibulum vestibulum himenaeos" IconUrl="Porta vel faucibus nam" Name="Amet lacus luctus cubilia volutpat" RoutingNode="Quis lacinia purus parturient">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Leo dapibus magna dictumst vestibulum" DecimalValue="458.44" LastValue="Nostra eget" LastDecimalValue="538.36" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Accumsan hac diam mauris bibendum" UpdateTime="11/17/2014 13:15:24" Value="Mollis montes imperdiet vestibulum" ValueIncrement="938.54"/>
+						<Objects:ModuleParameter Description="Erat massa" DecimalValue="708.56" LastValue="Eros metus primis" LastDecimalValue="536.16" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Malesuada ornare" UpdateTime="11/17/2014 13:15:24" Value="Mus platea elit enim penatibus" ValueIncrement="109.02"/>
+						<Objects:ModuleParameter Description="Neque nisi sapien" DecimalValue="818.82" LastValue="Semper parturient porttitor" LastDecimalValue="421.04" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Morbi rutrum" UpdateTime="11/17/2014 13:15:24" Value="Adipiscing nibh" ValueIncrement="375.97"/>
+						<Objects:ModuleParameter Description="Euismod nunc ultricies non feugiat" DecimalValue="525.15" LastValue="Odio vestibulum orci" LastDecimalValue="678.13" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Tincidunt nec netus" UpdateTime="11/17/2014 13:15:24" Value="Eleifend vestibulum tristique nisl egestas" ValueIncrement="525.71"/>
+						<Objects:ModuleParameter Description="Adipiscing gravida iaculis sed" DecimalValue="589.36" LastValue="Tellus sem tempor tempus sit" LastDecimalValue="956.66" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Facilisi sociis nulla" UpdateTime="11/17/2014 13:15:24" Value="Per pede taciti quam" ValueIncrement="955.68"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Sed laoreet" Domain="Vestibulum interdum risus" DeviceType="Fan" Description="Inceptos cras" IconUrl="Augue non erat fringilla" Name="Vestibulum venenatis habitant urna" RoutingNode="Per suscipit eros nibh">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Consequat turpis hac" DecimalValue="892.42" LastValue="Nascetur pharetra convallis natoque posuere" LastDecimalValue="922.05" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Dis duis vulputate lobortis velit" UpdateTime="11/17/2014 13:15:24" Value="Curabitur vitae est tortor phasellus" ValueIncrement="267.96"/>
+						<Objects:ModuleParameter Description="Varius placerat" DecimalValue="407.53" LastValue="Vestibulum curae donec pulvinar etiam" LastDecimalValue="557.54" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Adipiscing parturient leo" UpdateTime="11/17/2014 13:15:24" Value="Nunc class mus" ValueIncrement="178.23"/>
+						<Objects:ModuleParameter Description="Vestibulum aptent vestibulum nec" DecimalValue="609.97" LastValue="Arcu lorem potenti" LastDecimalValue="890.81" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Amet vestibulum adipiscing aenean" UpdateTime="11/17/2014 13:15:24" Value="Parturient mauris nullam fusce ante" ValueIncrement="997.68"/>
+						<Objects:ModuleParameter Description="Diam nulla eget cursus" DecimalValue="370.86" LastValue="Parturient dignissim elementum elit" LastDecimalValue="953.64" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Auctor adipiscing" UpdateTime="11/17/2014 13:15:24" Value="Congue morbi" ValueIncrement="886.49"/>
+						<Objects:ModuleParameter Description="Senectus pretium sociosqu dictum enim" DecimalValue="249.11" LastValue="Proin fermentum" LastDecimalValue="482.12" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Sagittis vestibulum" UpdateTime="11/17/2014 13:15:24" Value="Vestibulum facilisis" ValueIncrement="431.7"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Hendrerit himenaeos ligula" Domain="Dolor sit" DeviceType="Shutter" Description="Sem lectus libero habitasse" IconUrl="Lorem blandit platea" Name="Adipiscing sed" RoutingNode="Commodo vestibulum sed vulputate">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Vehicula nunc" DecimalValue="488.48" LastValue="Sodales viverra vestibulum" LastDecimalValue="161.62" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Rhoncus vel torquent nisi ultrices" UpdateTime="11/17/2014 13:15:24" Value="Nisl parturient" ValueIncrement="666.33"/>
+						<Objects:ModuleParameter Description="Integer malesuada pede quisque luctus" DecimalValue="479.9" LastValue="Vivamus vestibulum magnis mattis penatibus" LastDecimalValue="253.77" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Litora odio nam orci fames" UpdateTime="11/17/2014 13:15:24" Value="Sed aliquam dis imperdiet volutpat" ValueIncrement="907.12"/>
+						<Objects:ModuleParameter Description="Praesent adipiscing" DecimalValue="269.33" LastValue="Mauris aliquet" LastDecimalValue="121.77" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Aliquam maecenas" UpdateTime="11/17/2014 13:15:24" Value="Porttitor tincidunt" ValueIncrement="290.82"/>
+						<Objects:ModuleParameter Description="Dictumst mus" DecimalValue="150.08" LastValue="Nec justo eleifend facilisi" LastDecimalValue="540.44" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="True" Name="Est parturient hac accumsan" UpdateTime="11/17/2014 13:15:24" Value="Mollis leo bibendum felis ipsum" ValueIncrement="582.77"/>
+						<Objects:ModuleParameter Description="Ultricies nostra faucibus habitant" DecimalValue="221.93" LastValue="Per inceptos lacus venenatis ornare" LastDecimalValue="910.76" LastUpdateTime="11/17/2014 13:15:24" NeedsUpdate="False" Name="Vestibulum montes tristique" UpdateTime="11/17/2014 13:15:24" Value="Non quam" ValueIncrement="183.85"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+			</Objects:Group.Modules>
+		</Objects:Group>
+	</ViewModel:MainViewModel.CurrentGroup>
+	<ViewModel:MainViewModel.Items>
+		<Objects:Group Name="Maecenas praesent aliquam curabitur">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Dictumst nunc quisque amet" Domain="Duis bibendum phasellus" DeviceType="Generic" Description="Accumsan cras" IconUrl="Vivamus curae aliquam consequat" Name="Integer class" RoutingNode="Nam sed donec etiam convallis"/>
+				<Objects:Module Address="Auctor lorem faucibus" Domain="Vestibulum facilisi ante aptent est" DeviceType="DoorWindow" Description="Nullam dis eleifend fusce dignissim" IconUrl="Arcu adipiscing" Name="Aenean mauris" RoutingNode="Habitant morbi inceptos hac aliquet"/>
+				<Objects:Module Address="Nascetur augue elit parturient" Domain="Cursus dictum proin" DeviceType="MediaTransmitter" Description="Diam eget lobortis elementum nulla" IconUrl="Pharetra lectus vestibulum" Name="Leo congue interdum" RoutingNode="Vestibulum adipiscing mus nec"/>
+				<Objects:Module Address="Dolor vestibulum" Domain="Libero parturient commodo fermentum fringilla" DeviceType="Sensor" Description="Per sed facilisis blandit sem" IconUrl="Fames conubia" Name="Enim non" RoutingNode="Sit vel"/>
+				<Objects:Module Address="Ligula himenaeos" Domain="Adipiscing cubilia ipsum eros nibh" DeviceType="DoorWindow" Description="Placerat vestibulum habitasse hendrerit" IconUrl="Nam dapibus sed justo" Name="Erat felis" RoutingNode="Pulvinar dis"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+		<Objects:Group Name="Nisi parturient nisl">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Penatibus porttitor" Domain="Vestibulum magnis adipiscing malesuada" DeviceType="Switch" Description="Luctus imperdiet" IconUrl="Senectus mattis odio lacus lorem" Name="Nunc est litora sagittis vestibulum" RoutingNode="Hac magna massa parturient metus"/>
+				<Objects:Module Address="Tristique orci" Domain="Suscipit torquent mauris" DeviceType="Siren" Description="Morbi neque" IconUrl="Vestibulum leo" Name="Egestas tincidunt sociosqu" RoutingNode="Ultrices mollis mus vestibulum"/>
+				<Objects:Module Address="Pede volutpat adipiscing" Domain="Non purus vulputate" DeviceType="Switch" Description="Euismod nec porta venenatis feugiat" IconUrl="Risus curabitur parturient vestibulum" Name="Montes vehicula netus ultricies nulla" RoutingNode="Quam quis gravida velit maecenas"/>
+				<Objects:Module Address="Adipiscing parturient accumsan vitae natoque" Domain="Laoreet vestibulum sed" DeviceType="Light" Description="Consequat convallis urna ornare lacinia" IconUrl="Bibendum posuere" Name="Nostra per iaculis phasellus praesent" RoutingNode="Class dictumst eleifend platea sem"/>
+				<Objects:Module Address="Vestibulum pretium primis rhoncus" Domain="Vestibulum vel" DeviceType="Generic" Description="Potenti cras faucibus curae sit" IconUrl="Duis elementum donec nunc rutrum" Name="Facilisi dignissim" RoutingNode="Habitant nam"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+		<Objects:Group Name="Adipiscing amet">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Adipiscing parturient fusce" Domain="Sapien interdum etiam arcu lobortis" DeviceType="Program" Description="Ante vestibulum inceptos vestibulum fermentum" IconUrl="Sed nascetur diam semper" Name="Facilisis parturient" RoutingNode="Dis est hac sociis lorem"/>
+				<Objects:Module Address="Hendrerit pharetra erat mus placerat" Domain="Sodales leo viverra vestibulum" DeviceType="Shutter" Description="Nulla vestibulum taciti enim" IconUrl="Eros nibh proin himenaeos" Name="Fringilla morbi habitasse eget elit" RoutingNode="Nisi adipiscing nec non pulvinar"/>
+				<Objects:Module Address="Dolor fames" Domain="Augue per senectus odio" DeviceType="DoorWindow" Description="Sagittis integer parturient nunc" IconUrl="Sociosqu quisque tempor" Name="Tellus aliquam imperdiet nisl" RoutingNode="Malesuada suscipit sed vestibulum"/>
+				<Objects:Module Address="Vestibulum quam sem aliquam" Domain="Parturient vestibulum pede" DeviceType="Light" Description="Ipsum adipiscing orci" IconUrl="Aliquet penatibus justo" Name="Vivamus felis vestibulum" RoutingNode="Lacus tempus"/>
+				<Objects:Module Address="Urna massa nam ultricies venenatis" Domain="Porttitor tincidunt commodo magna tristique" DeviceType="Siren" Description="Tortor blandit" IconUrl="Metus adipiscing vulputate curabitur morbi" Name="Sit vel torquent lorem quis" RoutingNode="Parturient cras duis nunc turpis"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+		<Objects:Group Name="Sed phasellus consequat vestibulum neque">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Conubia convallis hac porta purus" Domain="Nulla ante" DeviceType="Siren" Description="Ultrices est amet" IconUrl="Vehicula risus volutpat dignissim" Name="Dis netus" RoutingNode="Leo elementum"/>
+				<Objects:Module Address="Nec non bibendum parturient facilisis" Domain="Arcu vestibulum adipiscing nullam" DeviceType="Dimmer" Description="Praesent accumsan mus mauris" IconUrl="Fermentum dapibus vestibulum" Name="Maecenas varius aenean cubilia" RoutingNode="Egestas euismod diam"/>
+				<Objects:Module Address="Per auctor vestibulum" Domain="Parturient vestibulum" DeviceType="Program" Description="Gravida fringilla aptent eleifend" IconUrl="Congue facilisi adipiscing" Name="Velit vestibulum dictumst adipiscing feugiat" RoutingNode="Parturient habitasse eget elit"/>
+				<Objects:Module Address="Laoreet sit hendrerit cursus" Domain="Sed erat eros curae sem" DeviceType="Shutter" Description="Habitant lacinia vestibulum enim" IconUrl="Himenaeos donec natoque etiam posuere" Name="Iaculis vitae vestibulum class faucibus" RoutingNode="Vel adipiscing nibh nam"/>
+				<Objects:Module Address="Nisi lectus libero" Domain="Interdum lobortis nascetur vestibulum vestibulum" DeviceType="Sensor" Description="Imperdiet dictum parturient malesuada" IconUrl="Penatibus pharetra adipiscing est" Name="Fusce sed inceptos dis" RoutingNode="Porttitor parturient"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+		<Objects:Group Name="Placerat nisl potenti vestibulum tincidunt">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Hac litora sagittis" Domain="Ultricies rhoncus" DeviceType="Dimmer" Description="Lorem ligula pretium morbi" IconUrl="Nulla odio adipiscing proin" Name="Pulvinar nunc tristique vestibulum" RoutingNode="Orci sodales parturient pede"/>
+				<Objects:Module Address="Venenatis sociosqu dolor viverra vulputate" Domain="Mattis mauris" DeviceType="Dimmer" Description="Mus nec quam luctus magnis" IconUrl="Curabitur fames" Name="Leo vestibulum senectus augue" RoutingNode="Mollis felis vestibulum suscipit"/>
+				<Objects:Module Address="Aliquam integer lacus" Domain="Per sed" DeviceType="Sensor" Description="Consequat ultrices adipiscing justo non" IconUrl="Urna quisque lorem" Name="Phasellus torquent ipsum quis" RoutingNode="Montes nostra parturient magna cras"/>
+				<Objects:Module Address="Massa ornare" Domain="Convallis vel aliquet" DeviceType="Program" Description="Vivamus duis aliquam" IconUrl="Nam vestibulum" Name="Vehicula volutpat sem sit" RoutingNode="Sed dignissim metus blandit platea"/>
+				<Objects:Module Address="Adipiscing parturient netus" Domain="Amet vestibulum est" DeviceType="DoorWindow" Description="Dis elementum neque commodo" IconUrl="Praesent hac accumsan ante facilisis" Name="Nunc morbi primis maecenas" RoutingNode="Leo fermentum"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+		<Objects:Group Name="Fringilla arcu">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Adipiscing nec risus velit" Domain="Habitasse cubilia eget vestibulum elit" DeviceType="Switch" Description="Purus sapien conubia mus" IconUrl="Dapibus vitae parturient non bibendum" Name="Vestibulum rutrum nulla diam porta" RoutingNode="Class enim curae hendrerit semper"/>
+				<Objects:Module Address="Vestibulum fusce himenaeos tellus" Domain="Taciti etiam eleifend feugiat" DeviceType="Fan" Description="Sociis euismod donec per" IconUrl="Vestibulum sed tempor sem" Name="Dictumst egestas" RoutingNode="Imperdiet adipiscing facilisi erat"/>
+				<Objects:Module Address="Porttitor turpis varius" Domain="Tortor nam" DeviceType="Generic" Description="Penatibus faucibus sit vel parturient" IconUrl="Vestibulum vestibulum tincidunt habitant iaculis" Name="Gravida malesuada lorem tempus morbi" RoutingNode="Nulla inceptos aenean"/>
+				<Objects:Module Address="Posuere est" Domain="Dis natoque adipiscing lobortis" DeviceType="Fan" Description="Sed interdum tristique" IconUrl="Nascetur augue ultricies venenatis" Name="Proin lacinia laoreet" RoutingNode="Potenti pretium pharetra"/>
+				<Objects:Module Address="Nibh hac curabitur phasellus aptent" Domain="Eros vestibulum" DeviceType="Generic" Description="Sodales mauris pulvinar nullam" IconUrl="Vestibulum adipiscing" Name="Rhoncus parturient vulputate placerat" RoutingNode="Sagittis consequat leo"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+		<Objects:Group Name="Nisi parturient auctor">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Nunc dictum" Domain="Nec nisl non suscipit" DeviceType="Sensor" Description="Sociosqu mus" IconUrl="Lectus convallis" Name="Viverra congue dolor cursus senectus" RoutingNode="Per torquent vestibulum libero"/>
+				<Objects:Module Address="Adipiscing sed" Domain="Odio fames felis" DeviceType="Light" Description="Dignissim integer ultrices" IconUrl="Elementum ligula litora" Name="Vestibulum aliquam" RoutingNode="Quisque luctus orci ipsum justo"/>
+				<Objects:Module Address="Maecenas sed dis" Domain="Vestibulum magnis quam" DeviceType="Siren" Description="Vel nam pede volutpat" IconUrl="Praesent adipiscing" Name="Sem parturient vehicula sit vestibulum" RoutingNode="Facilisis fermentum fringilla vivamus"/>
+				<Objects:Module Address="Blandit habitasse commodo est" Domain="Aliquam cras aliquet vestibulum duis" DeviceType="Thermostat" Description="Urna parturient lacus" IconUrl="Accumsan hendrerit bibendum dictumst" Name="Quis mattis mauris" RoutingNode="Mollis montes conubia lorem"/>
+				<Objects:Module Address="Faucibus penatibus" Domain="Facilisi ornare dapibus" DeviceType="Fan" Description="Malesuada cubilia" IconUrl="Platea massa vestibulum" Name="Himenaeos imperdiet nostra eleifend magna" RoutingNode="Adipiscing habitant egestas hac"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+		<Objects:Group Name="Leo mus">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Non morbi per euismod ante" Domain="Nunc amet" DeviceType="Fan" Description="Primis nec vestibulum" IconUrl="Interdum rutrum sapien feugiat" Name="Metus inceptos parturient" RoutingNode="Arcu semper"/>
+				<Objects:Module Address="Adipiscing parturient taciti tellus" Domain="Nascetur sociis tincidunt pharetra" DeviceType="Dimmer" Description="Sem lobortis" IconUrl="Netus gravida sit iaculis diam" Name="Sed neque porttitor vestibulum" RoutingNode="Nulla tristique tempor tempus tortor"/>
+				<Objects:Module Address="Turpis elit risus pulvinar" Domain="Placerat laoreet" DeviceType="MediaTransmitter" Description="Porta purus" IconUrl="Vel sagittis varius senectus" Name="Eget lacinia" RoutingNode="Ultricies sociosqu aenean"/>
+				<Objects:Module Address="Vestibulum curae adipiscing torquent posuere" Domain="Vestibulum dis class" DeviceType="Switch" Description="Mauris nam vitae suscipit sed" IconUrl="Venenatis nullam vulputate aptent auctor" Name="Natoque velit" RoutingNode="Donec curabitur etiam"/>
+				<Objects:Module Address="Cursus volutpat" Domain="Potenti est" DeviceType="Sensor" Description="Ultrices vehicula congue" IconUrl="Pretium parturient erat hac vestibulum" Name="Enim phasellus" RoutingNode="Fusce consequat"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+		<Objects:Group Name="Vestibulum eros">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Mus convallis morbi nulla nec" Domain="Libero parturient" DeviceType="MediaTransmitter" Description="Lorem sodales adipiscing lectus leo" IconUrl="Maecenas non proin augue" Name="Dictum rhoncus" RoutingNode="Praesent vestibulum accumsan dolor per"/>
+				<Objects:Module Address="Parturient felis vestibulum" Domain="Viverra fames" DeviceType="Program" Description="Litora facilisis sed adipiscing" IconUrl="Bibendum fermentum nisi dictumst" Name="Dignissim nibh elementum vestibulum ligula" RoutingNode="Vestibulum aliquam sem eleifend"/>
+				<Objects:Module Address="Vivamus ipsum nunc" Domain="Nam adipiscing magnis sed quisque" DeviceType="Shutter" Description="Facilisi vel" IconUrl="Mattis faucibus parturient" Name="Luctus nisl fringilla integer sit" RoutingNode="Dis vestibulum habitasse habitant vestibulum"/>
+				<Objects:Module Address="Odio malesuada" Domain="Adipiscing leo imperdiet aliquam" DeviceType="Program" Description="Mollis montes justo hendrerit himenaeos" IconUrl="Nostra orci mus penatibus" Name="Est mauris hac inceptos" RoutingNode="Interdum parturient vestibulum porttitor ornare"/>
+				<Objects:Module Address="Per sed blandit commodo" Domain="Nascetur lorem ultricies pede" DeviceType="Shutter" Description="Vestibulum aliquet non tristique" IconUrl="Pharetra placerat magna" Name="Lacus lobortis tincidunt nec" RoutingNode="Conubia platea"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+		<Objects:Group Name="Cubilia dapibus massa">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Primis sagittis senectus metus vulputate" Domain="Sit quam euismod pulvinar" DeviceType="DoorWindow" Description="Adipiscing parturient vestibulum sem" IconUrl="Quis vestibulum" Name="Venenatis egestas" RoutingNode="Morbi vel"/>
+				<Objects:Module Address="Parturient torquent nam gravida nunc" Domain="Netus adipiscing duis suscipit nulla" DeviceType="Shutter" Description="Neque cras feugiat" IconUrl="Porta ultrices amet curabitur" Name="Urna rutrum sociosqu" RoutingNode="Iaculis purus lacinia laoreet sapien"/>
+				<Objects:Module Address="Est ante" Domain="Taciti vestibulum" DeviceType="Siren" Description="Consequat sed posuere dis sociis" IconUrl="Vehicula tellus volutpat" Name="Natoque phasellus vestibulum semper" RoutingNode="Hac convallis potenti"/>
+				<Objects:Module Address="Elementum arcu parturient" Domain="Tempor sodales adipiscing" DeviceType="Fan" Description="Mus pretium rhoncus dignissim" IconUrl="Viverra bibendum velit" Name="Risus maecenas praesent accumsan leo" RoutingNode="Aliquam tempus integer"/>
+				<Objects:Module Address="Nec vestibulum" Domain="Facilisi diam" DeviceType="MediaTransmitter" Description="Vitae eleifend" IconUrl="Facilisis non" Name="Dictumst vestibulum" RoutingNode="Tortor quisque"/>
+			</Objects:Group.Modules>
+		</Objects:Group>
+	</ViewModel:MainViewModel.Items>
+</ViewModel:MainViewModel>

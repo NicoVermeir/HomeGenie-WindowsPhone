@@ -1,0 +1,114 @@
+﻿<Controls:ProgramViewModel xmlns:Controls="using:HGUniversal.ViewModel.Controls" xmlns:Objects="using:HomeGenie.SDK.Objects">
+	<Controls:ProgramViewModel.Group>
+		<Objects:Group Name="Aliquam maecenas vestibulum class">
+			<Objects:Group.Modules>
+				<Objects:Module Address="Vestibulum accumsan bibendum nullam dis" Domain="Parturient consequat praesent" DeviceType="Generic" Description="Cras nam mauris phasellus sed" Name="Adipiscing curabitur aenean integer" RoutingNode="Egestas interdum euismod malesuada">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Convallis duis vestibulum dignissim quisque" LastValue="Facilisis curae donec etiam" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Elementum est adipiscing" UpdateTime="11/27/2014 13:45:35" Value="Dictumst aptent"/>
+						<Objects:ModuleParameter Description="Vivamus hac" LastValue="Fusce nunc mus auctor vestibulum" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Parturient leo vestibulum" UpdateTime="11/27/2014 13:45:35" Value="Aliquam amet"/>
+						<Objects:ModuleParameter Description="Fermentum nec adipiscing aliquet parturient" LastValue="Vestibulum blandit cursus non" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Ante fringilla arcu habitasse congue" UpdateTime="11/27/2014 13:45:35" Value="Lorem commodo morbi hendrerit diam"/>
+						<Objects:ModuleParameter Description="Conubia dictum lectus eget" LastValue="Elit himenaeos faucibus" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Eleifend per cubilia facilisi" UpdateTime="11/27/2014 13:45:35" Value="Imperdiet sed"/>
+						<Objects:ModuleParameter Description="Enim nulla vestibulum sem adipiscing" LastValue="Erat dapibus libero habitant sit" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Proin augue" UpdateTime="11/27/2014 13:45:35" Value="Eros ligula inceptos parturient vestibulum"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Adipiscing ipsum vel nam nisi" Domain="Feugiat gravida felis nibh lobortis" DeviceType="Program" Description="Luctus fames" Name="Vestibulum penatibus litora porttitor dolor" RoutingNode="Primis neque cras nec">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Nascetur parturient magnis" LastValue="Tincidunt dis iaculis" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Vestibulum sed vestibulum" UpdateTime="11/27/2014 13:45:35" Value="Pharetra adipiscing placerat nisl"/>
+						<Objects:ModuleParameter Description="Justo parturient nunc" LastValue="Lorem pulvinar" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Odio lacus lacinia laoreet" UpdateTime="11/27/2014 13:45:35" Value="Tristique vestibulum sagittis vestibulum orci"/>
+						<Objects:ModuleParameter Description="Mattis mauris" LastValue="Parturient sociosqu pede" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Magna est natoque adipiscing senectus" UpdateTime="11/27/2014 13:45:35" Value="Vestibulum vestibulum"/>
+						<Objects:ModuleParameter Description="Ultricies suscipit" LastValue="Mollis curabitur montes hac quam" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Torquent venenatis vulputate" UpdateTime="11/27/2014 13:45:35" Value="Nostra phasellus leo ornare"/>
+						<Objects:ModuleParameter Description="Posuere adipiscing" LastValue="Consequat metus" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Parturient quis platea massa mus" UpdateTime="11/27/2014 13:45:35" Value="Ultrices urna potenti morbi convallis"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Per sodales" Domain="Pretium fermentum rhoncus nunc nulla" DeviceType="Shutter" Description="Facilisis non" Name="Duis netus dignissim elementum vehicula" RoutingNode="Malesuada lobortis parturient nascetur erat">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Sed amet rutrum fringilla vestibulum" LastValue="Vestibulum sem porta sit integer" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Viverra volutpat aliquam" UpdateTime="11/27/2014 13:45:35" Value="Ante vel nam adipiscing"/>
+						<Objects:ModuleParameter Description="Maecenas parturient sapien" LastValue="Accumsan bibendum purus" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Quisque praesent" UpdateTime="11/27/2014 13:45:35" Value="Arcu diam vestibulum semper"/>
+						<Objects:ModuleParameter Description="Vivamus aliquam vestibulum" LastValue="Facilisi risus" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Dictumst eleifend sociis eget taciti" UpdateTime="11/27/2014 13:45:35" Value="Faucibus tellus aliquet velit"/>
+						<Objects:ModuleParameter Description="Habitasse blandit commodo" LastValue="Himenaeos habitant" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Elit hendrerit tempor" UpdateTime="11/27/2014 13:45:35" Value="Tempus tortor conubia adipiscing"/>
+						<Objects:ModuleParameter Description="Vitae turpis" LastValue="Interdum enim aenean mauris" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Inceptos cubilia imperdiet varius" UpdateTime="11/27/2014 13:45:35" Value="Nullam class"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Placerat penatibus" Domain="Donec auctor" DeviceType="Fan" Description="Aptent vestibulum nibh pharetra adipiscing" Name="Curae eros sed vestibulum" RoutingNode="Pretium magnis eget ipsum mattis">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Nisi dapibus dis" LastValue="Egestas etiam" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Pulvinar nisl sagittis senectus nunc" UpdateTime="11/27/2014 13:45:35" Value="Sociosqu congue parturient fusce est"/>
+						<Objects:ModuleParameter Description="Odio lorem orci" LastValue="Quam quis" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Euismod pede cursus" UpdateTime="11/27/2014 13:45:35" Value="Feugiat hac vestibulum gravida"/>
+						<Objects:ModuleParameter Description="Iaculis porttitor tincidunt" LastValue="Cras vestibulum" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Urna morbi lacinia laoreet" UpdateTime="11/27/2014 13:45:35" Value="Nulla duis"/>
+						<Objects:ModuleParameter Description="Natoque nunc adipiscing" LastValue="Dictum lectus posuere mus libero" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Leo suscipit parturient proin" UpdateTime="11/27/2014 13:45:35" Value="Potenti nec tristique ligula litora"/>
+						<Objects:ModuleParameter Description="Non augue luctus torquent" LastValue="Ultrices sed fames vestibulum" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Amet ante per dolor" UpdateTime="11/27/2014 13:45:35" Value="Felis sem arcu vestibulum diam"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Volutpat ultricies viverra" Domain="Sit mollis vel enim erat" DeviceType="MediaTransmitter" Description="Sodales mauris lacus" Name="Justo elit vehicula rhoncus adipiscing" RoutingNode="Neque non parturient tortor">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Montes nam parturient" LastValue="Dis nostra est ornare" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Venenatis sed vulputate" UpdateTime="11/27/2014 13:45:35" Value="Curabitur platea lorem aliquam"/>
+						<Objects:ModuleParameter Description="Primis eros hac" LastValue="Magna vestibulum praesent nibh" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Maecenas vestibulum" UpdateTime="11/27/2014 13:45:35" Value="Rutrum phasellus sapien leo consequat"/>
+						<Objects:ModuleParameter Description="Adipiscing nisi parturient" LastValue="Accumsan nisl" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Integer mus" UpdateTime="11/27/2014 13:45:35" Value="Massa metus"/>
+						<Objects:ModuleParameter Description="Quisque morbi semper nunc" LastValue="Vestibulum tellus nec" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Odio sociis taciti convallis vestibulum" UpdateTime="11/27/2014 13:45:35" Value="Dignissim orci vivamus bibendum aliquam"/>
+						<Objects:ModuleParameter Description="Aliquet dictumst" LastValue="Pede commodo facilisis conubia quam" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Elementum tempor adipiscing blandit eleifend" UpdateTime="11/27/2014 13:45:35" Value="Tempus cubilia"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Nulla vestibulum" Domain="Egestas fermentum sed sem" DeviceType="Sensor" Description="Quis faucibus habitant vestibulum turpis" Name="Netus dapibus per facilisi" RoutingNode="Etiam adipiscing ultricies venenatis">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Euismod urna varius" LastValue="Sit interdum" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Aenean adipiscing feugiat fringilla inceptos" UpdateTime="11/27/2014 13:45:35" Value="Gravida parturient"/>
+						<Objects:ModuleParameter Description="Iaculis lacinia mauris" LastValue="Porta vel nullam habitasse" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Cras vestibulum vestibulum lobortis" UpdateTime="11/27/2014 13:45:35" Value="Laoreet duis nascetur"/>
+						<Objects:ModuleParameter Description="Nam nunc amet purus" LastValue="Aptent himenaeos pharetra sed imperdiet" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Natoque hendrerit risus velit adipiscing" UpdateTime="11/27/2014 13:45:35" Value="Auctor malesuada dis est"/>
+						<Objects:ModuleParameter Description="Posuere penatibus ante congue hac" LastValue="Arcu vitae parturient" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Cursus porttitor" UpdateTime="11/27/2014 13:45:35" Value="Tincidunt leo dictum"/>
+						<Objects:ModuleParameter Description="Vestibulum class diam" LastValue="Pretium pulvinar eget tristique" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Potenti placerat" UpdateTime="11/27/2014 13:45:35" Value="Rhoncus curae sodales vestibulum donec"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Luctus magnis mattis vestibulum nec" Domain="Ligula litora" DeviceType="Siren" Description="Viverra senectus mus sociosqu" Name="Fusce lectus sagittis parturient libero" RoutingNode="Vestibulum vestibulum praesent">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Vulputate lorem curabitur elit phasellus" LastValue="Convallis dignissim non per" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Enim morbi vestibulum consequat erat" UpdateTime="11/27/2014 13:45:35" Value="Aliquam eros integer sed"/>
+						<Objects:ModuleParameter Description="Quisque vivamus suscipit sem adipiscing" LastValue="Facilisis nulla nisi" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Torquent parturient aliquam elementum nibh" UpdateTime="11/27/2014 13:45:35" Value="Vestibulum ultrices vestibulum aliquet adipiscing"/>
+						<Objects:ModuleParameter Description="Nisl blandit sit" LastValue="Vehicula sed" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Vel nam" UpdateTime="11/27/2014 13:45:35" Value="Nunc volutpat fermentum"/>
+						<Objects:ModuleParameter Description="Parturient maecenas vestibulum odio vestibulum" LastValue="Augue dolor habitasse" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Proin fringilla" UpdateTime="11/27/2014 13:45:35" Value="Mauris dis fames orci"/>
+						<Objects:ModuleParameter Description="Felis pede quam commodo est" LastValue="Leo parturient" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Adipiscing hac quis conubia cubilia" UpdateTime="11/27/2014 13:45:35" Value="Mus mollis montes"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Euismod accumsan feugiat sed" Domain="Hendrerit per justo" DeviceType="Thermostat" Description="Dapibus urna cras egestas ipsum" Name="Nec non" RoutingNode="Tellus mus">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Lacus himenaeos" LastValue="Duis dictumst imperdiet" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Bibendum adipiscing nostra gravida" UpdateTime="11/27/2014 13:45:35" Value="Malesuada nunc ornare sem sit"/>
+						<Objects:ModuleParameter Description="Lorem platea parturient" LastValue="Vel amet" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Primis vestibulum eleifend" UpdateTime="11/27/2014 13:45:35" Value="Facilisi ante"/>
+						<Objects:ModuleParameter Description="Vestibulum faucibus" LastValue="Habitant iaculis penatibus parturient nam" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Arcu diam adipiscing" UpdateTime="11/27/2014 13:45:35" Value="Lacinia eget porttitor laoreet rutrum"/>
+						<Objects:ModuleParameter Description="Sapien natoque magna massa" LastValue="Posuere inceptos" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Tincidunt sed tristique semper elit" UpdateTime="11/27/2014 13:45:35" Value="Sociis enim ultricies venenatis"/>
+						<Objects:ModuleParameter Description="Dis erat eros potenti est" LastValue="Hac nibh" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Vulputate metus vestibulum curabitur" UpdateTime="11/27/2014 13:45:35" Value="Morbi taciti leo"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Nisl nunc odio" Domain="Phasellus consequat" DeviceType="Sensor" Description="Nisi interdum" Name="Pretium neque vestibulum rhoncus" RoutingNode="Dolor dis fames hendrerit">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Adipiscing sodales netus nulla tempor" LastValue="Pede tortor lobortis per" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Nec orci parturient tempus non" UpdateTime="11/27/2014 13:45:35" Value="Viverra aliquam porta integer"/>
+						<Objects:ModuleParameter Description="Nascetur purus turpis convallis" LastValue="Quisque vitae" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Varius sed sem risus velit" UpdateTime="11/27/2014 13:45:35" Value="Class curae donec"/>
+						<Objects:ModuleParameter Description="Vestibulum pharetra" LastValue="Dignissim fusce" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Etiam aenean mauris placerat" UpdateTime="11/27/2014 13:45:35" Value="Lorem sit"/>
+						<Objects:ModuleParameter Description="Vestibulum vel" LastValue="Quam aptent proin auctor" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Morbi adipiscing nulla nullam pulvinar" UpdateTime="11/27/2014 13:45:35" Value="Elementum facilisis quis urna augue"/>
+						<Objects:ModuleParameter Description="Cras nam fermentum" LastValue="Parturient aliquam vestibulum habitasse" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Vivamus sagittis duis fringilla" UpdateTime="11/27/2014 13:45:35" Value="Nunc sed aliquet senectus"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+				<Objects:Module Address="Imperdiet adipiscing malesuada hac parturient" Domain="Vestibulum ante" DeviceType="Fan" Description="Est himenaeos" Name="Felis sociosqu amet" RoutingNode="Morbi natoque dictumst">
+					<Objects:Module.Properties>
+						<Objects:ModuleParameter Description="Leo arcu diam" LastValue="Congue porttitor ipsum cursus" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Blandit penatibus commodo suscipit" UpdateTime="11/27/2014 13:45:35" Value="Justo lacus torquent dictum mus"/>
+						<Objects:ModuleParameter Description="Tincidunt ultrices nec tristique" LastValue="Vestibulum non vestibulum" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Lectus libero ultricies conubia" UpdateTime="11/27/2014 13:45:35" Value="Cubilia dapibus"/>
+						<Objects:ModuleParameter Description="Lorem venenatis per" LastValue="Parturient sem vestibulum" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Egestas sed vehicula adipiscing" UpdateTime="11/27/2014 13:45:35" Value="Vulputate magna curabitur vestibulum"/>
+						<Objects:ModuleParameter Description="Sit eget adipiscing" LastValue="Parturient massa phasellus" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Volutpat elit euismod enim" UpdateTime="11/27/2014 13:45:35" Value="Erat ligula maecenas litora feugiat"/>
+						<Objects:ModuleParameter Description="Gravida praesent iaculis vel" LastValue="Accumsan metus" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Vestibulum lacinia laoreet luctus" UpdateTime="11/27/2014 13:45:35" Value="Vestibulum magnis nam consequat bibendum"/>
+					</Objects:Module.Properties>
+				</Objects:Module>
+			</Objects:Group.Modules>
+		</Objects:Group>
+	</Controls:ProgramViewModel.Group>
+	<Controls:ProgramViewModel.Module>
+		<Objects:Module Address="Posuere adipiscing potenti" Domain="Mollis porta purus" DeviceType="Temperature" Description="Convallis dis netus nulla" Name="Mattis eleifend mauris sed neque" RoutingNode="Parturient lorem tempus commodo">
+			<Objects:Module.Properties>
+				<Objects:ModuleParameter Description="Risus montes eros nibh" LastValue="Nisl nostra nunc" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Nisi parturient velit pretium facilisi" UpdateTime="11/27/2014 13:45:35" Value="Est hac odio"/>
+				<Objects:ModuleParameter Description="Rhoncus ornare faucibus dignissim" LastValue="Platea elementum leo viverra vitae" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Orci habitant pede sodales" UpdateTime="11/27/2014 13:45:35" Value="Mus quam class"/>
+				<Objects:ModuleParameter Description="Facilisis vestibulum vestibulum fermentum" LastValue="Nec donec inceptos" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Curae aliquam" UpdateTime="11/27/2014 13:45:35" Value="Non quis interdum"/>
+				<Objects:ModuleParameter Description="Fringilla adipiscing lobortis" LastValue="Habitasse hendrerit nascetur pharetra himenaeos" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Per etiam sed" UpdateTime="11/27/2014 13:45:35" Value="Parturient urna vestibulum placerat"/>
+				<Objects:ModuleParameter Description="Fusce cras lorem sem primis" LastValue="Nunc morbi" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Integer imperdiet pulvinar duis" UpdateTime="11/27/2014 13:45:35" Value="Malesuada sit nulla"/>
+				<Objects:ModuleParameter Description="Proin vel" LastValue="Quisque sagittis vivamus amet vestibulum" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Nam rutrum" UpdateTime="11/27/2014 13:45:35" Value="Augue ante dolor"/>
+				<Objects:ModuleParameter Description="Fames senectus sed arcu adipiscing" LastValue="Penatibus suscipit diam semper" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Sociosqu sapien" UpdateTime="11/27/2014 13:45:35" Value="Dis torquent est parturient felis"/>
+				<Objects:ModuleParameter Description="Sociis vestibulum hac" LastValue="Ipsum ultrices vehicula aliquam" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Eget porttitor taciti" UpdateTime="11/27/2014 13:45:35" Value="Volutpat elit enim erat eros"/>
+				<Objects:ModuleParameter Description="Leo tincidunt" LastValue="Vestibulum nunc" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="True" Name="Nibh nisi nisl maecenas" UpdateTime="11/27/2014 13:45:35" Value="Aliquet tellus odio praesent"/>
+				<Objects:ModuleParameter Description="Orci accumsan" LastValue="Justo eleifend nec lacus" LastUpdateTime="11/27/2014 13:45:35" NeedsUpdate="False" Name="Mus bibendum tempor dictumst" UpdateTime="11/27/2014 13:45:35" Value="Adipiscing blandit"/>
+			</Objects:Module.Properties>
+		</Objects:Module>
+	</Controls:ProgramViewModel.Module>
+</Controls:ProgramViewModel>
