@@ -13,24 +13,25 @@
 
     <Page.Resources>
         <DataTemplate x:Key="DimmerTemplate">
-            <controls:DimmerModuleControl />
+            <controls:DimmerModuleControl Width="{Binding Width, Source={StaticResource Locator}}" />
         </DataTemplate>
 
         <DataTemplate x:Key="ProgramTemplate">
-            <controls:ProgramModuleControl />
+            <controls:ProgramModuleControl Width="{Binding Width, Source={StaticResource Locator}}" />
         </DataTemplate>
 
         <DataTemplate x:Key="WidgetTemplate">
-            <controls:WidgetControl />
+            <controls:WidgetControl Width="{Binding Width, Source={StaticResource Locator}}" />
         </DataTemplate>
 
         <DataTemplate x:Key="ColorLightTemplate">
-            <controls:ColorLightModuleControl />
+            <controls:ColorLightModuleControl Width="{Binding Width, Source={StaticResource Locator}}" />
         </DataTemplate>
     </Page.Resources>
 
     <Pivot x:Name="PivotView"
            Title="HomeGenie"
+           HorizontalContentAlignment="Stretch"
            ItemsSource="{Binding Items}"
            SelectedItem="{Binding CurrentGroup,
                                   Mode=TwoWay}">
@@ -43,6 +44,8 @@
             <DataTemplate>
                 <ListView x:Name="ListView"
                           Margin="0,0,0,0"
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch"
                           ItemsSource="{Binding ElementName=ElementRoot,
                                                 Path=DataContext.ModulesForCurrentGroup}">
                     <ListView.ItemTemplateSelector>

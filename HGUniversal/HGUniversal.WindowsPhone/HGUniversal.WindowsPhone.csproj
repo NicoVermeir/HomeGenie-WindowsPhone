@@ -200,9 +200,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <DesignData Include="SampleData\ProgramViewModelSampleData.xaml" />
-  </ItemGroup>
-  <ItemGroup>
     <SDKReference Include="BehaviorsXamlSDKManaged, version=12.0">
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>

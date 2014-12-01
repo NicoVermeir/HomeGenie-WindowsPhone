@@ -1,6 +1,8 @@
+using Windows.UI.Xaml;
 using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using HGUniversal.DesignTimeData;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Contracts;
 using HomeGenie.SDK.Http;
@@ -25,8 +27,8 @@ namespace HGUniversal.ViewModel
             if (ViewModelBase.IsInDesignModeStatic)
             {
                 // Create design time view services and models
-                //SimpleIoc.Default.Register<IHomeGenieApi, HomeGenieDesignTimeApi>();
-                //SimpleIoc.Default.Register<ISettingsService, SettingsDesignTimeService>();
+                SimpleIoc.Default.Register<IHomeGenieApi, HomeGenieDesignTimeApi>();
+                SimpleIoc.Default.Register<ISettingsService, SettingsDesignTimeService>();
             }
             else
             {
@@ -46,6 +48,11 @@ namespace HGUniversal.ViewModel
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
+        }
+
+        public double Width
+        {
+            get { return Window.Current.Bounds.Width - 50; }
         }
         
         public static void Cleanup()

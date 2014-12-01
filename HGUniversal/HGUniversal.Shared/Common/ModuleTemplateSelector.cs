@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Cimbalino.Toolkit.Extensions;
 using HGUniversal.ViewModel.Controls;
 
 namespace HGUniversal.Common
@@ -15,7 +16,6 @@ namespace HGUniversal.Common
         protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
         {
             var module = item as IModuleVM;
-
             if (module is IDimmerVM)
             {
                 return SelectDimmerTemplate(module);
