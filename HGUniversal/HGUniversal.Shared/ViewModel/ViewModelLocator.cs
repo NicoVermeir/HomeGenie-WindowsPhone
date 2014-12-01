@@ -52,7 +52,14 @@ namespace HGUniversal.ViewModel
 
         public double Width
         {
-            get { return Window.Current.Bounds.Width - 50; }
+            get
+            {
+#if WINDOWS_PHONE_APP
+                return Window.Current.Bounds.Width - 50;
+#else
+                return 200;
+#endif
+            }
         }
         
         public static void Cleanup()

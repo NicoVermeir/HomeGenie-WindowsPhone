@@ -13,19 +13,19 @@
 
     <Page.Resources>
         <DataTemplate x:Key="DimmerTemplate">
-            <controls:DimmerModuleControl Width="{Binding Width, Source={StaticResource Locator}}" />
+            <controls:DimmerModuleControl Width="{Binding Width, Source={StaticResource Locator}}" Margin="0, 0, 0, 20" />
         </DataTemplate>
 
         <DataTemplate x:Key="ProgramTemplate">
-            <controls:ProgramModuleControl Width="{Binding Width, Source={StaticResource Locator}}" />
+            <controls:ProgramModuleControl Width="{Binding Width, Source={StaticResource Locator}}" Margin="0, 0, 0, 20" />
         </DataTemplate>
 
         <DataTemplate x:Key="WidgetTemplate">
-            <controls:WidgetControl Width="{Binding Width, Source={StaticResource Locator}}" />
+            <controls:WidgetControl Width="{Binding Width, Source={StaticResource Locator}}" Margin="0, 0, 0, 20" />
         </DataTemplate>
 
         <DataTemplate x:Key="ColorLightTemplate">
-            <controls:ColorLightModuleControl Width="{Binding Width, Source={StaticResource Locator}}" />
+            <controls:ColorLightModuleControl Width="{Binding Width, Source={StaticResource Locator}}" Margin="0, 0, 0, 20" />
         </DataTemplate>
     </Page.Resources>
 

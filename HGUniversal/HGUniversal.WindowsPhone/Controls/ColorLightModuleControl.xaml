@@ -10,8 +10,9 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
-            <RowDefinition Height="Auto" MinHeight="125" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -20,33 +21,32 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0"
-                   Grid.RowSpan="2"
-                   Grid.Column="1"
+                   Grid.Column="0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    Style="{StaticResource TitleTextBlockStyle}"
                    Text="{Binding Module.Name}" />
 
-        <StackPanel Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Grid.Column="2">
-            <ToggleSwitch Height="85"
-                          Margin="0, 6, 0, 0"
-                          VerticalAlignment="Top"
-                          IsOn="{Binding IsSwitchedOn,
-                                         Mode=TwoWay}" />
-            <Button Background="Red" />
-        </StackPanel>
+        <ToggleSwitch Grid.Row="0"
+                      Grid.Column="2"
+                      VerticalAlignment="Top"
+                      IsOn="{Binding IsSwitchedOn,
+                                     Mode=TwoWay}" />
 
 
         <Slider Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
-                Height="84"
                 VerticalAlignment="Top"
                 Maximum="100"
                 Minimum="0"
                 Value="{Binding SliderValue,
                                 Mode=TwoWay}" />
+
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="{Binding LightColor}" />
     </Grid>
 </UserControl>

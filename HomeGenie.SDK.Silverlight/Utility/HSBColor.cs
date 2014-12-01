@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 #if SILVERLIGHT
 using System.Windows.Media;
 #else
@@ -96,6 +97,25 @@ namespace HomeGenie.SDK.Utility
             }
 
             return result;
+        }
+
+        public static HSBColor FromString(string value)
+        {
+            string[] colors = value.Split(',');
+            if (colors.Length == 3)
+            {
+                double h = 0;
+                double s = 0;
+                double b = 0;
+                if (double.TryParse(colors[0], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out h) &&
+                    double.TryParse(colors[1], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out s) &&
+                    double.TryParse(colors[2], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out b))
+                {
+                    return new HSBColor {A = 255, H = h*360d, S = s, B = b};
+                }
+            }
+
+            return null;
         }
     }
 }

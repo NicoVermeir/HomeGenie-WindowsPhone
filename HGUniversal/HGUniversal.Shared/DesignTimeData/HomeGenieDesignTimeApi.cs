@@ -32,9 +32,12 @@ namespace HGUniversal.DesignTimeData
                 {
                     Address = "",
                     Description = "",
-                    DeviceType = (Module.DeviceTypes)i,
+                    DeviceType = Module.DeviceTypes.Dimmer,
                     Name = "module " + i
                 };
+
+                var param = new ModuleParameter {Name = "Widget.DisplayModule", Value = "homegenie/generic/colorlight"};
+                module.Properties.Add(param);
                 modules.Add(module);
             }
             return modules;

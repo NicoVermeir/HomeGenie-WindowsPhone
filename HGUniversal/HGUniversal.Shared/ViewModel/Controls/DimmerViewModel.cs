@@ -1,9 +1,12 @@
 ﻿using System.Linq;
 using System.Windows.Input;
+using Windows.UI;
+using Windows.UI.Xaml.Media;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Objects;
+using HomeGenie.SDK.Utility;
 
 namespace HGUniversal.ViewModel.Controls
 {
@@ -14,6 +17,7 @@ namespace HGUniversal.ViewModel.Controls
 
         private ICommand _sliderLevelChangedCommand;
         private bool _isSwitchedOn;
+        private SolidColorBrush _lightColor;
 
         public ICommand SliderLevelChangedCommand
         {
@@ -38,22 +42,23 @@ namespace HGUniversal.ViewModel.Controls
             get { return _isSwitchedOn; }
             set
             {
-                if (_isSwitchedOn == value) return;
-                _isSwitchedOn = value;
-                RaisePropertyChanged();
-                ToggleLight();
+                if (Set(() => IsSwitchedOn, ref _isSwitchedOn, value))
+                {
+                    ToggleLight();
+                }
             }
         }
 
         public double SliderValue
         {
             get { return _sliderValue; }
-            set
-            {
-                if (_sliderValue == value) return;
-                _sliderValue = value;
-                RaisePropertyChanged();
-            }
+            set { Set(() => SliderValue, ref _sliderValue, value); }
+        }
+
+        public SolidColorBrush LightColor
+        {
+            get { return _lightColor; }
+            set { Set(() => LightColor, ref _lightColor, value); }
         }
 
         private void ToggleLight()
@@ -73,7 +78,7 @@ namespace HGUniversal.ViewModel.Controls
             _api.SetLevel(Module, SliderValue / 100, Callback);
         }
 
-        private void SetValues()
+        internal override void SetValues()
         {
             //Slider
             ModuleParameter levelProperty = Module.Properties.FirstOrDefault(prop => prop.Name == "Status.Level");
@@ -86,6 +91,17 @@ namespace HGUniversal.ViewModel.Controls
 
             //toggleswitch
             IsSwitchedOn = value > 0;
+
+            //color
+            if (
+                Module.Properties.Any(
+                    prop => prop.Name == "Widget.DisplayModule" && prop.Value == "homegenie/generic/colorlight"))
+            {
+                ModuleParameter colorProperty = Module.Properties.FirstOrDefault(prop => prop.Name == "Status.ColorHsb");
+                if (colorProperty == null) return;
+                HSBColor hsbColor = HSBColor.FromString(colorProperty.Value);
+                LightColor = new SolidColorBrush(hsbColor.ToColor());
+            }
         }
     }
 }

@@ -23,10 +23,13 @@ namespace HGUniversal.ViewModel.Controls
             get { return _module; }
             set
             {
-                if (_module == value) return;
-                _module = value;
-                RaisePropertyChanged();
+                if (Set(() => Module, ref _module, value))
+                {
+                    SetValues();
+                }
             }
         }
+
+        internal abstract void SetValues();
     }
 }
