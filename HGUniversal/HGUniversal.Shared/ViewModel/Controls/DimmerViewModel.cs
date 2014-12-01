@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using System.Windows.Input;
-using Windows.UI;
 using Windows.UI.Xaml.Media;
+using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
+using HGUniversal.View;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Objects;
 using HomeGenie.SDK.Utility;
@@ -12,12 +13,16 @@ namespace HGUniversal.ViewModel.Controls
 {
     public class DimmerViewModel : ControlViewModelBase, IDimmerVM
     {
-        private double _sliderValue;
         private readonly IHomeGenieApi _api;
+        private readonly INavigationService _navigationService;
+
+        private double _sliderValue;
+        private bool _isSwitchedOn;
+
+        private SolidColorBrush _lightColor;
 
         private ICommand _sliderLevelChangedCommand;
-        private bool _isSwitchedOn;
-        private SolidColorBrush _lightColor;
+        private ICommand _selectColorCommand;
 
         public ICommand SliderLevelChangedCommand
         {
@@ -35,6 +40,12 @@ namespace HGUniversal.ViewModel.Controls
             };
 
             _api = SimpleIoc.Default.GetInstance<IHomeGenieApi>();
+            _navigationService = SimpleIoc.Default.GetInstance<INavigationService>();
+        }
+
+        public ICommand SelectColorCommand
+        {
+            get { return _selectColorCommand ?? (_selectColorCommand = new RelayCommand(SelectColor)); }
         }
 
         public bool IsSwitchedOn
@@ -52,7 +63,13 @@ namespace HGUniversal.ViewModel.Controls
         public double SliderValue
         {
             get { return _sliderValue; }
-            set { Set(() => SliderValue, ref _sliderValue, value); }
+            set
+            {
+                if (Set(() => SliderValue, ref _sliderValue, value))
+                {
+                    UpdateLevel();
+                }
+            }
         }
 
         public SolidColorBrush LightColor
@@ -66,6 +83,7 @@ namespace HGUniversal.ViewModel.Controls
             if (IsSwitchedOn)
             {
                 _api.SetModuleOn(Module, Callback);
+                SetSlider();
             }
             else
             {
@@ -81,16 +99,7 @@ namespace HGUniversal.ViewModel.Controls
         internal override void SetValues()
         {
             //Slider
-            ModuleParameter levelProperty = Module.Properties.FirstOrDefault(prop => prop.Name == "Status.Level");
-            if (levelProperty == null) return;
-
-            double value;
-
-            if (double.TryParse(levelProperty.Value, out value))
-                SliderValue = value * 100;
-
-            //toggleswitch
-            IsSwitchedOn = value > 0;
+            SetSlider();
 
             //color
             if (
@@ -102,6 +111,25 @@ namespace HGUniversal.ViewModel.Controls
                 HSBColor hsbColor = HSBColor.FromString(colorProperty.Value);
                 LightColor = new SolidColorBrush(hsbColor.ToColor());
             }
+        }
+
+        private void SetSlider()
+        {
+            ModuleParameter levelProperty = Module.Properties.FirstOrDefault(prop => prop.Name == "Status.Level");
+            if (levelProperty == null) return;
+
+            double value;
+
+            if (double.TryParse(levelProperty.Value, out value))
+                SliderValue = value * 100;
+
+            //toggleswitch
+            IsSwitchedOn = value > 0;
+        }
+
+        private void SelectColor()
+        {
+            _navigationService.Navigate<ColorPickerPage>();
         }
     }
 }

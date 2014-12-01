@@ -47,6 +47,6 @@
                 Grid.Column="0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Background="{Binding LightColor}" />
+                Background="{Binding LightColor}" Command="{Binding SelectColorCommand}" />
     </Grid>
 </UserControl>
