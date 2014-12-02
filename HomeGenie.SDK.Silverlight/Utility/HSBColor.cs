@@ -102,7 +102,7 @@ namespace HomeGenie.SDK.Utility
         public static HSBColor FromString(string value)
         {
             string[] colors = value.Split(',');
-            if (colors.Length == 3)
+            if (colors.Length >= 3)
             {
                 double h = 0;
                 double s = 0;

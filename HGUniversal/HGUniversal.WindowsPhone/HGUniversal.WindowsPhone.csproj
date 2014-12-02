@@ -88,6 +88,9 @@
     <Compile Include="Controls\ColorLightModuleControl.xaml.cs">
       <DependentUpon>ColorLightModuleControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SwitchModuleControl.xaml.cs">
+      <DependentUpon>SwitchModuleControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DimmerModuleControl.xaml.cs">
       <DependentUpon>DimmerModuleControl.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\ColorLightModuleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SwitchModuleControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

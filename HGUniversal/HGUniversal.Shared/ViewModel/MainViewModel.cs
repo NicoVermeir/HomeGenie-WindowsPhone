@@ -53,8 +53,8 @@ namespace HGUniversal.ViewModel
             {
                 //if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
                 //{
-                //_settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
-                _settingsService.SetValue("RemoteServerAddress", "10.17.79.73");
+                _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
+                //_settingsService.SetValue("RemoteServerAddress", "10.17.79.73");
                 //}
                 if (!_settingsService.DoesSettingExist("RemoteServerUsername"))
                 {
@@ -204,6 +204,9 @@ namespace HGUniversal.ViewModel
                     break;
                 case Module.DeviceTypes.Program:
                     ModulesForCurrentGroup.Add(new ProgramViewModel { Module = module, Group = CurrentGroup });
+                    break;
+                case Module.DeviceTypes.Switch:
+                    ModulesForCurrentGroup.Add(new SwitchViewModel{ Module = module, Group = CurrentGroup });
                     break;
             }
         }

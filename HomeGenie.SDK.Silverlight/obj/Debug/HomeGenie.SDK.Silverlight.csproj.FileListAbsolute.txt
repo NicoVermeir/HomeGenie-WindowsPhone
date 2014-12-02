@@ -18,3 +18,10 @@ C:\Users\nvmwy41\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\Bin\
 C:\Users\nvmwy41\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\Bin\Debug\Newtonsoft.Json.xml
 C:\Users\nvmwy41\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\obj\Debug\HomeGenie.SDK.Silverlight.dll
 C:\Users\nvmwy41\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\obj\Debug\HomeGenie.SDK.Silverlight.pdb
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\Bin\Debug\HomeGenie.SDK.Silverlight.dll
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\Bin\Debug\HomeGenie.SDK.Silverlight.pdb
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\Bin\Debug\Newtonsoft.Json.dll
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\Bin\Debug\Newtonsoft.Json.xml
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\obj\Debug\HomeGenie.SDK.Silverlight.csprojResolveAssemblyReference.cache
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\obj\Debug\HomeGenie.SDK.Silverlight.dll
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Silverlight\obj\Debug\HomeGenie.SDK.Silverlight.pdb

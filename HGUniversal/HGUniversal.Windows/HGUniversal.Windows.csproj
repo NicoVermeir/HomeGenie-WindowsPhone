@@ -120,6 +120,9 @@
     <Compile Include="Controls\ProgramModuleControl.xaml.cs">
       <DependentUpon>ProgramModuleControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SwitchModuleControl.xaml.cs">
+      <DependentUpon>SwitchModuleControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WidgetControl.xaml.cs">
       <DependentUpon>WidgetControl.xaml</DependentUpon>
     </Compile>
@@ -204,6 +207,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ProgramModuleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SwitchModuleControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

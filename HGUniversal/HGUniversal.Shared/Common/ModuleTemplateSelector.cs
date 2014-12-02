@@ -9,6 +9,7 @@ namespace HGUniversal.Common
     public class ModuleTemplateSelector : DataTemplateSelector
     {
         public DataTemplate DimmerTemplate { get; set; }
+        public DataTemplate SwitchTemplate { get; set; }
         public DataTemplate ColorLightTemplate { get; set; }
         public DataTemplate ProgramTemplate { get; set; }
         public DataTemplate WidgetTemplate { get; set; }
@@ -24,6 +25,11 @@ namespace HGUniversal.Common
             if (module is IProgramVM)
             {
                 return SelectProgramTemplate(module);
+            }
+
+            if (module is ISwitchVM)
+            {
+                return SwitchTemplate;
             }
 
             return base.SelectTemplateCore(item, container);
