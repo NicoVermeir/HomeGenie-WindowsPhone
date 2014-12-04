@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Popups;
+using Cimbalino.Toolkit.Helpers;
+using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight.Threading;
+using HGUniversal.View;
 using HGUniversal.ViewModel.Controls;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Contracts;
@@ -15,6 +18,7 @@ namespace HGUniversal.ViewModel
     {
         private readonly ISettingsService _settingsService;
         private readonly IHomeGenieApi _api;
+        private readonly INavigationService _navigationService;
 
         private Group _currentgroup;
 
@@ -34,10 +38,11 @@ namespace HGUniversal.ViewModel
             }
         }
 
-        public MainViewModel(ISettingsService settingsService, IHomeGenieApi api)
+        public MainViewModel(ISettingsService settingsService, IHomeGenieApi api, INavigationService navigationService)
         {
             _settingsService = settingsService;
             _api = api;
+            _navigationService = navigationService;
             Items = new ObservableCollection<Group>();
 
             ModulesForCurrentGroup = new ObservableCollection<IModuleVM>();
@@ -51,30 +56,43 @@ namespace HGUniversal.ViewModel
         {
             if (!IsInDesignMode)
             {
-                //if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
-                //{
-                _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
-                //_settingsService.SetValue("RemoteServerAddress", "10.17.79.73");
-                //}
-                if (!_settingsService.DoesSettingExist("RemoteServerUsername"))
+                if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
                 {
-                    _settingsService.SetValue("RemoteServerUsername", "admin");
+#if DEBUG
+                    _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
+                    //_settingsService.SetValue("RemoteServerAddress", "127.0.0.1");
+#else
+                    _navigationService.Navigate<ConnectionPage>();
+#endif
                 }
-                if (!_settingsService.DoesSettingExist("RemoteServerPassword"))
+                else
                 {
-                    _settingsService.SetValue("RemoteServerPassword", "");
-                }
-                if (!_settingsService.DoesSettingExist("RemoteServerUpdateInterval"))
-                {
-                    _settingsService.SetValue("RemoteServerUpdateInterval", "20");
-                }
-                if (!_settingsService.DoesSettingExist("EnableNotifications"))
-                {
-                    _settingsService.SetValue("EnableNotifications", true);
+                    if (!_settingsService.DoesSettingExist("RemoteServerUsername"))
+                    {
+                        _settingsService.SetValue("RemoteServerUsername", "admin");
+                    }
+                    if (!_settingsService.DoesSettingExist("RemoteServerPassword"))
+                    {
+                        _settingsService.SetValue("RemoteServerPassword", "");
+                    }
+                    if (!_settingsService.DoesSettingExist("RemoteServerUpdateInterval"))
+                    {
+                        _settingsService.SetValue("RsemoteServerUpdateInterval", "20");
+                    }
+                    if (!_settingsService.DoesSettingExist("EnableNotifications"))
+                    {
+                        _settingsService.SetValue("EnableNotifications", true);
+                    }
+
+                    IsDataLoading = true;
+                    UpdateGroups();
                 }
             }
-            IsDataLoading = true;
-            UpdateGroups();
+            if (IsInDesignMode)
+            {
+                IsDataLoading = true;
+                UpdateGroups();
+            }
         }
 
         private void UpdateGroups()
@@ -206,7 +224,7 @@ namespace HGUniversal.ViewModel
                     ModulesForCurrentGroup.Add(new ProgramViewModel { Module = module, Group = CurrentGroup });
                     break;
                 case Module.DeviceTypes.Switch:
-                    ModulesForCurrentGroup.Add(new SwitchViewModel{ Module = module, Group = CurrentGroup });
+                    ModulesForCurrentGroup.Add(new SwitchViewModel { Module = module, Group = CurrentGroup });
                     break;
             }
         }

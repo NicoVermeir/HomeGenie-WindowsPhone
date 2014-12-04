@@ -129,6 +129,9 @@
     <Compile Include="View\ColorPickerPage.xaml.cs">
       <DependentUpon>ColorPickerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ConnectionPage.xaml.cs">
+      <DependentUpon>ConnectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -219,6 +222,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ColorPickerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ConnectionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
