@@ -56,14 +56,15 @@ namespace HGUniversal.ViewModel
         {
             if (!IsInDesignMode)
             {
-                if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
-                {
 #if DEBUG
                     _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
-                    //_settingsService.SetValue("RemoteServerAddress", "127.0.0.1");
-#else
-                    _navigationService.Navigate<ConnectionPage>();
 #endif
+                if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
+                {
+                    _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
+                    //_settingsService.SetValue("RemoteServerAddress", "127.0.0.1");
+                    
+                    //_navigationService.Navigate<ConnectionPage>();
                 }
                 else
                 {
