@@ -16,6 +16,10 @@
             <controls:DimmerModuleControl Width="{Binding Width, Source={StaticResource Locator}}" Margin="0, 0, 0, 20" />
         </DataTemplate>
 
+        <DataTemplate x:Key="SensorTemplate">
+            <controls:SensorControl Width="{Binding Width, Source={StaticResource Locator}}" Margin="0, 0, 0, 20" />
+        </DataTemplate>
+
         <DataTemplate x:Key="SwitchTemplate">
             <controls:SwitchModuleControl Width="{Binding Width, Source={StaticResource Locator}}" Margin="0, 0, 0, 20" />
         </DataTemplate>
@@ -56,6 +60,7 @@
                         <common:ModuleTemplateSelector ColorLightTemplate="{StaticResource ColorLightTemplate}"
                                                        DimmerTemplate="{StaticResource DimmerTemplate}"
                                                        ProgramTemplate="{StaticResource ProgramTemplate}"
+                                                       SensorTemplate="{StaticResource SensorTemplate}"
                                                        SwitchTemplate="{StaticResource SwitchTemplate}"
                                                        WidgetTemplate="{StaticResource WidgetTemplate}" />
                     </ListView.ItemTemplateSelector>

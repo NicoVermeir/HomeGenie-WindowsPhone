@@ -100,6 +100,9 @@
     <Compile Include="Controls\ProgramModuleControl.xaml.cs">
       <DependentUpon>ProgramModuleControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SensorControl.xaml.cs">
+      <DependentUpon>SensorControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WidgetControl.xaml.cs">
       <DependentUpon>WidgetControl.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ProgramModuleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SensorControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

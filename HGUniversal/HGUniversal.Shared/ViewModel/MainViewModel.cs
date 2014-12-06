@@ -2,10 +2,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Popups;
-using Cimbalino.Toolkit.Helpers;
 using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight.Threading;
-using HGUniversal.View;
 using HGUniversal.ViewModel.Controls;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Contracts;
@@ -226,6 +224,9 @@ namespace HGUniversal.ViewModel
                     break;
                 case Module.DeviceTypes.Switch:
                     ModulesForCurrentGroup.Add(new SwitchViewModel { Module = module, Group = CurrentGroup });
+                    break;
+                case Module.DeviceTypes.Sensor:
+                    ModulesForCurrentGroup.Add(new SensorViewModel { Module = module, Group = CurrentGroup });
                     break;
             }
         }

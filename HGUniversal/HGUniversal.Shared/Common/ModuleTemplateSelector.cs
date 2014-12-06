@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Cimbalino.Toolkit.Extensions;
 using HGUniversal.ViewModel.Controls;
 
 namespace HGUniversal.Common
@@ -9,6 +8,7 @@ namespace HGUniversal.Common
     public class ModuleTemplateSelector : DataTemplateSelector
     {
         public DataTemplate DimmerTemplate { get; set; }
+        public DataTemplate SensorTemplate { get; set; }
         public DataTemplate SwitchTemplate { get; set; }
         public DataTemplate ColorLightTemplate { get; set; }
         public DataTemplate ProgramTemplate { get; set; }
@@ -30,6 +30,11 @@ namespace HGUniversal.Common
             if (module is ISwitchVM)
             {
                 return SwitchTemplate;
+            }
+
+            if (module is ISensorVM)
+            {
+                return SensorTemplate;
             }
 
             return base.SelectTemplateCore(item, container);
