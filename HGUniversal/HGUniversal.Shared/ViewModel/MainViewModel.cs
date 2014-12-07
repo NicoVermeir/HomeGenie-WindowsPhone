@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight.Threading;
+using HGUniversal.View;
 using HGUniversal.ViewModel.Controls;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Contracts;
@@ -14,11 +16,11 @@ namespace HGUniversal.ViewModel
 {
     public class MainViewModel : HomeGenieViewModelBase
     {
-        private readonly ISettingsService _settingsService;
         private readonly IHomeGenieApi _api;
         private readonly INavigationService _navigationService;
 
         private Group _currentgroup;
+        private ISettingsService _settingsService;
 
         public ObservableCollection<Group> Items { get; private set; }
         public ObservableCollection<IModuleVM> ModulesForCurrentGroup { get; set; }
@@ -36,61 +38,29 @@ namespace HGUniversal.ViewModel
             }
         }
 
-        public MainViewModel(ISettingsService settingsService, IHomeGenieApi api, INavigationService navigationService)
+        public MainViewModel(IHomeGenieApi api, INavigationService navigationService, ISettingsService settingsService)
         {
-            _settingsService = settingsService;
             _api = api;
             _navigationService = navigationService;
+            _settingsService = settingsService;
             Items = new ObservableCollection<Group>();
 
             ModulesForCurrentGroup = new ObservableCollection<IModuleVM>();
             LoadData();
         }
 
-        /// <summary>
-        /// Creates and adds a few ItemViewModel objects in the collection of items.
-        /// </summary>
-        public void LoadData()
+        public async void LoadData()
         {
-            if (!IsInDesignMode)
-            {
-#if DEBUG
-                    _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
-#endif
-                if (!_settingsService.DoesSettingExist("RemoteServerAddress"))
-                {
-                    _settingsService.SetValue("RemoteServerAddress", "192.168.1.144");
-                    //_settingsService.SetValue("RemoteServerAddress", "127.0.0.1");
-                    
-                    //_navigationService.Navigate<ConnectionPage>();
-                }
-                else
-                {
-                    if (!_settingsService.DoesSettingExist("RemoteServerUsername"))
-                    {
-                        _settingsService.SetValue("RemoteServerUsername", "admin");
-                    }
-                    if (!_settingsService.DoesSettingExist("RemoteServerPassword"))
-                    {
-                        _settingsService.SetValue("RemoteServerPassword", "");
-                    }
-                    if (!_settingsService.DoesSettingExist("RemoteServerUpdateInterval"))
-                    {
-                        _settingsService.SetValue("RsemoteServerUpdateInterval", "20");
-                    }
-                    if (!_settingsService.DoesSettingExist("EnableNotifications"))
-                    {
-                        _settingsService.SetValue("EnableNotifications", true);
-                    }
+            IsDataLoading = true;
 
-                    IsDataLoading = true;
-                    UpdateGroups();
-                }
-            }
-            if (IsInDesignMode)
+            if (!_settingsService.DoesSettingExist(Constants.ServerAddressSetting))
             {
-                IsDataLoading = true;
-                UpdateGroups();
+                await Task.Delay(300);
+                _navigationService.Navigate<ConnectionPage>();
+            }
+            else
+            {
+                UpdateGroups();                
             }
         }
 
@@ -227,6 +197,12 @@ namespace HGUniversal.ViewModel
                     break;
                 case Module.DeviceTypes.Sensor:
                     ModulesForCurrentGroup.Add(new SensorViewModel { Module = module, Group = CurrentGroup });
+                    break;
+                case Module.DeviceTypes.Temperature:
+                    ModulesForCurrentGroup.Add(new TemperatureViewModel { Module = module, Group = CurrentGroup });
+                    break;
+                case Module.DeviceTypes.Shutter:
+                    ModulesForCurrentGroup.Add(new ShutterViewModel { Module = module, Group = CurrentGroup });
                     break;
             }
         }

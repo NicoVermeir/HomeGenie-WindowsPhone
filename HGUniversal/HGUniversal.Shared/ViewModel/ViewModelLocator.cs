@@ -39,6 +39,7 @@ namespace HGUniversal.ViewModel
                 SimpleIoc.Default.Register<INavigationService, NavigationService>();
             }
 
+            SimpleIoc.Default.Register<ConnectionViewModel>(true);
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
@@ -47,6 +48,14 @@ namespace HGUniversal.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+
+        public ConnectionViewModel Connection
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ConnectionViewModel>();
             }
         }
 
