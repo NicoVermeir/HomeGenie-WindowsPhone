@@ -13,6 +13,8 @@ namespace HGUniversal.Common
         public DataTemplate ColorLightTemplate { get; set; }
         public DataTemplate ProgramTemplate { get; set; }
         public DataTemplate WidgetTemplate { get; set; }
+        public DataTemplate TemperatureTemplate { get; set; }
+        public DataTemplate ShutterTemplate { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
         {
@@ -35,6 +37,16 @@ namespace HGUniversal.Common
             if (module is ISensorVM)
             {
                 return SensorTemplate;
+            }
+
+            if (module is ITemperatureVM)
+            {
+                return TemperatureTemplate;
+            }
+
+            if (module is IShutterVM)
+            {
+                return ShutterTemplate;
             }
 
             return base.SelectTemplateCore(item, container);

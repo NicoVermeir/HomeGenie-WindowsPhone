@@ -120,8 +120,14 @@
     <Compile Include="Controls\ProgramModuleControl.xaml.cs">
       <DependentUpon>ProgramModuleControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ShutterModuleControl.xaml.cs">
+      <DependentUpon>ShutterModuleControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SwitchModuleControl.xaml.cs">
       <DependentUpon>SwitchModuleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TemperatureModuleControl.xaml.cs">
+      <DependentUpon>TemperatureModuleControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\WidgetControl.xaml.cs">
       <DependentUpon>WidgetControl.xaml</DependentUpon>
@@ -213,7 +219,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\ShutterModuleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\SwitchModuleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TemperatureModuleControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
