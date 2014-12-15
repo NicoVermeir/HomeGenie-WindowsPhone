@@ -54,4 +54,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Font\Lobster_1.3.otf" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Font\SIL Open Font License.txt" />
+  </ItemGroup>
 </Project>

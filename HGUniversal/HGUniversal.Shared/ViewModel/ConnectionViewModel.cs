@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight.Command;
 using HGUniversal.Model;
 using HomeGenie.SDK.Contracts;
@@ -8,6 +9,7 @@ namespace HGUniversal.ViewModel
     public class ConnectionViewModel : HomeGenieViewModelBase
     {
         private readonly ISettingsService _settingsService;
+        private readonly INavigationService _navigationService;
         private Connection _connection;
         private ICommand _saveSettingsCommand;
 
@@ -22,9 +24,10 @@ namespace HGUniversal.ViewModel
             set { Set(() => Connection, ref _connection, value); }
         }
 
-        public ConnectionViewModel(ISettingsService settingsService)
+        public ConnectionViewModel(ISettingsService settingsService, INavigationService navigationService)
         {
             _settingsService = settingsService;
+            _navigationService = navigationService;
             Connection = new Connection();
             LoadSettings();
         }
@@ -51,6 +54,8 @@ namespace HGUniversal.ViewModel
             _settingsService.SetValue(Constants.UsernameSetting, Connection.Username);
             _settingsService.SetValue(Constants.PasswordSetting, Connection.Password);
             _settingsService.SetValue(Constants.NotificationsEnabledSetting, Connection.NotificationsEnabled);
+
+            _navigationService.GoBack();
         }
     }
 }

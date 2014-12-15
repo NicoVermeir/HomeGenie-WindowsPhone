@@ -50,18 +50,18 @@
                 <TextBlock Grid.Row="0"
                            Style="{StaticResource BodyTextBlockStyle}"
                            Text="Server" />
-                <TextBox Grid.Row="1" Text="" />
+                <TextBox Grid.Row="1" Text="{Binding Connection.ServerAddress, Mode=TwoWay}" />
                 <TextBlock Grid.Row="2"
                            Style="{StaticResource BodyTextBlockStyle}"
                            Text="Username" />
-                <TextBox Grid.Row="3" Text="" />
+                <TextBox Grid.Row="3" Text="{Binding Connection.Username, Mode=TwoWay}" />
                 <TextBlock Grid.Row="4"
                            Style="{StaticResource BodyTextBlockStyle}"
                            Text="Password" />
-                <PasswordBox Grid.Row="5" Password="" />
+                <PasswordBox Grid.Row="5" Password="{Binding Connection.Password, Mode=TwoWay}" />
                 <CheckBox Grid.Row="6"
                           Content="Enable Notifications"
-                          IsChecked="True" />
+                          IsChecked="{Binding Connection.NotificationsEnabled, Mode=TwoWay}" />
             </Grid>
         </StackPanel>
     </Grid>
