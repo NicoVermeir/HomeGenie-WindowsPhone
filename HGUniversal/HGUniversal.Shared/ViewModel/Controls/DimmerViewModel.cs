@@ -13,6 +13,8 @@ namespace HGUniversal.ViewModel.Controls
 {
     public class DimmerViewModel : ControlViewModelBase, IDimmerVM
     {
+        private bool _isReady;
+
         private readonly IHomeGenieApi _api;
         private readonly INavigationService _navigationService;
 
@@ -21,24 +23,10 @@ namespace HGUniversal.ViewModel.Controls
 
         private SolidColorBrush _lightColor;
 
-        private ICommand _sliderLevelChangedCommand;
         private ICommand _selectColorCommand;
-
-        public ICommand SliderLevelChangedCommand
-        {
-            get { return _sliderLevelChangedCommand ?? (_sliderLevelChangedCommand = new RelayCommand(UpdateLevel)); }
-        }
 
         public DimmerViewModel()
         {
-            Module = new Module
-            {
-                Address = "",
-                Description = "",
-                DeviceType = Module.DeviceTypes.Dimmer,
-                Name = "design time module"
-            };
-
             _api = SimpleIoc.Default.GetInstance<IHomeGenieApi>();
             _navigationService = SimpleIoc.Default.GetInstance<INavigationService>();
         }
@@ -53,7 +41,7 @@ namespace HGUniversal.ViewModel.Controls
             get { return _isSwitchedOn; }
             set
             {
-                if (Set(() => IsSwitchedOn, ref _isSwitchedOn, value))
+                if (Set(() => IsSwitchedOn, ref _isSwitchedOn, value) && _isReady)
                 {
                     ToggleLight();
                 }
@@ -93,7 +81,8 @@ namespace HGUniversal.ViewModel.Controls
 
         private void UpdateLevel()
         {
-            _api.SetLevel(Module, SliderValue / 100, Callback);
+            if(_isReady)
+                _api.SetLevel(Module, SliderValue / 100, Callback);
         }
 
         internal override void SetValues()
@@ -111,6 +100,8 @@ namespace HGUniversal.ViewModel.Controls
                 HSBColor hsbColor = HSBColor.FromString(colorProperty.Value);
                 LightColor = new SolidColorBrush(hsbColor.ToColor());
             }
+
+            _isReady = true;
         }
 
         private void SetSlider()
