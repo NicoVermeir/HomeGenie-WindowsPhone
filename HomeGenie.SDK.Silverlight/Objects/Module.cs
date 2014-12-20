@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -226,7 +227,5 @@ namespace HomeGenie.SDK.Objects
             MediaTransmitter
             //siren, alarm, motion sensor, door sensor, thermal sensor, etc.
         }
-
     }
-
 }

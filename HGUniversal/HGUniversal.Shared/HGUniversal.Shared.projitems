@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\HomeGenieDesignTimeApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\SettingsDesignTimeService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Connection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Event.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\BindingUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\IMultiValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\MultiBinding.cs" />

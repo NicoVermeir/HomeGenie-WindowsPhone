@@ -223,11 +223,19 @@
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EventSource4Net.Universal\EventSource4Net.Universal.csproj">
+      <Project>{5c93e441-7f9b-4059-bae3-fd50185d227b}</Project>
+      <Name>EventSource4Net.Universal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HomeGenie.Common\HomeGenie.Common.csproj">
       <Project>{9028ff9f-0b56-4999-8f5d-7810f9421b85}</Project>
       <Name>HomeGenie.Common</Name>

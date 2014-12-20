@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Threading;
+using HGUniversal.Model;
 using HomeGenie.Common;
 using HomeGenie.SDK.Http;
 using HomeGenie.SDK.Objects;
@@ -16,6 +19,19 @@ namespace HGUniversal.ViewModel.Controls
         protected ControlViewModelBase()
         {
             Callback = args=> Messenger.Default.Send(new RefreshGroupsMessage());
+            Messenger.Default.Register<Event>(this, OnEventReceived);
+        }
+
+        private void OnEventReceived(Event eventObject)
+        {
+            if (eventObject.Domain != Module.Domain || eventObject.Source != Module.Address)
+                return;
+
+            var moduleProp = Module.Properties.FirstOrDefault(props => props.Name == eventObject.Property);
+            if (moduleProp != null)
+            {
+                SetProperty (moduleProp, eventObject.Value, eventObject.Timestamp);
+            }
         }
 
         public Module Module
@@ -31,5 +47,19 @@ namespace HGUniversal.ViewModel.Controls
         }
 
         internal abstract void SetValues();
+
+        internal void SetProperty(ModuleParameter property, string value, DateTime timestamp)
+        {
+            var prop = Module.Properties.FirstOrDefault(p => p.Name == property.Name);
+
+            if (prop == null) return;
+
+            prop.LastValue = prop.Value;
+            prop.LastUpdateTime = prop.UpdateTime;
+            prop.Value = value;
+            prop.UpdateTime = timestamp;
+
+            DispatcherHelper.CheckBeginInvokeOnUI(SetValues);
+        } 
     }
 }

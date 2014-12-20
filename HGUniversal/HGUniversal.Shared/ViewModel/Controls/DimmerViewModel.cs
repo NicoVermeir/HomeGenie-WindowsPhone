@@ -93,7 +93,8 @@ namespace HGUniversal.ViewModel.Controls
             //color
             if (
                 Module.Properties.Any(
-                    prop => prop.Name == "Widget.DisplayModule" && prop.Value == "homegenie/generic/colorlight"))
+                    prop => prop.Name == "Widget.DisplayModule" && 
+                        prop.Value == "homegenie/generic/colorlight"))
             {
                 ModuleParameter colorProperty = Module.Properties.FirstOrDefault(prop => prop.Name == "Status.ColorHsb");
                 if (colorProperty == null) return;

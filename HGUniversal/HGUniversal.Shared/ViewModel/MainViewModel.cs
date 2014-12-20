@@ -62,6 +62,7 @@ namespace HGUniversal.ViewModel
             }
             else
             {
+                StateContainer.Connect();
                 UpdateGroups();                
             }
         }

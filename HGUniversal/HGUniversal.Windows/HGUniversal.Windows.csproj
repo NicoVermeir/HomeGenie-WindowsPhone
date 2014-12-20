@@ -193,6 +193,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EventSource4Net.Universal\EventSource4Net.Universal.csproj">
+      <Project>{5c93e441-7f9b-4059-bae3-fd50185d227b}</Project>
+      <Name>EventSource4Net.Universal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HomeGenie.Common\HomeGenie.Common.csproj">
       <Project>{9028ff9f-0b56-4999-8f5d-7810f9421b85}</Project>
       <Name>HomeGenie.Common</Name>
