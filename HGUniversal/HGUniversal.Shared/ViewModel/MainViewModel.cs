@@ -43,9 +43,11 @@ namespace HGUniversal.ViewModel
             _api = api;
             _navigationService = navigationService;
             _settingsService = settingsService;
-            Items = new ObservableCollection<Group>();
 
+            Items = new ObservableCollection<Group>();
             ModulesForCurrentGroup = new ObservableCollection<IModuleVM>();
+
+            StateContainer.ConnectionUpdated += (sender, args) => LoadData();
             LoadData();
         }
 

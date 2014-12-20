@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight.Command;
 using HGUniversal.Model;
@@ -54,6 +55,8 @@ namespace HGUniversal.ViewModel
             _settingsService.SetValue(Constants.UsernameSetting, Connection.Username);
             _settingsService.SetValue(Constants.PasswordSetting, Connection.Password);
             _settingsService.SetValue(Constants.NotificationsEnabledSetting, Connection.NotificationsEnabled);
+
+            StateContainer.AnnounceConnectionUpdated();
 
             _navigationService.GoBack();
         }
