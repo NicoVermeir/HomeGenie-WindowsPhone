@@ -15,8 +15,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ColorChangedMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ModuleTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\HsbColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\LatestPropertyDateTimeConverter.cs" />

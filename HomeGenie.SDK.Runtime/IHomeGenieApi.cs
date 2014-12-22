@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using HomeGenie.SDK.Http;
+using HomeGenie.SDK.Objects;
+using HomeGenie.SDK.Utility;
+
+namespace HomeGenie.SDK
+{
+    public interface IHomeGenieApi
+    {
+        void UpdateGroups(Action<List<Group>> callback);
+        void UpdateGroupModule(string groupname, Action<List<Module>> callback);
+        void SetModuleOn(Module module, Action<WebRequestCompletedArgs> callback);
+        void SetModuleOff(Module module, Action<WebRequestCompletedArgs> callback);
+        void SetLevel(Module module, double value, Action<WebRequestCompletedArgs> callback);
+        void SetLightColor(Module module, HSBColor color, Action<WebRequestCompletedArgs> callback);
+        void RunProgram(Module module, Group group, Action<WebRequestCompletedArgs> callback);
+    }
+}

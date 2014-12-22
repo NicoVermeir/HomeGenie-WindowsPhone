@@ -1,13 +1,16 @@
 ﻿using System.Linq;
 using System.Windows.Input;
+using Windows.UI;
 using Windows.UI.Xaml.Media;
 using Cimbalino.Toolkit.Services;
-using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
+using HGUniversal.Common;
 using HGUniversal.View;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Objects;
 using HomeGenie.SDK.Utility;
+using RelayCommand = GalaSoft.MvvmLight.Command.RelayCommand;
 
 namespace HGUniversal.ViewModel.Controls
 {
@@ -24,11 +27,21 @@ namespace HGUniversal.ViewModel.Controls
         private SolidColorBrush _lightColor;
 
         private ICommand _selectColorCommand;
+        private ICommand _colorSelectedCommand;
+        private Color _color;
 
         public DimmerViewModel()
         {
             _api = SimpleIoc.Default.GetInstance<IHomeGenieApi>();
             _navigationService = SimpleIoc.Default.GetInstance<INavigationService>();
+        }
+
+        public ICommand ColorSelectedCommand
+        {
+            get
+            {
+                return _colorSelectedCommand ?? (_colorSelectedCommand = new Common.RelayCommand(() => _navigationService.GoBack()));
+            }
         }
 
         public ICommand SelectColorCommand
@@ -63,7 +76,25 @@ namespace HGUniversal.ViewModel.Controls
         public SolidColorBrush LightColor
         {
             get { return _lightColor; }
-            set { Set(() => LightColor, ref _lightColor, value); }
+            set
+            {
+                if (Set(() => LightColor, ref _lightColor, value))
+                {
+                    _color = LightColor.Color;
+                }
+            }
+        }
+
+        public Color Color
+        {
+            get { return _color; }
+            set
+            {
+                if (Set(() => Color, ref _color, value))
+                {
+                    LightColor = new SolidColorBrush(Color);
+                }
+            }
         }
 
         private void ToggleLight()
@@ -81,7 +112,7 @@ namespace HGUniversal.ViewModel.Controls
 
         private void UpdateLevel()
         {
-            if(_isReady)
+            if (_isReady)
                 _api.SetLevel(Module, SliderValue / 100, Callback);
         }
 
@@ -93,7 +124,7 @@ namespace HGUniversal.ViewModel.Controls
             //color
             if (
                 Module.Properties.Any(
-                    prop => prop.Name == "Widget.DisplayModule" && 
+                    prop => prop.Name == "Widget.DisplayModule" &&
                         prop.Value == "homegenie/generic/colorlight"))
             {
                 ModuleParameter colorProperty = Module.Properties.FirstOrDefault(prop => prop.Name == "Status.ColorHsb");
@@ -121,6 +152,13 @@ namespace HGUniversal.ViewModel.Controls
 
         private void SelectColor()
         {
+            Messenger.Default.Register<ColorChangedMessage>(this, msg =>
+            {
+                Color = msg.SelectedColor;
+                Messenger.Default.Unregister<ColorChangedMessage>(this);
+
+                _api.SetLightColor(Module, HSBColor.FromColor(Color), Callback);
+            });
             _navigationService.Navigate<ColorPickerPage>();
         }
     }

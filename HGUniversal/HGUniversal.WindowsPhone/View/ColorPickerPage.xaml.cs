@@ -1,20 +1,12 @@
-﻿using HGUniversal.Common;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Graphics.Display;
-using Windows.UI.ViewManagement;
+﻿using System;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
+using HGUniversal.Common;
+using HGUniversal.ViewModel.Controls;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -23,18 +15,19 @@ namespace HGUniversal.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    // ReSharper disable once RedundantExtendsListEntry
     public sealed partial class ColorPickerPage : Page
     {
-        private NavigationHelper navigationHelper;
-        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private readonly NavigationHelper _navigationHelper;
+        private Color _color;
 
         public ColorPickerPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            this.navigationHelper = new NavigationHelper(this);
-            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
-            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            _navigationHelper = new NavigationHelper(this);
+            _navigationHelper.LoadState += NavigationHelper_LoadState;
+            _navigationHelper.SaveState += NavigationHelper_SaveState;
         }
 
         /// <summary>
@@ -42,16 +35,7 @@ namespace HGUniversal.View
         /// </summary>
         public NavigationHelper NavigationHelper
         {
-            get { return this.navigationHelper; }
-        }
-
-        /// <summary>
-        /// Gets the view model for this <see cref="Page"/>.
-        /// This can be changed to a strongly typed view model.
-        /// </summary>
-        public ObservableDictionary DefaultViewModel
-        {
-            get { return this.defaultViewModel; }
+            get { return _navigationHelper; }
         }
 
         /// <summary>
@@ -81,31 +65,30 @@ namespace HGUniversal.View
         {
         }
 
-        #region NavigationHelper registration
-
-        /// <summary>
-        /// The methods provided in this section are simply used to allow
-        /// NavigationHelper to respond to the page's navigation methods.
-        /// <para>
-        /// Page specific logic should be placed in event handlers for the  
-        /// <see cref="NavigationHelper.LoadState"/>
-        /// and <see cref="NavigationHelper.SaveState"/>.
-        /// The navigation parameter is available in the LoadState method 
-        /// in addition to page state preserved during an earlier session.
-        /// </para>
-        /// </summary>
-        /// <param name="e">Provides data for navigation methods and event
-        /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedTo(e);
+            _navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedFrom(e);
+            _navigationHelper.OnNavigatedFrom(e);
         }
 
-        #endregion
+        private void ButtonAccept_OnClick(object sender, RoutedEventArgs e)
+        {
+            Messenger.Default.Send(new ColorChangedMessage(_color));
+            _navigationHelper.GoBack();
+        }
+
+        private void ButtonCancel_OnClick(object sender, RoutedEventArgs e)
+        {
+            _navigationHelper.GoBack();
+        }
+
+        private void ColorPicker_OnColorChanged(object sender, Color color)
+        {
+            _color = color;
+        }
     }
 }

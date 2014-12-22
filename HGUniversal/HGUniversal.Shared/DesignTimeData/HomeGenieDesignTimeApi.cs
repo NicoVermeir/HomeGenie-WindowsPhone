@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Http;
 using HomeGenie.SDK.Objects;
+using HomeGenie.SDK.Utility;
 
 namespace HGUniversal.DesignTimeData
 {
@@ -77,6 +78,11 @@ namespace HGUniversal.DesignTimeData
         }
 
         public void SetLevel(Module module, double value, Action<WebRequestCompletedArgs> callback)
+        {
+            
+        }
+
+        public void SetLightColor(Module module, HSBColor color, Action<WebRequestCompletedArgs> callback)
         {
             
         }
