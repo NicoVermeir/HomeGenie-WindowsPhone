@@ -18,6 +18,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\ColorChangedMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ModuleTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ImageTextbox.xaml.cs">
+      <DependentUpon>ImageTextbox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\HsbColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntToVisibilityConverter.cs" />
@@ -29,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ModuleVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\PropertyAddinVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\SecurityArmedConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TextToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\HomeGenieDesignTimeApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\SettingsDesignTimeService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Connection.cs" />
@@ -60,5 +64,17 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\Font\Lobster_1.3.otf" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Font\SIL Open Font License.txt" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Header.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\bulb.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\humidity.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\luminance.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\plug.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\temperature.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ImageTextbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

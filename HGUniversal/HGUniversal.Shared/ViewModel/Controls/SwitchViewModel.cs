@@ -1,13 +1,7 @@
-﻿using System.Linq;
-using System.Windows.Input;
-using Windows.UI.Xaml.Media;
-using Cimbalino.Toolkit.Services;
-using GalaSoft.MvvmLight.Command;
+﻿using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight.Ioc;
-using HGUniversal.View;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Objects;
-using HomeGenie.SDK.Utility;
 
 namespace HGUniversal.ViewModel.Controls
 {
@@ -47,11 +41,11 @@ namespace HGUniversal.ViewModel.Controls
         {
             if (IsSwitchedOn)
             {
-                _api.SetModuleOn(Module, Callback);
+                _api.SetModuleOn(Module);
             }
             else
             {
-                _api.SetModuleOff(Module, Callback);
+                _api.SetModuleOff(Module);
             }
         }
 

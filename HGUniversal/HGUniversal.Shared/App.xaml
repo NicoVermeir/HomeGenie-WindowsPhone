@@ -4,5 +4,10 @@
              xmlns:local="using:HGUniversal">
     <Application.Resources>
         <vm:ViewModelLocator xmlns:vm="using:HGUniversal.ViewModel" x:Key="Locator" />
+
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
     </Application.Resources>
 </Application>

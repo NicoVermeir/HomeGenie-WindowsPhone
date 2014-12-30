@@ -31,7 +31,7 @@ namespace HGUniversal.ViewModel.Controls
 
         private void RunProgram()
         {
-            _api.RunProgram(Module, Group, Callback);
+            _api.RunProgram(Module, Group);
         }
 
         internal override void SetValues()

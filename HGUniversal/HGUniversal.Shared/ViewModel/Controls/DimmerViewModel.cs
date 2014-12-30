@@ -101,19 +101,19 @@ namespace HGUniversal.ViewModel.Controls
         {
             if (IsSwitchedOn)
             {
-                _api.SetModuleOn(Module, Callback);
+                _api.SetModuleOn(Module);
                 SetSlider();
             }
             else
             {
-                _api.SetModuleOff(Module, Callback);
+                _api.SetModuleOff(Module);
             }
         }
 
         private void UpdateLevel()
         {
             if (_isReady)
-                _api.SetLevel(Module, SliderValue / 100, Callback);
+                _api.SetLevel(Module, SliderValue / 100);
         }
 
         internal override void SetValues()
@@ -157,7 +157,7 @@ namespace HGUniversal.ViewModel.Controls
                 Color = msg.SelectedColor;
                 Messenger.Default.Unregister<ColorChangedMessage>(this);
 
-                _api.SetLightColor(Module, HSBColor.FromColor(Color), Callback);
+                _api.SetLightColor(Module, HSBColor.FromColor(Color));
             });
             _navigationService.Navigate<ColorPickerPage>();
         }

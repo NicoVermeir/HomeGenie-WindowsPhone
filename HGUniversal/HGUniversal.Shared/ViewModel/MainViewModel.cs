@@ -20,7 +20,7 @@ namespace HGUniversal.ViewModel
         private readonly INavigationService _navigationService;
 
         private Group _currentgroup;
-        private ISettingsService _settingsService;
+        private readonly ISettingsService _settingsService;
 
         public ObservableCollection<Group> Items { get; private set; }
         public ObservableCollection<IModuleVM> ModulesForCurrentGroup { get; set; }
@@ -31,11 +31,7 @@ namespace HGUniversal.ViewModel
             {
                 return _currentgroup;
             }
-            set
-            {
-                if (Set(() => CurrentGroup, ref _currentgroup, value))
-                    UpdateGroupModules();
-            }
+            set { Set(() => CurrentGroup, ref _currentgroup, value); }
         }
 
         public MainViewModel(IHomeGenieApi api, INavigationService navigationService, ISettingsService settingsService)
@@ -48,74 +44,43 @@ namespace HGUniversal.ViewModel
             ModulesForCurrentGroup = new ObservableCollection<IModuleVM>();
 
             StateContainer.ConnectionUpdated += (sender, args) => LoadData();
-            LoadData();
+            Task.Run(() => LoadData());
         }
 
-        public async void LoadData()
+        public async Task LoadData()
         {
-            IsDataLoading = true;
+            //IsDataLoading = true;
 
             if (!_settingsService.DoesSettingExist(Constants.ServerAddressSetting))
             {
+                //just making sure the DispatcherHelper is initialized
                 await Task.Delay(300);
-                _navigationService.Navigate<ConnectionPage>();
+
+                DispatcherHelper.CheckBeginInvokeOnUI(() => 
+                _navigationService.Navigate<ConnectionPage>());
             }
             else
             {
                 StateContainer.Connect();
-                UpdateGroups();                
+                await LoadGroups();
+                await LoadGroupModules();
             }
         }
 
-        private void UpdateGroups()
+        private async Task LoadGroups()
         {
             try
             {
-                _api.UpdateGroups(result =>
+                IList<Group> groups = await _api.LoadGroups();
+
+                DispatcherHelper.CheckBeginInvokeOnUI(() =>
                 {
-                    List<Group> groups = result;
-
-                    if (groups != null)
+                    Items.Clear();
+                    foreach (Group g in groups)
                     {
-                        var newgroups = new List<Group>();
-                        foreach (Group g in groups)
-                        {
-                            Group g1 = g;
-                            Group existinggroup = Items.FirstOrDefault(eg => eg.Name == g1.Name);
-
-                            if (existinggroup != null)
-                            {
-                                existinggroup.Name = g.Name;
-                            }
-                            else
-                            {
-                                Group newgroup = g;
-                                newgroup.Modules.Clear();
-                                newgroups.Add(newgroup);
-                            }
-                        }
-
-                        if (!IsInDesignMode)
-                        {
-                            DispatcherHelper.CheckBeginInvokeOnUI(() =>
-                            {
-                                foreach (Group g in newgroups)
-                                {
-                                    Items.Add(g);
-                                }
-                                IsDataLoading = false;
-                            });
-                        }
-                        else
-                        {
-                            foreach (Group g in newgroups)
-                            {
-                                Items.Add(g);
-                            }
-                            CurrentGroup = Items.First();
-                            UpdateGroupModules();
-                        }
+                        Items.Add(g);
                     }
+                    IsDataLoading = false;
                 });
             }
             catch (LoadDataError)
@@ -127,62 +92,30 @@ namespace HGUniversal.ViewModel
 
         }
 
-        internal void UpdateGroupModules()
+        internal async Task LoadGroupModules()
         {
             ModulesForCurrentGroup.Clear();
 
-            _api.UpdateGroupModule(CurrentGroup.Name, modules =>
+            foreach (Group item in Items)
             {
-                Group g = Items.First(hz => hz.Name == CurrentGroup.Name);
-                if (modules != null)
+                if (item.Modules == null)
+                    item.Modules = new List<Module>();
 
-                    if (IsInDesignMode)
-                    {
-                        foreach (Module m in modules)
-                        {
-                            Module m1 = m;
-                            Module existinmodule = g.Modules.FirstOrDefault(gm => gm.Domain == m1.Domain && gm.Address == m1.Address);
+                item.Modules = await _api.LoadGroupModules(item.Name);
 
-                            if (existinmodule != null)
-                            {
-                                existinmodule.Name = m.Name;
-                                existinmodule.Properties = m.Properties;
-                            }
-                            else
-                            {
-                                g.Modules.Add(m);
-                            }
-                            InstantiateModule(m);
-                        }
-                    }
-                    else
-                    {
-                        DispatcherHelper.CheckBeginInvokeOnUI(() =>
-                        {
-                            foreach (Module m in modules)
-                            {
-                                AddModuleToGroup(m, g);
-                            }
-                        });
-                    }
+                var item1 = item;
+                DispatcherHelper.CheckBeginInvokeOnUI(() =>
+                {
+                    item1.GroupTemperature = FindGroupTemperature(item1);
+                    item1.GroupLuminance = FindGroupLuminance(item1);
+                    item1.GroupHumidity = FindGroupHumidity(item1);
 
-            });
-        }
+                    item1.NumberOfLights = CountGroupLights(item1);
+                    item1.NumberOfSwitches = CountGroupSwitches(item1);
+                });
 
-        private void AddModuleToGroup(Module module, Group group)
-        {
-            Module existinmodule = group.Modules.FirstOrDefault(gm => gm.Domain == module.Domain && gm.Address == module.Address);
-
-            if (existinmodule != null)
-            {
-                existinmodule.Name = module.Name;
-                existinmodule.Properties = module.Properties;
             }
-            else
-            {
-                group.Modules.Add(module);
-            }
-            InstantiateModule(module);
+
         }
 
         private void InstantiateModule(Module module)
@@ -208,6 +141,92 @@ namespace HGUniversal.ViewModel
                     ModulesForCurrentGroup.Add(new ShutterViewModel { Module = module, Group = CurrentGroup });
                     break;
             }
+        }
+
+        private double? FindGroupTemperature(Group currentGroup)
+        {
+            double temperature;
+
+            //get all modules in the current group that have a temperature sensor
+            var temperatureSensors = from module in currentGroup.Modules
+                                     where module.Properties.Any(prop => prop.Name == Constants.TemperatureSensorName)
+                                     select module;
+
+            Module temperatureModule = temperatureSensors.FirstOrDefault();
+
+            if (temperatureModule == null)
+                return null;
+
+            //get the temperature sensor
+            ModuleParameter temperatureSensor = temperatureModule
+                    .Properties.FirstOrDefault(prop => prop.Name == Constants.TemperatureSensorName);
+
+            if (double.TryParse(temperatureSensor.Value, out temperature))
+                return temperature;
+
+            return null;
+        }
+
+        private double? FindGroupLuminance(Group currentGroup)
+        {
+            double luminance;
+
+            //get all modules in the current group that have a temperature sensor
+            var luminanceSensors = from module in currentGroup.Modules
+                                   where module.Properties.Any(prop => prop.Name == Constants.LuminanceSensorName)
+                                   select module;
+
+            Module luminanceModule = luminanceSensors.FirstOrDefault();
+
+            if (luminanceModule == null)
+                return null;
+
+            //get the temperature sensor
+            ModuleParameter luminanceSensor = luminanceModule
+                    .Properties.FirstOrDefault(prop => prop.Name == Constants.LuminanceSensorName);
+
+            if (double.TryParse(luminanceSensor.Value, out luminance))
+                return luminance;
+
+            return null;
+        }
+
+        private double? FindGroupHumidity(Group currentGroup)
+        {
+            double humidity;
+
+            //get all modules in the current group that have a temperature sensor
+            var humiditySensors = from module in currentGroup.Modules
+                                  where module.Properties.Any(prop => prop.Name == Constants.HumiditySensorName)
+                                  select module;
+
+            Module humidityModule = humiditySensors.FirstOrDefault();
+
+            if (humidityModule == null)
+                return null;
+
+            //get the temperature sensor
+            ModuleParameter humiditySensor = humidityModule
+                    .Properties.FirstOrDefault(prop => prop.Name == Constants.HumiditySensorName);
+
+            if (double.TryParse(humiditySensor.Value, out humidity))
+                return humidity;
+
+            return null;
+        }
+
+        public int CountGroupLights(Group currentGroup)
+        {
+            return currentGroup.Modules.Count(
+                module =>
+                    module.DeviceType == Module.DeviceTypes.Light || module.DeviceType == Module.DeviceTypes.Dimmer);
+        }
+
+        public int CountGroupSwitches(Group currentGroup)
+        {
+            return currentGroup.Modules.Count(
+                module =>
+                    module.DeviceType == Module.DeviceTypes.Switch);
         }
     }
 }

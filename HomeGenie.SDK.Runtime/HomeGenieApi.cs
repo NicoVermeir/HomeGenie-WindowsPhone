@@ -1,80 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using HomeGenie.SDK.Http;
+using System.Threading.Tasks;
+using HomeGenie.SDK.Contracts;
 using HomeGenie.SDK.Objects;
+using HomeGenie.SDK.Services;
 using HomeGenie.SDK.Utility;
-using Newtonsoft.Json;
 
 namespace HomeGenie.SDK
 {
     public class HomeGenieApi : IHomeGenieApi
     {
-        private readonly HTTPRequestQueue _httpManager;
+        private readonly IHttpService _httpService;
 
         public HomeGenieApi()
         {
-            _httpManager = new HTTPRequestQueue();
+            _httpService = new HttpService();
         }
 
-        public void UpdateGroups(Action<List<Group>> callback)
+        public async Task<List<Group>> LoadGroups()
         {
-            Calljsonapi("UpdateGroups", "/api/HomeAutomation.HomeGenie/Config/Groups.List", callback);
+            string url = "/api/HomeAutomation.HomeGenie/Config/Groups.List";
+            return await _httpService.Get<List<Group>>(BuildUrl(url));
         }
 
-        public void UpdateGroupModule(string groupname, Action<List<Module>> callback)
+        public async Task<List<Module>> LoadGroupModules(string groupname)
         {
-            Calljsonapi("UpdateGroupModules[" + groupname + "]",
-                "/api/HomeAutomation.HomeGenie/Config/Groups.ModulesList/" + groupname, callback);
+            string url = "/api/HomeAutomation.HomeGenie/Config/Groups.ModulesList/" + groupname;
+            return await _httpService.Get<List<Module>>(BuildUrl(url));
         }
 
-        public void SetModuleOn(Module module, Action<WebRequestCompletedArgs> callback)
+        public async Task SetModuleOn(Module module)
         {
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.On//" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
-            Calljsonapi("Control.On", url, callback);
+            await _httpService.Get<bool>(BuildUrl(url));
         }
 
-        public void SetModuleOff(Module module, Action<WebRequestCompletedArgs> callback)
+        public async Task SetModuleOff(Module module)
         {
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Off//" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
-            Calljsonapi("Control.Off", url, callback);
+            await _httpService.Get<bool>(BuildUrl(url));
         }
 
-        public void SetLevel(Module module, double value, Action<WebRequestCompletedArgs> callback)
+        public async Task SetLevel(Module module, double value)
         {
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Level/" + Math.Round(value * 100).ToString(CultureInfo.InvariantCulture) + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
-            Calljsonapi("Control.Level", url, callback);
+            await _httpService.Get<bool>(BuildUrl(url));
         }
 
-        public void RunProgram(Module module, Group group, Action<WebRequestCompletedArgs> callback)
+        public async Task RunProgram(Module module, Group group)
         {
             string url = "/api/HomeAutomation.HomeGenie/Automation/Programs.Run/" + module.Address + "/" + group.Name + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
-            Calljsonapi("Programs.Run[" + module.Address + "]", url, callback);
+            await _httpService.Get<bool>(BuildUrl(url));
         }
 
-        public void SetLightColor(Module module, HSBColor color, Action<WebRequestCompletedArgs> callback)
+        public async Task SetLightColor(Module module, HSBColor color)
         {
              string url = "/api/" + module.Domain + "/" + module.Address + "/Control.ColorHsb/" + 
                  (color.H / 360d).ToString(CultureInfo.InvariantCulture) + ',' + 
                  (color.S).ToString(CultureInfo.InvariantCulture) + ',' + 
                  (color.B).ToString(CultureInfo.InvariantCulture) + "/" + DateTime.Now.Ticks.ToString();
-             Calljsonapi("Control.ColorHsb", url, callback);
+             await _httpService.Get<bool>(BuildUrl(url));
         }
 
-        private void Calljsonapi<T>(string reqid, string apiurl, Action<T> callback)
+        private string BuildUrl(string apiurl)
         {
-            string url = apiurl + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
-            _httpManager.AddToQueue(reqid, url, args =>
-            {
-                if (args.RequestStatus == WebRequestStatus.Completed)
-                {
-                    callback(JsonConvert.DeserializeObject<T>(args.ResponseText));
-                }
-                else
-                {
-                    throw new LoadDataError();
-                }
-            });
+            return apiurl + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

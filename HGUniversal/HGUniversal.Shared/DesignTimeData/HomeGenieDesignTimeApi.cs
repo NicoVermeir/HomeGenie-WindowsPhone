@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using HomeGenie.SDK;
-using HomeGenie.SDK.Http;
 using HomeGenie.SDK.Objects;
 using HomeGenie.SDK.Utility;
 
@@ -10,86 +9,39 @@ namespace HGUniversal.DesignTimeData
 {
     public class HomeGenieDesignTimeApi : IHomeGenieApi
     {
-        public void UpdateGroups(Action<List<Group>> callback)
+        public Task<List<Group>> LoadGroups()
         {
-            var designData = new List<Group>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                var group = new Group();
-                group.Name = "design module " + i;
-                group.Modules = CreateModules();
-                designData.Add(group);
-            }
-            callback(designData);
+            throw new NotImplementedException();
         }
 
-        private ObservableCollection<Module> CreateModules()
+        public Task<List<Module>> LoadGroupModules(string groupname)
         {
-            var modules = new ObservableCollection<Module>();
-            for (int i = 0; i < 5; i++)
-            {
-                var module = new Module
-                {
-                    Address = "",
-                    Description = "",
-                    DeviceType = Module.DeviceTypes.Dimmer,
-                    Name = "module " + i
-                };
-
-                var param = new ModuleParameter {Name = "Widget.DisplayModule", Value = "homegenie/generic/colorlight"};
-                module.Properties.Add(param);
-                modules.Add(module);
-            }
-            return modules;
+            throw new NotImplementedException();
         }
 
-        private List<Module> CreateModulesForGroup()
+        public Task SetModuleOn(Module module)
         {
-            var modules = new List<Module>();
-            for (int i = 0; i < 5; i++)
-            {
-                var module = new Module
-                {
-                    Address = "",
-                    Description = "",
-                    DeviceType = (Module.DeviceTypes)i,
-                    Name = "module " + i
-                };
-                modules.Add(module);
-            }
-            return modules;
+            throw new NotImplementedException();
         }
 
-        public void UpdateGroupModule(string groupname, Action<List<Module>> callback)
+        public Task SetModuleOff(Module module)
         {
-            var modules = CreateModulesForGroup();
-            callback(modules);
+            throw new NotImplementedException();
         }
 
-        public void SetModuleOn(Module module, Action<WebRequestCompletedArgs> callback)
+        public Task SetLevel(Module module, double value)
         {
-            
+            throw new NotImplementedException();
         }
 
-        public void SetModuleOff(Module module, Action<WebRequestCompletedArgs> callback)
+        public Task SetLightColor(Module module, HSBColor color)
         {
-            
+            throw new NotImplementedException();
         }
 
-        public void SetLevel(Module module, double value, Action<WebRequestCompletedArgs> callback)
+        public Task RunProgram(Module module, Group @group)
         {
-            
-        }
-
-        public void SetLightColor(Module module, HSBColor color, Action<WebRequestCompletedArgs> callback)
-        {
-            
-        }
-
-        public void RunProgram(Module module, Group @group, Action<WebRequestCompletedArgs> callback)
-        {
-            
+            throw new NotImplementedException();
         }
     }
 }
