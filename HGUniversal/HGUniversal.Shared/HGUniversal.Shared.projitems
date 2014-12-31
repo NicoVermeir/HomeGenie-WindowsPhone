@@ -18,9 +18,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\ColorChangedMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ModuleTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ImageTextbox.xaml.cs">
-      <DependentUpon>ImageTextbox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\HsbColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntToVisibilityConverter.cs" />
@@ -70,11 +67,5 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\luminance.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\plug.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\temperature.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\ImageTextbox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 </Project>

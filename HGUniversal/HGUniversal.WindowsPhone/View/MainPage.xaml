@@ -146,6 +146,12 @@
         <Image Source="ms-appx:///Assets/Header.png" Stretch="UniformToFill" />
         <ListView Grid.Row="1"
                   ItemTemplate="{StaticResource GroupTemplate}"
-                  ItemsSource="{Binding Items}" />
+                  ItemsSource="{Binding Items}" SelectedItem="{Binding CurrentGroup, Mode=TwoWay}" >
+        	<Interactivity:Interaction.Behaviors>
+        		<Core:EventTriggerBehavior EventName="SelectionChanged">
+        			<Core:NavigateToPageAction TargetPage="HGUniversal.View.GroupPage"/>
+        		</Core:EventTriggerBehavior>
+        	</Interactivity:Interaction.Behaviors>
+        </ListView>
     </Grid>
 </Page>
