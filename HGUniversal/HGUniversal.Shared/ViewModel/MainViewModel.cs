@@ -31,10 +31,22 @@ namespace HGUniversal.ViewModel
             {
                 return _currentgroup;
             }
-            set { Set(() => CurrentGroup, ref _currentgroup, value); }
+            set
+            {
+                if (Set(() => CurrentGroup, ref _currentgroup, value))
+                {
+                    ModulesForCurrentGroup.Clear();
+                    foreach (Module module in CurrentGroup.Modules)
+                    {
+                        InstantiateModule(module);
+                    }
+                }
+            }
         }
 
-        public MainViewModel(IHomeGenieApi api, INavigationService navigationService, ISettingsService settingsService)
+        public MainViewModel(IHomeGenieApi api,
+            INavigationService navigationService,
+            ISettingsService settingsService)
         {
             _api = api;
             _navigationService = navigationService;
@@ -42,6 +54,11 @@ namespace HGUniversal.ViewModel
 
             Items = new ObservableCollection<Group>();
             ModulesForCurrentGroup = new ObservableCollection<IModuleVM>();
+
+            if (IsInDesignModeStatic)
+            {
+                SetDesignTimeData();
+            }
 
             StateContainer.ConnectionUpdated += (sender, args) => LoadData();
             Task.Run(() => LoadData());
@@ -56,7 +73,7 @@ namespace HGUniversal.ViewModel
                 //just making sure the DispatcherHelper is initialized
                 await Task.Delay(300);
 
-                DispatcherHelper.CheckBeginInvokeOnUI(() => 
+                DispatcherHelper.CheckBeginInvokeOnUI(() =>
                 _navigationService.Navigate<ConnectionPage>());
             }
             else
@@ -227,6 +244,21 @@ namespace HGUniversal.ViewModel
             return currentGroup.Modules.Count(
                 module =>
                     module.DeviceType == Module.DeviceTypes.Switch);
+        }
+
+
+        private void SetDesignTimeData()
+        {
+            CurrentGroup = new Group();
+            CurrentGroup.Name = "Design group";
+
+            Module dimmer = new Module { Name = "Staanlamp", DeviceType = Module.DeviceTypes.Dimmer };
+            Module dimmer2 = new Module { Name = "Staanlamp 2", DeviceType = Module.DeviceTypes.Dimmer };
+            Module dimmer3 = new Module { Name = "Staanlamp 3", DeviceType = Module.DeviceTypes.Dimmer };
+
+            InstantiateModule(dimmer);
+            InstantiateModule(dimmer2);
+            InstantiateModule(dimmer3);
         }
     }
 }

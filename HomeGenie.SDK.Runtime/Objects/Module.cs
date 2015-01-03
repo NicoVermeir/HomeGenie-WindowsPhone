@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -8,8 +8,16 @@ namespace HomeGenie.SDK.Objects
 {
     public class Module : Data
     {
+        public string Description { get; set; }
+
+        // location in actual physical Control-topology
+        public string Domain { get; set; } 
+
+        public string Address { get; set; }
+
+        public string RoutingNode { get; set; } // "<ip>:<port>" || ""
+
         private string _name;
-        private DeviceTypes _devicetype;
         public string Name
         {
             get
@@ -21,9 +29,8 @@ namespace HomeGenie.SDK.Objects
                 SetField(ref _name, value, "Name");
             }
         }
-        public string Description { get; set; }
-        //[JsonConverter(typeof(StringEnumConverter))]
-        //public Types Type { get; set; } //physical control type (on/off, 0-100, Hot/Cold, InputSensor, etc.)
+
+        private DeviceTypes _devicetype;
         [JsonConverter(typeof(StringEnumConverter))]
         public DeviceTypes DeviceType
         {
@@ -39,11 +46,6 @@ namespace HomeGenie.SDK.Objects
             }
         } //will indicate actual device (lamp, fan, dimmer light, etc.)
 
-        // location in actual physical Control-topology
-        public string Domain { get; set; } // only Domain is used. Interface should be used instead?
-        //public string Interface { get; set; }
-        public string Address { get; set; }
-        //
         private ObservableCollection<ModuleParameter> _properties;
         public ObservableCollection<ModuleParameter> Properties
         {
@@ -76,7 +78,7 @@ namespace HomeGenie.SDK.Objects
                     {
                         if (p.Name == "Status.Level")
                         {
-                            double.TryParse(p.Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out level);
+                            double.TryParse(p.Value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out level);
                         }
                         else if (p.Name == "Widget.DisplayModule")
                         {
@@ -84,7 +86,7 @@ namespace HomeGenie.SDK.Objects
                         }
                         else if (p.Name == "Sensor.DoorWindow")
                         {
-                            double.TryParse(p.Value, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out doorwindow);
+                            double.TryParse(p.Value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out doorwindow);
                         }
                     }
                     //
@@ -191,25 +193,14 @@ namespace HomeGenie.SDK.Objects
                 return imageurl;
             }
         }
-        //
-        public string RoutingNode { get; set; } // "<ip>:<port>" || ""
-        //
+
         public Module()
         {
             Name = "";
             Properties = new ObservableCollection<ModuleParameter>();
             RoutingNode = "";
         }
-        /*
-        public enum Types
-        {
-            Generic = -1,
-            BinarySwitch,
-            MultiLevelSwitch,
-            Thermostat,
-            InputSensor
-        }
-        */
+
         public enum DeviceTypes
         {
             Generic = -1,

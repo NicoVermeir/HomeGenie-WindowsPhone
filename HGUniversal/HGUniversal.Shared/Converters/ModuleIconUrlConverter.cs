@@ -1,70 +1,28 @@
 ﻿using System;
-using System.Globalization;
-using System.IO;
-using System.Net;
-using System.Windows.Data;
-using Windows.Storage.Streams;
-using Windows.UI.Core;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Data;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using HomeGenie.SDK.Contracts;
 
 namespace HGUniversal.Converters
 {
-    public class ModuleIconUrlConverter : IMultiValueConverter
+    public class ModuleIconUrlConverter : IValueConverter
     {
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
-            string url = (string)values[1];
-            if (url.StartsWith("http://") || url.StartsWith("https://"))
-            {
+            if (ViewModelBase.IsInDesignModeStatic)
+                return "http://192.168.1.144/hg/html/pages/control/widgets/homegenie/generic/images/light_off.png";
 
-                return new BitmapImage(new Uri(url));
-            }
-            else if (url.StartsWith("/Assets/"))
-            {
-                return new BitmapImage(new Uri(url, UriKind.Relative));
-            }
-            else
-            {
-                var settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
+            var settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
 
-                string baseurl = "http://" + (string)settingsService.GetValue("RemoteServerAddress");
-                var wreq = (HttpWebRequest)WebRequest.Create(baseurl + url);
-                if (settingsService.DoesSettingExist("RemoteServerUsername") &&
-                    (string)settingsService.GetValue("RemoteServerUsername") != "" &&
-                    settingsService.DoesSettingExist("RemoteServerPassword") &&
-                    (string)settingsService.GetValue("RemoteServerPassword") != "")
-                {
-                    wreq.Credentials = new NetworkCredential((string)settingsService.GetValue("RemoteServerUsername"), (string)settingsService.GetValue("RemoteServerPassword"));
-                }
-                //wreq.AllowWriteStreamBuffering = true;
-
-                wreq.BeginGetResponse(result =>
-                {
-                    var img = (Image)result.AsyncState;
-                    try
-                    {
-                        var res = (HttpWebResponse)wreq.EndGetResponse(result);
-                        img.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                        {
-                            var bi = new BitmapImage();
-                            var s = new InMemoryRandomAccessStream();
-                            bi.SetSource(res.GetResponseStream().AsRandomAccessStream());
-                            img.Source = bi;
-                        });
-                    }
-                    catch { }
-                }, (Image)values[0]);
-
-                return null;
-            }
+            return string.Format("http://{0}{1}",
+                settingsService.GetValue<string>(Constants.ServerAddressSetting),
+                value.ToString());
         }
 
-        public object[] ConvertBack(object value, Type[] targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
     }
 }

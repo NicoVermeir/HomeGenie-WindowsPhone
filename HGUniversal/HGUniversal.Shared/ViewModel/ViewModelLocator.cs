@@ -34,10 +34,10 @@ namespace HGUniversal.ViewModel
             {
                 // Create run time view services and models
                 SimpleIoc.Default.Register<IHomeGenieApi, HomeGenieApi>();
-                SimpleIoc.Default.Register<HTTPRequestQueue>();
                 SimpleIoc.Default.Register<ISettingsService, SettingsService>();
-                SimpleIoc.Default.Register<INavigationService, NavigationService>();
             }
+
+            SimpleIoc.Default.Register<INavigationService, NavigationService>();
 
             SimpleIoc.Default.Register<ConnectionViewModel>(true);
             SimpleIoc.Default.Register<MainViewModel>();
