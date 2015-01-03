@@ -34,6 +34,12 @@
 			</Grid>
 		</DataTemplate>
 	</Page.Resources>
+	<Page.BottomAppBar>
+		<CommandBar>
+			<AppBarButton Icon="Pin" Label="pin"/>
+			<AppBarButton Icon="Refresh" Label="refresh"/>
+		</CommandBar>
+	</Page.BottomAppBar>
 
 	<Page.DataContext>
 		<Binding Path="Main" Source="{StaticResource Locator}"/>
