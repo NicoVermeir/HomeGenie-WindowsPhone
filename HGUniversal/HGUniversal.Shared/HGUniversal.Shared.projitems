@@ -16,6 +16,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Common\ColorChangedMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ItemClickCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ModuleTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
@@ -34,10 +35,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\SettingsDesignTimeService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Connection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Event.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\BindingUtil.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\IMultiValueConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\MultiBinding.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MultiBinding\MultiBindings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StateContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ConnectionViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\ControlViewModelBase.cs" />

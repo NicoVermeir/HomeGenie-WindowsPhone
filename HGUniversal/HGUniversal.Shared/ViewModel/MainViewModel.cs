@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Cimbalino.Toolkit.Services;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Threading;
 using HGUniversal.View;
 using HGUniversal.ViewModel.Controls;
@@ -24,6 +25,20 @@ namespace HGUniversal.ViewModel
 
         public ObservableCollection<Group> Items { get; private set; }
         public ObservableCollection<IModuleVM> ModulesForCurrentGroup { get; set; }
+
+        private RelayCommand<Group> _groupSelectedCommand;
+
+        public RelayCommand<Group> GroupSelectedCommand
+        {
+            get
+            {
+                return _groupSelectedCommand ?? (_groupSelectedCommand = new RelayCommand<Group>(group =>
+                {
+                    CurrentGroup = group;
+                    _navigationService.Navigate<GroupPage>();
+                }));
+            }
+        }
 
         public Group CurrentGroup
         {
@@ -60,7 +75,7 @@ namespace HGUniversal.ViewModel
                 SetDesignTimeData();
             }
 
-            StateContainer.ConnectionUpdated += (sender, args) => LoadData();
+            StateContainer.ConnectionUpdated += async (sender, args) => await LoadData();
             Task.Run(() => LoadData());
         }
 
@@ -245,7 +260,6 @@ namespace HGUniversal.ViewModel
                 module =>
                     module.DeviceType == Module.DeviceTypes.Switch);
         }
-
 
         private void SetDesignTimeData()
         {
