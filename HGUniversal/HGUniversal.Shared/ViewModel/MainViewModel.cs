@@ -40,6 +40,27 @@ namespace HGUniversal.ViewModel
             }
         }
 
+        private RelayCommand<IModuleVM> _moduleSelectedCommand;
+        private IModuleVM _currentModule;
+
+        public RelayCommand<IModuleVM> ModuleSelectedCommand
+        {
+            get
+            {
+                return _moduleSelectedCommand ?? (_moduleSelectedCommand = new RelayCommand<IModuleVM>(mod =>
+                {
+                    CurrentModule = mod;
+                    _navigationService.Navigate<ModulePage>();
+                }));
+            }
+        }
+
+        public IModuleVM CurrentModule
+        {
+            get { return _currentModule; }
+            set { Set(() => CurrentModule, ref _currentModule, value); }
+        }
+
         public Group CurrentGroup
         {
             get

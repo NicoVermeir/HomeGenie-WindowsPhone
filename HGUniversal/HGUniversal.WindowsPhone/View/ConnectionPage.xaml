@@ -6,7 +6,7 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       DataContext="{Binding Connection,
                             Source={StaticResource Locator}}"
-      mc:Ignorable="d">
+      mc:Ignorable="d" RequestedTheme="Light">
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Command="{Binding SaveSettingsCommand,

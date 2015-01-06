@@ -1,0 +1,43 @@
+﻿<Page x:Class="HGUniversal.View.ModulePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:common="using:HGUniversal.Common"
+      xmlns:controls="using:HGUniversal.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      DataContext="{Binding Main,
+                            Source={StaticResource Locator}}"
+      RequestedTheme="Light"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="DimmerTemplate">
+            <controls:DimmerModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="SwitchTemplate">
+            <controls:SwitchModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ProgramTemplate">
+            <controls:ProgramModuleControl />
+        </DataTemplate>
+
+        <common:ModuleTemplateSelector x:Key="ModuleTemplateSelector"
+                                       DimmerTemplate="{StaticResource DimmerTemplate}"
+                                       ProgramTemplate="{StaticResource ProgramTemplate}"
+                                       SwitchTemplate="{StaticResource SwitchTemplate}" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*" />
+            <RowDefinition Height="267*" />
+        </Grid.RowDefinitions>
+        <Image Source="ms-appx:///Assets/Header.png" Stretch="UniformToFill" />
+        <ContentControl Grid.Row="1"
+                        Content="{Binding CurrentModule}"
+                        ContentTemplateSelector="{StaticResource ModuleTemplateSelector}" />
+    </Grid>
+</Page>
