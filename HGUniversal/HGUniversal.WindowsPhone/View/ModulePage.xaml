@@ -24,11 +24,21 @@
             <controls:ProgramModuleControl />
         </DataTemplate>
 
+        <DataTemplate x:Key="SensorTemplate">
+            <controls:SensorControl />
+        </DataTemplate>
+
         <common:ModuleTemplateSelector x:Key="ModuleTemplateSelector"
                                        DimmerTemplate="{StaticResource DimmerTemplate}"
                                        ProgramTemplate="{StaticResource ProgramTemplate}"
+                                       SensorTemplate="{StaticResource SensorTemplate}"
                                        SwitchTemplate="{StaticResource SwitchTemplate}" />
     </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Pin" Label="pin" />
+        </CommandBar>
+    </Page.BottomAppBar>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -37,6 +47,8 @@
         </Grid.RowDefinitions>
         <Image Source="ms-appx:///Assets/Header.png" Stretch="UniformToFill" />
         <ContentControl Grid.Row="1"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
                         Content="{Binding CurrentModule}"
                         ContentTemplateSelector="{StaticResource ModuleTemplateSelector}" />
     </Grid>

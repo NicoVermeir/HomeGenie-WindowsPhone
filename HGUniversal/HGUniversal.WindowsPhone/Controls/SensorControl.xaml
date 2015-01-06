@@ -11,16 +11,52 @@
     <UserControl.Resources>
         <converters:ModulePropertyConverter x:Key="PropertyConverter" />
         <converters:PropertyAddinVisibilityConverter x:Key="PropertyAddinVisibility" />
+        <converters:ModuleIconUrlConverter x:Key="ModuleIconUrlConverter" />
     </UserControl.Resources>
 
-    <StackPanel Margin="0, 0, 0, 12">
-        <TextBlock VerticalAlignment="Bottom"
-                   FontFamily="Segoe WP Black"
-                   FontSize="32"
-                   Text="{Binding Module.Name}"
-                   TextWrapping="NoWrap" />
+    <Grid Margin="12" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-        <ItemsControl MaxHeight="155"
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Top">
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       FontSize="24"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="{Binding Module.Name}" />
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       FontSize="20"
+                       Foreground="Gray"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Text="{Binding Module.DeviceType}" />
+        </StackPanel>
+
+        <Image Grid.Row="1"
+               Grid.Column="0"
+               Width="70"
+               Height="70"
+               Margin="0,36,0,0"
+               HorizontalAlignment="Left"
+               Source="{Binding Module.IconUrl,
+                                Converter={StaticResource ModuleIconUrlConverter},
+                                Mode=OneWay}"
+               Stretch="UniformToFill" />
+
+        <ItemsControl Grid.Row="2"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="3"
+                      MaxHeight="155"
                       Margin="0, 6, 0, 12"
                       ItemsSource="{Binding Module.Properties}">
             <ItemsControl.ItemTemplate>
@@ -34,5 +70,5 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-    </StackPanel>
+    </Grid>
 </UserControl>
