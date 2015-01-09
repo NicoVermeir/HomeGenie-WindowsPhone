@@ -6,6 +6,7 @@ using Windows.UI.Popups;
 using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Threading;
+using HGUniversal.Messages;
 using HGUniversal.View;
 using HGUniversal.ViewModel.Controls;
 using HomeGenie.SDK;
@@ -20,11 +21,9 @@ namespace HGUniversal.ViewModel
         private readonly IHomeGenieApi _api;
         private readonly INavigationService _navigationService;
 
-        private Group _currentgroup;
         private readonly ISettingsService _settingsService;
 
         public ObservableCollection<Group> Items { get; private set; }
-        public ObservableCollection<IModuleVM> ModulesForCurrentGroup { get; set; }
 
         private RelayCommand<Group> _groupSelectedCommand;
 
@@ -34,49 +33,9 @@ namespace HGUniversal.ViewModel
             {
                 return _groupSelectedCommand ?? (_groupSelectedCommand = new RelayCommand<Group>(group =>
                 {
-                    CurrentGroup = group;
                     _navigationService.Navigate<GroupPage>();
+                    MessengerInstance.Send(new GroupSelectedMessage(group));
                 }));
-            }
-        }
-
-        private RelayCommand<IModuleVM> _moduleSelectedCommand;
-        private IModuleVM _currentModule;
-
-        public RelayCommand<IModuleVM> ModuleSelectedCommand
-        {
-            get
-            {
-                return _moduleSelectedCommand ?? (_moduleSelectedCommand = new RelayCommand<IModuleVM>(mod =>
-                {
-                    CurrentModule = mod;
-                    _navigationService.Navigate<ModulePage>();
-                }));
-            }
-        }
-
-        public IModuleVM CurrentModule
-        {
-            get { return _currentModule; }
-            set { Set(() => CurrentModule, ref _currentModule, value); }
-        }
-
-        public Group CurrentGroup
-        {
-            get
-            {
-                return _currentgroup;
-            }
-            set
-            {
-                if (Set(() => CurrentGroup, ref _currentgroup, value))
-                {
-                    ModulesForCurrentGroup.Clear();
-                    foreach (Module module in CurrentGroup.Modules)
-                    {
-                        InstantiateModule(module);
-                    }
-                }
             }
         }
 
@@ -89,12 +48,6 @@ namespace HGUniversal.ViewModel
             _settingsService = settingsService;
 
             Items = new ObservableCollection<Group>();
-            ModulesForCurrentGroup = new ObservableCollection<IModuleVM>();
-
-            if (IsInDesignModeStatic)
-            {
-                SetDesignTimeData();
-            }
 
             StateContainer.ConnectionUpdated += async (sender, args) => await LoadData();
             Task.Run(() => LoadData());
@@ -147,8 +100,6 @@ namespace HGUniversal.ViewModel
 
         internal async Task LoadGroupModules()
         {
-            ModulesForCurrentGroup.Clear();
-
             foreach (Group item in Items)
             {
                 if (item.Modules == null)
@@ -166,33 +117,6 @@ namespace HGUniversal.ViewModel
                     item1.NumberOfLights = CountGroupLights(item1);
                     item1.NumberOfSwitches = CountGroupSwitches(item1);
                 });
-
-            }
-
-        }
-
-        private void InstantiateModule(Module module)
-        {
-            switch (module.DeviceType)
-            {
-                case Module.DeviceTypes.Dimmer:
-                    ModulesForCurrentGroup.Add(new DimmerViewModel { Module = module, Group = CurrentGroup });
-                    break;
-                case Module.DeviceTypes.Program:
-                    ModulesForCurrentGroup.Add(new ProgramViewModel { Module = module, Group = CurrentGroup });
-                    break;
-                case Module.DeviceTypes.Switch:
-                    ModulesForCurrentGroup.Add(new SwitchViewModel { Module = module, Group = CurrentGroup });
-                    break;
-                case Module.DeviceTypes.Sensor:
-                    ModulesForCurrentGroup.Add(new SensorViewModel { Module = module, Group = CurrentGroup });
-                    break;
-                case Module.DeviceTypes.Temperature:
-                    ModulesForCurrentGroup.Add(new TemperatureViewModel { Module = module, Group = CurrentGroup });
-                    break;
-                case Module.DeviceTypes.Shutter:
-                    ModulesForCurrentGroup.Add(new ShutterViewModel { Module = module, Group = CurrentGroup });
-                    break;
             }
         }
 
@@ -280,20 +204,6 @@ namespace HGUniversal.ViewModel
             return currentGroup.Modules.Count(
                 module =>
                     module.DeviceType == Module.DeviceTypes.Switch);
-        }
-
-        private void SetDesignTimeData()
-        {
-            CurrentGroup = new Group();
-            CurrentGroup.Name = "Design group";
-
-            Module dimmer = new Module { Name = "Staanlamp", DeviceType = Module.DeviceTypes.Dimmer };
-            Module dimmer2 = new Module { Name = "Staanlamp 2", DeviceType = Module.DeviceTypes.Dimmer };
-            Module dimmer3 = new Module { Name = "Staanlamp 3", DeviceType = Module.DeviceTypes.Dimmer };
-
-            InstantiateModule(dimmer);
-            InstantiateModule(dimmer2);
-            InstantiateModule(dimmer3);
         }
     }
 }

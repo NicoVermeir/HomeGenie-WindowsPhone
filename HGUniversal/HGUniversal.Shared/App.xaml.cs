@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Linq;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using GalaSoft.MvvmLight.Messaging;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 using GalaSoft.MvvmLight.Threading;
+using HGUniversal.Messages;
 using HGUniversal.View;
+using HomeGenie.SDK.Objects;
 
 namespace HGUniversal
 {
@@ -90,6 +94,18 @@ namespace HGUniversal
                 if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
                 {
                     throw new Exception("Failed to create initial page");
+                }
+            }
+
+            //launched from secondary tile
+            if (!string.IsNullOrWhiteSpace(e.Arguments))
+            {
+                switch (e.Arguments)
+                {
+                    case "group":
+                        rootFrame.Navigate(typeof(GroupPage));
+                        Messenger.Default.Send(new GroupSelectedMessage(new Group { Name = e.TileId }, true));
+                        break;
                 }
             }
 

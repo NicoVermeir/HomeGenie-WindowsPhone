@@ -5,7 +5,6 @@ using GalaSoft.MvvmLight.Ioc;
 using HGUniversal.DesignTimeData;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Contracts;
-using HomeGenie.SDK.Http;
 using HomeGenie.SDK.Services;
 using Microsoft.Practices.ServiceLocation;
 
@@ -41,6 +40,7 @@ namespace HGUniversal.ViewModel
 
             SimpleIoc.Default.Register<ConnectionViewModel>(true);
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<GroupViewModel>();
         }
 
         public MainViewModel Main
@@ -48,6 +48,14 @@ namespace HGUniversal.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+
+        public GroupViewModel Group
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<GroupViewModel>();
             }
         }
 

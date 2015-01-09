@@ -33,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TextToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\HomeGenieDesignTimeApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\SettingsDesignTimeService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\GroupSelectedMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Connection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Event.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StateContainer.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\IProgramVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\ProgramViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Controls\TemperatureViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\GroupViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\HomeGenieViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
@@ -64,5 +66,6 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\luminance.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\plug.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\temperature.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo.png" />
   </ItemGroup>
 </Project>

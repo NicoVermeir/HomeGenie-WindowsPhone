@@ -50,13 +50,16 @@
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Pin" Label="pin" />
+            <AppBarButton Command="{Binding PinGroupCommand,
+                                            Mode=OneTime}"
+                          Icon="Pin"
+                          Label="pin" />
             <AppBarButton Icon="Refresh" Label="refresh" />
         </CommandBar>
     </Page.BottomAppBar>
 
     <Page.DataContext>
-        <Binding Path="Main" Source="{StaticResource Locator}" />
+        <Binding Path="Group" Source="{StaticResource Locator}" />
     </Page.DataContext>
 
     <Grid x:Name="LayoutRoot">
@@ -78,7 +81,7 @@
                        CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"
                        FontFamily="Global User Interface"
                        Style="{ThemeResource HeaderTextBlockStyle}"
-                       Text="{Binding CurrentGroup.Name}" />
+                       Text="{Binding SelectedGroup.Name}" />
         </StackPanel>
         <GridView Grid.Row="1"
                   IsItemClickEnabled="True"
