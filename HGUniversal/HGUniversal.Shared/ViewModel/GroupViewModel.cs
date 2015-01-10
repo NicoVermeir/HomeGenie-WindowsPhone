@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.Data.Xml.Dom;
 using Windows.Foundation;
+using Windows.UI.Notifications;
 using Windows.UI.Popups;
 using Windows.UI.StartScreen;
 using Cimbalino.Toolkit.Services;
@@ -160,11 +163,32 @@ namespace HGUniversal.ViewModel
             else
             {
                 SecondaryTile secondaryTile = new SecondaryTile(SelectedGroup.Name, SelectedGroup.Name, SelectedGroup.Name, new Uri("ms-appx:///Assets/Logo.png"), TileSize.Default) { Arguments = "group", ForegroundText = ForegroundText.Light, TileOptions = TileOptions.ShowNameOnLogo };
-
                 await secondaryTile.RequestCreateForSelectionAsync(new Rect(), Placement.Above);
+
+                UpdateTile(SelectedGroup.Name, SelectedGroup.GroupTemperature.ToString(), SelectedGroup.GroupLuminance.ToString());
             }
 
             //ToggleAppBarButton(!isPinned);
+        }
+
+        private void UpdateTile(string tileId, string temp, string luminance)
+        {
+            var updater = TileUpdateManager.CreateTileUpdaterForSecondaryTile(tileId);
+            updater.Clear();
+
+            XmlDocument tileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare150x150PeekImageAndText02);
+
+            string text = string.Format("Temp: {0}", temp);
+            tileXml.GetElementsByTagName("image")[0].Attributes.First(a => a.NodeName == "src").NodeValue = "ms-appx:///Assets/Logo.png";
+            
+            if (!string.IsNullOrWhiteSpace(temp))
+                tileXml.GetElementsByTagName("text")[0].InnerText = string.Format("{0}°", temp);
+
+            if (!string.IsNullOrWhiteSpace(luminance))
+                tileXml.GetElementsByTagName("text")[1].InnerText = string.Format("luminance {0}", luminance);
+
+            // Create a new tile notification. 
+            updater.Update(new TileNotification(tileXml));
         }
     }
 }
