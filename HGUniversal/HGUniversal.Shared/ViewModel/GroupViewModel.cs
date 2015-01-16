@@ -169,6 +169,9 @@ namespace HGUniversal.ViewModel
             }
 
             //ToggleAppBarButton(!isPinned);
+
+            //register backgroundtask
+            await RegisterTask();
         }
 
         private void UpdateTile(string tileId, string temp, string luminance)

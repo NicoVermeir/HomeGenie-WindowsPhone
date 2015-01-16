@@ -35,6 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\HomeGenie.SDK.Runtime\HomeGenie.SDK.Runtime.csproj">
+      <Project>{a0e0bb21-5673-4721-9244-412b7db366b8}</Project>
+      <Name>HomeGenie.SDK.Runtime</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />

@@ -25,6 +25,14 @@
         </m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
       </m3:VisualElements>
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="HGUniversal.BackgroundTasks.TileUpdateTask">
+          <BackgroundTasks>
+            <Task Type="systemEvent" />
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>
