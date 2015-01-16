@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Data.Xml.Dom;
@@ -67,6 +66,7 @@ namespace HGUniversal.ViewModel
                 if (Set(() => SelectedGroup, ref _selectedGroup, value))
                 {
                     InstantiateModules();
+                    ToggleAppBarButton(!SecondaryTile.Exists(SelectedGroup.Name.ToString()));
                 }
             }
         }
@@ -168,7 +168,7 @@ namespace HGUniversal.ViewModel
                 UpdateTile(SelectedGroup.Name, SelectedGroup.GroupTemperature.ToString(), SelectedGroup.GroupLuminance.ToString());
             }
 
-            //ToggleAppBarButton(!isPinned);
+            ToggleAppBarButton(!isPinned);
 
             //register backgroundtask
             await RegisterTask();

@@ -52,8 +52,8 @@
         <CommandBar>
             <AppBarButton Command="{Binding PinGroupCommand,
                                             Mode=OneTime}"
-                          Icon="Pin"
-                          Label="pin" />
+                          Icon="{Binding PinUnpinIcon}"
+                          Label="{Binding PinUnpinText}" />
             <AppBarButton Icon="Refresh" Label="refresh" />
         </CommandBar>
     </Page.BottomAppBar>

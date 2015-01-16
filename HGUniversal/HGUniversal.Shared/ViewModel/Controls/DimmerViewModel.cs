@@ -102,11 +102,14 @@ namespace HGUniversal.ViewModel.Controls
             if (IsSwitchedOn)
             {
                 _api.SetModuleOn(Module);
-                SetSlider();
+                _sliderValue = 0.0;
+                RaisePropertyChanged(() => SliderValue);
             }
             else
             {
                 _api.SetModuleOff(Module);
+                _sliderValue = 0.0;
+                RaisePropertyChanged(() => SliderValue);
             }
         }
 
@@ -138,13 +141,18 @@ namespace HGUniversal.ViewModel.Controls
 
         private void SetSlider()
         {
-            ModuleParameter levelProperty = Module.Properties.FirstOrDefault(prop => prop.Name == "Status.Level");
+            ModuleParameter levelProperty = Module.Properties.FirstOrDefault(prop => 
+                prop.Name == "Status.Level");
             if (levelProperty == null) return;
 
             double value;
 
             if (double.TryParse(levelProperty.Value, out value))
-                SliderValue = value * 100;
+            {
+                if(value > 0)
+                    _sliderValue = value * 100;
+                RaisePropertyChanged(() => SliderValue);
+            }
 
             //toggleswitch
             IsSwitchedOn = value > 0;

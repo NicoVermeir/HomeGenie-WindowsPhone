@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
+using Windows.UI.Xaml.Controls;
 using GalaSoft.MvvmLight;
 using HGUniversal.BackgroundTasks;
 
@@ -10,6 +11,8 @@ namespace HGUniversal.ViewModel
     public class HomeGenieViewModelBase : ViewModelBase
     {
         private bool _isDataLoading;
+        private string _pinUnpinText;
+        private SymbolIcon _pinUnpinIcon;
 
         public bool IsDataLoading
         {
@@ -19,6 +22,32 @@ namespace HGUniversal.ViewModel
                 if (_isDataLoading == value) return;
                 _isDataLoading = value;
                 RaisePropertyChanged();
+            }
+        }
+
+        public string PinUnpinText
+        {
+            get { return _pinUnpinText; }
+            set { Set(() => PinUnpinText, ref _pinUnpinText, value); }
+        }
+
+        public SymbolIcon PinUnpinIcon
+        {
+            get { return _pinUnpinIcon; }
+            set { Set(() => PinUnpinIcon, ref _pinUnpinIcon, value); }
+        }
+
+        protected void ToggleAppBarButton(bool showPinButton)
+        {
+            if (showPinButton)
+            {
+                PinUnpinText = "pin";
+                PinUnpinIcon = new SymbolIcon(Symbol.Pin);
+            }
+            else
+            {
+                PinUnpinText = "unpin";
+                PinUnpinIcon = new SymbolIcon(Symbol.UnPin);
             }
         }
 
