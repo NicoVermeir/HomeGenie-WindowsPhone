@@ -65,7 +65,9 @@
                                 DataContext="{Binding Converter={StaticResource PropertyConverter}}"
                                 Visibility="{Binding Converter={StaticResource PropertyAddinVisibility}}">
                         <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding DisplayName}" />
-                        <TextBlock Style="{StaticResource BaseTextBlockStyle}" Text="{Binding DisplayValue}" />
+                        <TextBlock Margin="6,0,0,0"
+                                   Style="{StaticResource BaseTextBlockStyle}"
+                                   Text="{Binding DisplayValue}" />
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

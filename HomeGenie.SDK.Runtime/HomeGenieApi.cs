@@ -33,25 +33,25 @@ namespace HomeGenie.SDK
         public async Task SetModuleOn(Module module)
         {
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.On//" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
-            await _httpService.Get<bool>(BuildUrl(url));
+            await _httpService.Get<bool?>(BuildUrl(url));
         }
 
         public async Task SetModuleOff(Module module)
         {
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Off//" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
-            await _httpService.Get<bool>(BuildUrl(url));
+            await _httpService.Get<bool?>(BuildUrl(url));
         }
 
         public async Task SetLevel(Module module, double value)
         {
             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.Level/" + Math.Round(value * 100).ToString(CultureInfo.InvariantCulture) + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
-            await _httpService.Get<bool>(BuildUrl(url));
+            await _httpService.Get<bool?>(BuildUrl(url));
         }
 
         public async Task RunProgram(Module module, Group group)
         {
             string url = "/api/HomeAutomation.HomeGenie/Automation/Programs.Run/" + module.Address + "/" + group.Name + "/" + DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture);
-            await _httpService.Get<bool>(BuildUrl(url));
+            await _httpService.Get<bool?>(BuildUrl(url));
         }
 
         public async Task SetLightColor(Module module, HSBColor color)

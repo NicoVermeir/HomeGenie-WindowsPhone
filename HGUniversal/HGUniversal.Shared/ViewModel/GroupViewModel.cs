@@ -30,7 +30,7 @@ namespace HGUniversal.ViewModel
 
         public ICommand PinGroupCommand
         {
-            get { return _pinGroupCommand ?? (_pinGroupCommand = new RelayCommand(() => PinItemTile())); }
+            get { return _pinGroupCommand ?? (_pinGroupCommand = new RelayCommand(() => PinGroupTile())); }
         }
 
         private RelayCommand<IModuleVM> _moduleSelectedCommand;
@@ -41,7 +41,15 @@ namespace HGUniversal.ViewModel
                 return _moduleSelectedCommand ?? (_moduleSelectedCommand = new RelayCommand<IModuleVM>(mod =>
                 {
                     CurrentModule = mod;
-                    _navigationService.Navigate<ModulePage>();
+                    if (CurrentModule.Module.DeviceType == Module.DeviceTypes.Program)
+                    {
+                        PopToast(string.Format("Executing {0}", CurrentModule.Module.Name));
+                        _api.RunProgram(CurrentModule.Module, SelectedGroup);
+                    }
+                    else
+                    {
+                        _navigationService.Navigate<ModulePage>();                        
+                    }
                 }));
             }
         }
@@ -149,7 +157,7 @@ namespace HGUniversal.ViewModel
             InstantiateModule(dimmer3);
         }
 
-        private async Task PinItemTile()
+        private async Task PinGroupTile()
         {
             bool isPinned = true;
 
@@ -181,11 +189,10 @@ namespace HGUniversal.ViewModel
 
             XmlDocument tileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare150x150PeekImageAndText02);
 
-            string text = string.Format("Temp: {0}", temp);
             tileXml.GetElementsByTagName("image")[0].Attributes.First(a => a.NodeName == "src").NodeValue = "ms-appx:///Assets/Logo.png";
             
             if (!string.IsNullOrWhiteSpace(temp))
-                tileXml.GetElementsByTagName("text")[0].InnerText = string.Format("{0}°", temp);
+                tileXml.GetElementsByTagName("text")[0].InnerText = string.Format("Temp {0}°", temp);
 
             if (!string.IsNullOrWhiteSpace(luminance))
                 tileXml.GetElementsByTagName("text")[1].InnerText = string.Format("luminance {0}", luminance);

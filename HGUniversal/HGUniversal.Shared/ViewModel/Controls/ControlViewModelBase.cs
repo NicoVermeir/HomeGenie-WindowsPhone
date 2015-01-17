@@ -18,7 +18,7 @@ namespace HGUniversal.ViewModel.Controls
 
         protected ControlViewModelBase()
         {
-            Callback = args=> Messenger.Default.Send(new RefreshGroupsMessage());
+            Callback = args => Messenger.Default.Send(new RefreshGroupsMessage());
             Messenger.Default.Register<Event>(this, OnEventReceived);
         }
 
@@ -30,7 +30,7 @@ namespace HGUniversal.ViewModel.Controls
             var moduleProp = Module.Properties.FirstOrDefault(props => props.Name == eventObject.Property);
             if (moduleProp != null)
             {
-                SetProperty (moduleProp, eventObject.Value, eventObject.Timestamp);
+                SetProperty(moduleProp, eventObject.Value, eventObject.Timestamp);
             }
         }
 
@@ -54,12 +54,14 @@ namespace HGUniversal.ViewModel.Controls
 
             if (prop == null) return;
 
+            if (prop.UpdateTime.AddSeconds(10) >= timestamp || prop.Value == value) return;
+
             prop.LastValue = prop.Value;
             prop.LastUpdateTime = prop.UpdateTime;
             prop.Value = value;
             prop.UpdateTime = timestamp;
 
             DispatcherHelper.CheckBeginInvokeOnUI(SetValues);
-        } 
+        }
     }
 }

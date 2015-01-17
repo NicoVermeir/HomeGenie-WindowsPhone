@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
+using Windows.Data.Xml.Dom;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml.Controls;
 using GalaSoft.MvvmLight;
 using HGUniversal.BackgroundTasks;
@@ -71,6 +73,16 @@ namespace HGUniversal.ViewModel
 
             taskBuilder.TaskEntryPoint = typeof(TileUpdateTask).FullName;
             taskBuilder.Register();
+        }
+
+        protected void PopToast(string message)
+        {
+            const ToastTemplateType toastTemplate = ToastTemplateType.ToastText01;
+            XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(toastTemplate);
+            XmlNodeList toastTextElements = toastXml.GetElementsByTagName("text");
+            toastTextElements[0].AppendChild(toastXml.CreateTextNode(message));
+            ToastNotification toast = new ToastNotification(toastXml);
+            ToastNotificationManager.CreateToastNotifier().Show(toast);
         }
     }
 }

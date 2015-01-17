@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows.Input;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
@@ -102,7 +103,7 @@ namespace HGUniversal.ViewModel.Controls
             if (IsSwitchedOn)
             {
                 _api.SetModuleOn(Module);
-                _sliderValue = 0.0;
+                SetSlider(true);
                 RaisePropertyChanged(() => SliderValue);
             }
             else
@@ -139,10 +140,25 @@ namespace HGUniversal.ViewModel.Controls
             _isReady = true;
         }
 
-        private void SetSlider()
+        private void SetSlider(bool setToMemoryValue = false)
         {
-            ModuleParameter levelProperty = Module.Properties.FirstOrDefault(prop => 
+            ModuleParameter levelProperty;
+
+            if (setToMemoryValue)
+            {
+                levelProperty = Module.Properties.FirstOrDefault(prop =>
+                prop.Name == "Status.MemoryLevel");
+
+                var a = Module.Properties.FirstOrDefault(prop =>
                 prop.Name == "Status.Level");
+                SetProperty(a, levelProperty.Value, DateTime.Now);
+            }
+            else
+            {
+                levelProperty = Module.Properties.FirstOrDefault(prop => 
+                prop.Name == "Status.Level");
+            }
+            
             if (levelProperty == null) return;
 
             double value;
