@@ -104,12 +104,12 @@ namespace HomeGenie.SDK.Utility
             string[] colors = value.Split(',');
             if (colors.Length >= 3)
             {
-                double h = 0;
-                double s = 0;
-                double b = 0;
-                if (double.TryParse(colors[0], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out h) &&
-                    double.TryParse(colors[1], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out s) &&
-                    double.TryParse(colors[2], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out b))
+                double h;
+                double s;
+                double b;
+                if (double.TryParse(colors[0].Trim(), NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out h) &&
+                    double.TryParse(colors[1].Trim(), NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out s) &&
+                    double.TryParse(colors[2].Trim(), NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out b))
                 {
                     return new HSBColor {A = 255, H = h*360d, S = s, B = b};
                 }

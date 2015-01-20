@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="6254spikie.HomeGenie" Publisher="CN=EE85651C-874F-411C-B960-7E18C16FDA59" Version="0.0.1.0" />
+  <Identity Name="6254spikie.HomeGenie" Publisher="CN=EE85651C-874F-411C-B960-7E18C16FDA59" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="a0656bc3-f665-437c-b038-17453ba4fe61" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>HomeGenie</DisplayName>
