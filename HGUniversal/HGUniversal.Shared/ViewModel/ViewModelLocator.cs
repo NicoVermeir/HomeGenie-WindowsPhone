@@ -1,4 +1,3 @@
-using Windows.UI.Xaml;
 using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
@@ -32,7 +31,12 @@ namespace HGUniversal.ViewModel
             else
             {
                 // Create run time view services and models
+
+#if DUMMY
+                SimpleIoc.Default.Register<IHomeGenieApi, DummyApi>();
+#else
                 SimpleIoc.Default.Register<IHomeGenieApi, HomeGenieApi>();
+#endif
                 SimpleIoc.Default.Register<ISettingsService, SettingsService>();
             }
 
@@ -67,18 +71,6 @@ namespace HGUniversal.ViewModel
             }
         }
 
-        public double Width
-        {
-            get
-            {
-#if WINDOWS_PHONE_APP
-                return Window.Current.Bounds.Width - 50;
-#else
-                return 200;
-#endif
-            }
-        }
-        
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

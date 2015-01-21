@@ -112,6 +112,7 @@ namespace HGUniversal.ViewModel.Controls
                 _sliderValue = 0.0;
                 RaisePropertyChanged(() => SliderValue);
             }
+            RaisePropertyChanged(() => Module);
         }
 
         private void UpdateLevel()
@@ -148,6 +149,10 @@ namespace HGUniversal.ViewModel.Controls
             {
                 levelProperty = Module.Properties.FirstOrDefault(prop =>
                 prop.Name == "Status.MemoryLevel");
+
+                //occurs when the module is not a dimmermodule
+                if (levelProperty == null)
+                    return;
 
                 var a = Module.Properties.FirstOrDefault(prop =>
                 prop.Name == "Status.Level");

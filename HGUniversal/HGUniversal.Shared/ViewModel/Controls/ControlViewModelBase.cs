@@ -4,8 +4,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using HGUniversal.Model;
-using HomeGenie.Common;
-using HomeGenie.SDK.Http;
 using HomeGenie.SDK.Objects;
 
 namespace HGUniversal.ViewModel.Controls
@@ -13,12 +11,10 @@ namespace HGUniversal.ViewModel.Controls
     public abstract class ControlViewModelBase : ObservableObject, IModuleVM
     {
         private Module _module;
-        internal Action<WebRequestCompletedArgs> Callback;
         public Group Group { get; set; }
 
         protected ControlViewModelBase()
         {
-            Callback = args => Messenger.Default.Send(new RefreshGroupsMessage());
             Messenger.Default.Register<Event>(this, OnEventReceived);
         }
 

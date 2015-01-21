@@ -40,7 +40,9 @@ namespace HomeGenie.SDK.Services
 
         private async Task<string> CallClient(string url)
         {
-            string fullUrl = string.Format("http://{0}{1}", _settingsService.GetValue<string>(Constants.ServerAddressSetting), url);
+            string fullUrl = string.Format("http://{0}:{1}{2}",
+                _settingsService.GetValue<string>(Constants.ServerAddressSetting),
+                _settingsService.GetValue<string>(Constants.PortSetting), url);
 
             using (_client = new HttpClient())
             {

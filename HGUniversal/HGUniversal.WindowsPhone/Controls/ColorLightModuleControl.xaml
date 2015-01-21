@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="using:HGUniversal.Converters"
              DataContext="{Binding}"
              d:DesignHeight="480"
              d:DesignWidth="480"
              mc:Ignorable="d">
 
-    <Grid>
+    <UserControl.Resources>
+        <converters:ModuleIconUrlConverter x:Key="ModuleIconUrlConverter" />
+    </UserControl.Resources>
+
+    <Grid Margin="12" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -20,33 +25,45 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   Style="{StaticResource TitleTextBlockStyle}"
-                   Text="{Binding Module.Name}" />
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Top">
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       FontSize="24"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="{Binding Module.Name}" />
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       FontSize="20"
+                       Foreground="Gray"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Text="{Binding Module.DeviceType}" />
+        </StackPanel>
 
-        <ToggleSwitch Grid.Row="0"
+        <Image Grid.Row="1"
+               Grid.Column="0"
+               Width="70"
+               Height="70"
+               Margin="0,36,0,0"
+               HorizontalAlignment="Left"
+               Source="{Binding Module.IconUrl,
+                                Converter={StaticResource ModuleIconUrlConverter},
+                                Mode=OneWay}"
+               Stretch="UniformToFill" />
+
+        <ToggleSwitch Grid.Row="1"
                       Grid.Column="2"
-                      VerticalAlignment="Top"
+                      Margin="0,36,0,0"
                       IsOn="{Binding IsSwitchedOn,
                                      Mode=TwoWay}" />
 
-
-        <Slider Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                VerticalAlignment="Top"
-                Maximum="100"
-                Minimum="0"
-                Value="{Binding SliderValue,
-                                Mode=TwoWay}" />
-
         <Button Grid.Row="2"
                 Grid.Column="0"
+                Margin="0, 36, 0, 0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
+                Content="Select color"
                 Background="{Binding LightColor}" Command="{Binding SelectColorCommand}" />
     </Grid>
 </UserControl>

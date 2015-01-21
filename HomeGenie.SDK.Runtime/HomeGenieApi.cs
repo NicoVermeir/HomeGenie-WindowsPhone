@@ -56,11 +56,11 @@ namespace HomeGenie.SDK
 
         public async Task SetLightColor(Module module, HSBColor color)
         {
-             string url = "/api/" + module.Domain + "/" + module.Address + "/Control.ColorHsb/" + 
-                 (color.H / 360d).ToString(CultureInfo.InvariantCulture) + ',' + 
-                 (color.S).ToString(CultureInfo.InvariantCulture) + ',' + 
-                 (color.B).ToString(CultureInfo.InvariantCulture) + "/" + DateTime.Now.Ticks.ToString();
-             await _httpService.Get<bool>(BuildUrl(url));
+            string url = "/api/" + module.Domain + "/" + module.Address + "/Control.ColorHsb/" +
+                (color.H / 360d).ToString(CultureInfo.InvariantCulture) + ',' +
+                (color.S).ToString(CultureInfo.InvariantCulture) + ',' +
+                (color.B).ToString(CultureInfo.InvariantCulture) + "/" + DateTime.Now.Ticks.ToString();
+            await _httpService.Get<bool>(BuildUrl(url));
         }
 
         private string BuildUrl(string apiurl)

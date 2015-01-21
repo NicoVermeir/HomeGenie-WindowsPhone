@@ -33,6 +33,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dummy|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Dummy\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;RUNTIME</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
     <TargetPlatform Include="Windows, Version=8.1" />
@@ -42,11 +51,11 @@
     <Compile Include="Contracts\IHttpService.cs" />
     <Compile Include="Contracts\ISettingsService.cs" />
     <Compile Include="Contracts\IStorageService.cs" />
+    <Compile Include="DummyApi.cs" />
+    <Compile Include="DummyObjects\Groups.cs" />
+    <Compile Include="DummyObjects\Modules.cs" />
     <Compile Include="HomeGenieApi.cs" />
-    <Compile Include="Http\HttpRequestQueue.cs" />
     <Compile Include="Http\LoadDataError.cs" />
-    <Compile Include="Http\QueueRequest.cs" />
-    <Compile Include="Http\WebRequestCompletedArgs.cs" />
     <Compile Include="IHomeGenieApi.cs" />
     <Compile Include="Objects\Data.cs" />
     <Compile Include="Objects\Error\HomeGenieException.cs" />

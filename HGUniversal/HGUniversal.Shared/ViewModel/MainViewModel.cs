@@ -67,7 +67,9 @@ namespace HGUniversal.ViewModel
             }
             else
             {
+#if !DUMMY
                 StateContainer.Connect();
+#endif
                 await LoadGroups();
                 await LoadGroupModules();
             }
@@ -78,7 +80,7 @@ namespace HGUniversal.ViewModel
             try
             {
                 IList<Group> groups = await _api.LoadGroups();
-
+                await Task.Delay(300);
                 DispatcherHelper.CheckBeginInvokeOnUI(() =>
                 {
                     Items.Clear();
@@ -100,7 +102,8 @@ namespace HGUniversal.ViewModel
 
         internal async Task LoadGroupModules()
         {
-            foreach (Group item in Items)
+            //ToList because http://stackoverflow.com/questions/604831/collection-was-modified-enumeration-operation-may-not-execute
+            foreach (Group item in Items.ToList())
             {
                 if (item.Modules == null)
                     item.Modules = new List<Module>();

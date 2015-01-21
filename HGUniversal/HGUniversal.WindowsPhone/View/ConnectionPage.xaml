@@ -34,35 +34,26 @@
                        Style="{StaticResource SubheaderTextBlockStyle}"
                        Text="ADD CONNECTION" />
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Vertical">
-            <Grid Margin="12,12,12,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0"
-                           Style="{StaticResource BodyTextBlockStyle}"
-                           Text="Server" />
-                <TextBox Grid.Row="1" Text="{Binding Connection.ServerAddress, Mode=TwoWay}" />
-                <TextBlock Grid.Row="2"
-                           Style="{StaticResource BodyTextBlockStyle}"
-                           Text="Username" />
-                <TextBox Grid.Row="3" Text="{Binding Connection.Username, Mode=TwoWay}" />
-                <TextBlock Grid.Row="4"
-                           Style="{StaticResource BodyTextBlockStyle}"
-                           Text="Password" />
-                <PasswordBox Grid.Row="5" Password="{Binding Connection.Password, Mode=TwoWay}" />
-                <CheckBox Grid.Row="6"
-                          Content="Enable Notifications"
-                          IsChecked="{Binding Connection.NotificationsEnabled, Mode=TwoWay}" />
-            </Grid>
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="12,12,0,0">
+            <TextBlock
+            	Style="{StaticResource BodyTextBlockStyle}"
+            	Text="Server" Height="25" Margin="0,0,24,0" />
+            <TextBox Text="{Binding Connection.ServerAddress, Mode=TwoWay}" Margin="0,0,12,0" FontFamily="Global User Interface" />
+            <TextBlock
+            	Style="{StaticResource BodyTextBlockStyle}"
+            	Text="Port" Height="25" Margin="0,12,24,0" />
+            <TextBox Text="{Binding Connection.Port, Mode=TwoWay}" Margin="0,0,12,0" />
+            <TextBlock
+            	Style="{StaticResource BodyTextBlockStyle}"
+            	Text="Username" Height="25" Margin="0,12,24,0" />
+            <TextBox Text="{Binding Connection.Username, Mode=TwoWay}" Margin="0,0,12,0" />
+            <TextBlock
+            	Style="{StaticResource BodyTextBlockStyle}"
+            	Text="Password" Height="25" Margin="0,12,24,0" />
+            <PasswordBox Password="{Binding Connection.Password, Mode=TwoWay}" Margin="0,0,12,0" />
+            <CheckBox
+            	Content="Enable Notifications"
+            	IsChecked="{Binding Connection.NotificationsEnabled, Mode=TwoWay}" />
         </StackPanel>
     </Grid>
 </Page>

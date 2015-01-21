@@ -22,7 +22,7 @@ namespace HGUniversal.ViewModel
         public Connection Connection
         {
             get { return _connection; }
-            set { Set(() => Connection, ref _connection, value); }
+            set { Set(ref _connection, value); }
         }
 
         public ConnectionViewModel(ISettingsService settingsService, INavigationService navigationService)
@@ -38,6 +38,9 @@ namespace HGUniversal.ViewModel
             Connection.ServerAddress = !_settingsService.DoesSettingExist(Constants.ServerAddressSetting) ?
                 "127.0.0.1" : _settingsService.GetValue<string>(Constants.ServerAddressSetting);
 
+            Connection.Port = !_settingsService.DoesSettingExist(Constants.PortSetting) ?
+                "80" : _settingsService.GetValue<string>(Constants.ServerAddressSetting);
+
             Connection.Username = !_settingsService.DoesSettingExist(Constants.UsernameSetting) ?
                 "admin" : _settingsService.GetValue<string>(Constants.UsernameSetting);
 
@@ -52,6 +55,7 @@ namespace HGUniversal.ViewModel
         private void SaveSettings()
         {
             _settingsService.SetValue(Constants.ServerAddressSetting, Connection.ServerAddress);
+            _settingsService.SetValue(Constants.PortSetting, Connection.Port);
             _settingsService.SetValue(Constants.UsernameSetting, Connection.Username);
             _settingsService.SetValue(Constants.PasswordSetting, Connection.Password);
             _settingsService.SetValue(Constants.NotificationsEnabledSetting, Connection.NotificationsEnabled);

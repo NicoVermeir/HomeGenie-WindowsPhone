@@ -31,7 +31,7 @@ namespace HGUniversal.ViewModel.Controls
             get { return _isSwitchedOn; }
             set
             {
-                if (Set(() => IsSwitchedOn, ref _isSwitchedOn, value))
+                if (Set(ref _isSwitchedOn, value))
                 {
                     ToggleLight();
                 }
@@ -47,6 +47,8 @@ namespace HGUniversal.ViewModel.Controls
             {
                 _api.SetModuleOff(Module);
             }
+
+            RaisePropertyChanged("Module.IconUrl");
         }
 
         internal override void SetValues()

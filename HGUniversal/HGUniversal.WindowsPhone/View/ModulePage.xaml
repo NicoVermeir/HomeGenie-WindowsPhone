@@ -16,6 +16,10 @@
             <controls:DimmerModuleControl />
         </DataTemplate>
 
+        <DataTemplate x:Key="ColorlightTemplate">
+            <controls:ColorLightModuleControl />
+        </DataTemplate>
+
         <DataTemplate x:Key="SwitchTemplate">
             <controls:SwitchModuleControl />
         </DataTemplate>
@@ -28,7 +32,23 @@
             <controls:SensorControl />
         </DataTemplate>
 
+        <DataTemplate x:Key="TemperatureTemplate">
+            <controls:TemperatureModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ShutterTemplate">
+            <controls:ShutterModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="WidgetTemplate">
+            <controls:WidgetControl />
+        </DataTemplate>
+
         <common:ModuleTemplateSelector x:Key="ModuleTemplateSelector"
+                                       WidgetTemplate="{StaticResource WidgetTemplate}"
+                                       ShutterTemplate="{StaticResource ShutterTemplate}"
+                                       TemperatureTemplate="{StaticResource TemperatureTemplate}"
+                                       ColorLightTemplate="{StaticResource ColorlightTemplate}"
                                        DimmerTemplate="{StaticResource DimmerTemplate}"
                                        ProgramTemplate="{StaticResource ProgramTemplate}"
                                        SensorTemplate="{StaticResource SensorTemplate}"

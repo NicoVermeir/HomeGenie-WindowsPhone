@@ -15,8 +15,9 @@ namespace HGUniversal.Converters
 
             var settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
 
-            return string.Format("http://{0}{1}",
+            return string.Format("http://{0}:{1}{2}",
                 settingsService.GetValue<string>(Constants.ServerAddressSetting),
+                settingsService.GetValue<string>(Constants.PortSetting),
                 value.ToString());
         }
 

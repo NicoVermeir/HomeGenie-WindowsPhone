@@ -36,9 +36,12 @@ namespace HGUniversal
             if (_settingsService == null)
                 _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
 
-            //var serverCredential = new NetworkCredential(user, pass);
+            string url = string.Format("http://{0}:{1}/api/HomeAutomation.HomeGenie/Logging/RealTime.EventStream/", 
+                _settingsService.GetValue<string>(Constants.ServerAddressSetting),
+                _settingsService.GetValue<string>(Constants.PortSetting));
+
             _cancellationToken = new CancellationTokenSource();
-            _eventClient = new EventSource(new Uri("http://" + _settingsService.GetValue<string>(Constants.ServerAddressSetting) + "/api/HomeAutomation.HomeGenie/Logging/RealTime.EventStream/"), 10000);
+            _eventClient = new EventSource(new Uri(url), 10000);
             _eventClient.StateChanged += eventClient_StateChanged;
             _eventClient.EventReceived += eventClient_EventReceived;
 
