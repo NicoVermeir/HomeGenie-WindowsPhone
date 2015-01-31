@@ -157,6 +157,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\backgroundLogo.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
@@ -164,11 +165,13 @@
     <Content Include="ReadMe.Coding4Fun.Toolkit.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Cimbalino.Toolkit">
-      <HintPath>..\..\packages\Cimbalino.Toolkit.1.2.2\lib\win81\Cimbalino.Toolkit.dll</HintPath>
+    <Reference Include="Cimbalino.Toolkit, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Cimbalino.Toolkit.1.2.3\lib\win81\Cimbalino.Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="Cimbalino.Toolkit.Core">
-      <HintPath>..\..\packages\Cimbalino.Toolkit.Core.1.2.2\lib\win81\Cimbalino.Toolkit.Core.dll</HintPath>
+    <Reference Include="Cimbalino.Toolkit.Core, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Cimbalino.Toolkit.Core.1.2.3\lib\win81\Cimbalino.Toolkit.Core.dll</HintPath>
     </Reference>
     <Reference Include="Coding4Fun.Toolkit">
       <HintPath>..\..\packages\Coding4Fun.Toolkit.Controls.2.0.8\lib\netcore451\Coding4Fun.Toolkit.dll</HintPath>

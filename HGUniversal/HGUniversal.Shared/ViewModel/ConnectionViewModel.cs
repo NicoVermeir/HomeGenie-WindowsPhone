@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Windows.Input;
+using Windows.Networking.PushNotifications;
 using Cimbalino.Toolkit.Services;
-using GalaSoft.MvvmLight.Command;
+using HGUniversal.Common;
 using HGUniversal.Model;
 using HomeGenie.SDK.Contracts;
+using RelayCommand = GalaSoft.MvvmLight.Command.RelayCommand;
 
 namespace HGUniversal.ViewModel
 {
@@ -39,12 +41,12 @@ namespace HGUniversal.ViewModel
                 "127.0.0.1" : _settingsService.GetValue<string>(Constants.ServerAddressSetting);
 
             Connection.Port = !_settingsService.DoesSettingExist(Constants.PortSetting) ?
-                "80" : _settingsService.GetValue<string>(Constants.ServerAddressSetting);
+                "80" : _settingsService.GetValue<string>(Constants.PortSetting);
 
             Connection.Username = !_settingsService.DoesSettingExist(Constants.UsernameSetting) ?
                 "admin" : _settingsService.GetValue<string>(Constants.UsernameSetting);
 
-            Connection.Password = !_settingsService.DoesSettingExist(Constants.PasswordSetting)?
+            Connection.Password = !_settingsService.DoesSettingExist(Constants.PasswordSetting) ?
                             "admin" : _settingsService.GetValue<string>(Constants.PasswordSetting);
 
             Connection.NotificationsEnabled = !_settingsService.DoesSettingExist(Constants.NotificationsEnabledSetting) || _settingsService.GetValue<bool>(Constants.NotificationsEnabledSetting);
@@ -52,7 +54,7 @@ namespace HGUniversal.ViewModel
             StateContainer.CurrentConnection = Connection;
         }
 
-        private void SaveSettings()
+        private async void SaveSettings()
         {
             _settingsService.SetValue(Constants.ServerAddressSetting, Connection.ServerAddress);
             _settingsService.SetValue(Constants.PortSetting, Connection.Port);
@@ -62,7 +64,24 @@ namespace HGUniversal.ViewModel
 
             StateContainer.AnnounceConnectionUpdated();
 
+            if (Connection.NotificationsEnabled)
+            {
+                Notifier notifier = new Notifier();
+                ChannelAndWebResponse response = await notifier.OpenChannelAndUploadAsync("http://" + Connection.ServerAddress);
+
+                response.Channel.PushNotificationReceived += ChannelOnPushNotificationReceived;
+            }
+            else
+            {
+                Notifier notifier = new Notifier();
+               
+            }
             _navigationService.GoBack();
+        }
+
+        private void ChannelOnPushNotificationReceived(PushNotificationChannel sender, PushNotificationReceivedEventArgs args)
+        {
+            throw new NotImplementedException();
         }
     }
 }

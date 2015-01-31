@@ -81,8 +81,6 @@ namespace HGUniversal.View
         {
         }
 
-        #region NavigationHelper registration
-
         /// <summary>
         /// The methods provided in this section are simply used to allow
         /// NavigationHelper to respond to the page's navigation methods.
@@ -98,14 +96,12 @@ namespace HGUniversal.View
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedTo(e);
+            navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedFrom(e);
+            navigationHelper.OnNavigatedFrom(e);
         }
-
-        #endregion
     }
 }

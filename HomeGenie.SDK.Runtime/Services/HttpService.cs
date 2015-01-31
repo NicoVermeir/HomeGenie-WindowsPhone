@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
-using Windows.Web.Http;
-using Windows.Web.Http.Headers;
 using HomeGenie.SDK.Contracts;
 using HomeGenie.SDK.Objects.Error;
 using Newtonsoft.Json;
@@ -44,10 +44,10 @@ namespace HomeGenie.SDK.Services
                 _settingsService.GetValue<string>(Constants.ServerAddressSetting),
                 _settingsService.GetValue<string>(Constants.PortSetting), url);
 
-            using (_client = new HttpClient())
+            var credentials = GetCredentials();
+            var handler = new HttpClientHandler { Credentials = credentials };
+            using (_client = new HttpClient(handler))
             {
-                _client.DefaultRequestHeaders.Authorization = GetAuthorizationHeader();
-
                 try
                 {
                     return await _client.GetStringAsync(new Uri(fullUrl));
@@ -59,16 +59,12 @@ namespace HomeGenie.SDK.Services
             }
         }
 
-        public HttpCredentialsHeaderValue GetAuthorizationHeader()
+        public NetworkCredential GetCredentials()
         {
             string username = _settingsService.GetValue<string>(Constants.UsernameSetting);
             string password = _settingsService.GetValue<string>(Constants.PasswordSetting);
 
-            var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(username + ":" + password, Windows.Security.Cryptography.BinaryStringEncoding.Utf16LE);
-            string base64Token = Windows.Security.Cryptography.CryptographicBuffer.EncodeToBase64String(buffer);
-            var header = new HttpCredentialsHeaderValue("Basic", base64Token);
-
-            return header;
+            return new NetworkCredential(username, password);
         }
     }
 }

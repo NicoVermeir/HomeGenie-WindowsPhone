@@ -3,63 +3,62 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      Background="White"
+      DataContext="{Binding Connection,
+                            Source={StaticResource Locator}}"
+      RequestedTheme="Light"
       mc:Ignorable="d">
 
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition />
+            <RowDefinition Height="0*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="HOMEGENIE" />
+        <StackPanel Margin="12,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+            <TextBlock Margin="0"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="HOMEGENIE" />
+            <TextBlock Height="39"
+                       Margin="0,0,-276,0"
+                       Style="{StaticResource SubheaderTextBlockStyle}"
+                       Text="ADD CONNECTION" />
         </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Margin="12,12,0,0"
+                    Orientation="Vertical">
+            <TextBlock Height="25"
+                       Margin="0,0,24,0"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Text="Server" />
+            <TextBox Margin="0,0,12,0"
+                     FontFamily="Global User Interface"
+                     Text="{Binding Connection.ServerAddress,
+                                    Mode=TwoWay}" />
+            <TextBlock Height="25"
+                       Margin="0,12,24,0"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Text="Port" />
+            <TextBox Margin="0,0,12,0" Text="{Binding Connection.Port, Mode=TwoWay}" />
+            <TextBlock Height="25"
+                       Margin="0,12,24,0"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Text="Username" />
+            <TextBox Margin="0,0,12,0" Text="{Binding Connection.Username, Mode=TwoWay}" />
+            <TextBlock Height="25"
+                       Margin="0,12,24,0"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Text="Password" />
+            <PasswordBox Margin="0,0,12,0" Password="{Binding Connection.Password, Mode=TwoWay}" />
+            <CheckBox Content="Enable Notifications" IsChecked="{Binding Connection.NotificationsEnabled, Mode=TwoWay}" />
 
-        <Grid x:Name="ContentPanel" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <StackPanel Grid.Row="0"
-                        VerticalAlignment="Center"
-                        Orientation="Vertical">
-                <Image Height="160" Source="/Assets/genie.png" />
-                <TextBlock FontWeight="Bold"
-                           Foreground="{StaticResource PhoneAccentBrush}"
-                           Text="Settings"
-                           TextAlignment="Center" />
-            </StackPanel>
-
-            <Grid Grid.Row="1"
-                  Width="300"
-                  Margin="0,30,0,50">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Text="Server" />
-                <TextBox Grid.Row="1" Text="" />
-                <TextBlock Grid.Row="2" Text="Username" />
-                <TextBox Grid.Row="3" Text="" />
-                <TextBlock Grid.Row="4" Text="Password" />
-                <PasswordBox Grid.Row="5" Password="" />
-                <CheckBox Grid.Row="6"
-                          Content="Enable Notifications"
-                          IsChecked="True" />
-                <Button x:Name="ConnectButton"
-                        Grid.Row="7"
-                        Content="Connect" />
-            </Grid>
-        </Grid>
+            <Button Margin="0,0,12,0"
+                    Command="{Binding SaveSettingsCommand,
+                                      Mode=OneWay}"
+                    Content="Save" />
+        </StackPanel>
     </Grid>
 </Page>

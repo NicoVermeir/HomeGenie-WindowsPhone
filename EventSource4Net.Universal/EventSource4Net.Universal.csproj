@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ConnectedState.cs" />
     <Compile Include="ConnectingState.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="DisconnectedState.cs" />
     <Compile Include="EventSource.cs" />
     <Compile Include="EventSourceState.cs" />
@@ -65,6 +66,12 @@
     <Compile Include="WatchDog.cs" />
     <Compile Include="WebRequester.cs" />
     <Compile Include="WebRequesterFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeGenie.SDK.Runtime\HomeGenie.SDK.Runtime.csproj">
+      <Project>{A0E0BB21-5673-4721-9244-412B7DB366B8}</Project>
+      <Name>HomeGenie.SDK.Runtime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -73,3 +73,9 @@ C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\q
 C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\HomeGenie.SDK.Runtime.csprojResolveAssemblyReference.cache
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\bin\Debug\HomeGenie.SDK.Runtime.dll.config
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HomeGenie.SDK.Runtime\obj\Debug\HomeGenie.SDK.Runtime.csproj.App.config

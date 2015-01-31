@@ -1,6 +1,7 @@
 using Cimbalino.Toolkit.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using HGUniversal.Common;
 using HGUniversal.DesignTimeData;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Contracts;

@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Linq;
+using System.Diagnostics;
+using System.Globalization;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -7,12 +8,11 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Messaging;
-
-// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 using GalaSoft.MvvmLight.Threading;
 using HGUniversal.Messages;
 using HGUniversal.View;
 using HomeGenie.SDK.Objects;
+// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
 namespace HGUniversal
 {
@@ -29,11 +29,11 @@ namespace HGUniversal
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
-        public App()
-        {
-            this.InitializeComponent();
-            this.Suspending += this.OnSuspending;
-        }
+    public App()
+    {
+        this.InitializeComponent();
+        this.Suspending += this.OnSuspending;
+    }
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -44,7 +44,7 @@ namespace HGUniversal
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
+            if (Debugger.IsAttached)
             {
                 this.DebugSettings.EnableFrameRateCounter = true;
             }

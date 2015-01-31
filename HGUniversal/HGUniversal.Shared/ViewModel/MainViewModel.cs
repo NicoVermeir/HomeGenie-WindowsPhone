@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,7 +9,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Threading;
 using HGUniversal.Messages;
 using HGUniversal.View;
-using HGUniversal.ViewModel.Controls;
+using HomeGenie.Common;
 using HomeGenie.SDK;
 using HomeGenie.SDK.Contracts;
 using HomeGenie.SDK.Http;
@@ -25,7 +26,14 @@ namespace HGUniversal.ViewModel
 
         public ObservableCollection<Group> Items { get; private set; }
 
+        public ObservableCollection<GroupInfoList<object>> GroupedItems
+        {
+            get { return _groupedItems; }
+            set { Set(ref _groupedItems, value); }
+        }
+
         private RelayCommand<Group> _groupSelectedCommand;
+        private ObservableCollection<GroupInfoList<object>> _groupedItems;
 
         public RelayCommand<Group> GroupSelectedCommand
         {
@@ -67,11 +75,24 @@ namespace HGUniversal.ViewModel
             }
             else
             {
-#if !DUMMY
-                StateContainer.Connect();
+                try
+                {
+                    await LoadGroups();
+                    await LoadGroupModules();
+
+#if WINDOWS_APP
+                    GroupItems();
 #endif
-                await LoadGroups();
-                await LoadGroupModules();
+
+#if !DUMMY
+                    StateContainer.Connect();
+#endif
+                }
+                catch (Exception)
+                {
+                    DispatcherHelper.CheckBeginInvokeOnUI(() => _navigationService.Navigate<ConnectionPage>());
+                    
+                }
             }
         }
 
@@ -97,7 +118,35 @@ namespace HGUniversal.ViewModel
                 var d = new MessageDialog("error");
                 d.ShowAsync();
             }
+        }
 
+        private void GroupItems()
+        {
+            if (GroupedItems == null)
+            {
+                DispatcherHelper.CheckBeginInvokeOnUI(() => GroupedItems = new ObservableCollection<GroupInfoList<object>>());
+            }
+            else
+            {
+                GroupedItems.Clear();
+            }
+
+            var groups = from item in Items
+                         orderby item.Name
+                         group item by item.Name into g
+                         select new { GroupName = g.Key, Items = g };
+
+            foreach (var group in groups)
+            {
+                GroupInfoList<object> info = new GroupInfoList<object> { Key = group.GroupName };
+
+                foreach (var item in group.Items)
+                {
+                    info.AddRange(item.Modules);
+                }
+
+                DispatcherHelper.CheckBeginInvokeOnUI(() => GroupedItems.Add(info));
+            }
         }
 
         internal async Task LoadGroupModules()
