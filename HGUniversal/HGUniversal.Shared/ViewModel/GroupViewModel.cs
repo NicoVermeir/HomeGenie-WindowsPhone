@@ -26,11 +26,17 @@ namespace HGUniversal.ViewModel
         private readonly INavigationService _navigationService;
 
         private ICommand _pinGroupCommand;
+        private ICommand _pinModuleCommand;
         private Group _selectedGroup;
 
         public ICommand PinGroupCommand
         {
             get { return _pinGroupCommand ?? (_pinGroupCommand = new RelayCommand(() => PinGroupTile())); }
+        }
+
+        public ICommand PinModuleCommand
+        {
+            get { return _pinModuleCommand ?? (_pinModuleCommand = new RelayCommand(() => PinModuleTile())); }
         }
 
         private RelayCommand<IModuleVM> _moduleSelectedCommand;
@@ -48,7 +54,7 @@ namespace HGUniversal.ViewModel
                     }
                     else
                     {
-                        _navigationService.Navigate<ModulePage>();                        
+                        _navigationService.Navigate<ModulePage>();
                     }
                 }));
             }
@@ -58,7 +64,13 @@ namespace HGUniversal.ViewModel
         public IModuleVM CurrentModule
         {
             get { return _currentModule; }
-            set { Set(() => CurrentModule, ref _currentModule, value); }
+            set
+            {
+                if (Set(() => CurrentModule, ref _currentModule, value))
+                {
+                    ToggleAppBarButton(!SecondaryTile.Exists(_currentModule.Module.Name));                    
+                }
+            }
         }
 
         public ObservableCollection<IModuleVM> ModulesForCurrentGroup { get; set; }
@@ -107,6 +119,16 @@ namespace HGUniversal.ViewModel
                     await LoadModulesForGroup();
 
                 InstantiateModules();
+            });
+
+            MessengerInstance.Register<ModuleSelectedMessage>(this, async msg =>
+            {
+                SelectedGroup = msg.SelectedGroup;
+
+                await LoadModulesForGroup();
+                InstantiateModules();
+
+                CurrentModule = ModulesForCurrentGroup.FirstOrDefault(moduleVM => moduleVM.Module.Name == msg.ModuleName);
             });
         }
 
@@ -182,6 +204,33 @@ namespace HGUniversal.ViewModel
             await RegisterTask();
         }
 
+        private async Task PinModuleTile()
+        {
+            bool isPinned = true;
+
+            if (SecondaryTile.Exists(CurrentModule.Module.Name))
+            {
+                SecondaryTile secondaryTile = new SecondaryTile(CurrentModule.Module.Name);
+                await secondaryTile.RequestDeleteAsync();
+
+                isPinned = false;
+            }
+            else
+            {
+                string args = string.Format("module|{0}", SelectedGroup.Name);
+
+                SecondaryTile secondaryTile = new SecondaryTile(CurrentModule.Module.Name, CurrentModule.Module.Name, CurrentModule.Module.Name, new Uri("ms-appx:///Assets/Logo.png"), TileSize.Default) { Arguments = args, ForegroundText = ForegroundText.Light, TileOptions = TileOptions.ShowNameOnLogo };
+                await secondaryTile.RequestCreateForSelectionAsync(new Rect(), Placement.Above);
+
+                //UpdateTile(CurrentModule.Module.Name, SelectedGroup.GroupTemperature.ToString(), SelectedGroup.GroupLuminance.ToString());
+            }
+
+            ToggleAppBarButton(!isPinned);
+
+            //register backgroundtask
+            await RegisterTask();
+        }
+
         private void UpdateTile(string tileId, string temp, string luminance)
         {
             var updater = TileUpdateManager.CreateTileUpdaterForSecondaryTile(tileId);
@@ -190,7 +239,7 @@ namespace HGUniversal.ViewModel
             XmlDocument tileXml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare150x150PeekImageAndText02);
 
             tileXml.GetElementsByTagName("image")[0].Attributes.First(a => a.NodeName == "src").NodeValue = "ms-appx:///Assets/Logo.png";
-            
+
             if (!string.IsNullOrWhiteSpace(temp))
                 tileXml.GetElementsByTagName("text")[0].InnerText = string.Format("Temp {0}°", temp);
 

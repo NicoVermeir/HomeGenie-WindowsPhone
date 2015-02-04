@@ -45,18 +45,21 @@
         </DataTemplate>
 
         <common:ModuleTemplateSelector x:Key="ModuleTemplateSelector"
-                                       WidgetTemplate="{StaticResource WidgetTemplate}"
-                                       ShutterTemplate="{StaticResource ShutterTemplate}"
-                                       TemperatureTemplate="{StaticResource TemperatureTemplate}"
                                        ColorLightTemplate="{StaticResource ColorlightTemplate}"
                                        DimmerTemplate="{StaticResource DimmerTemplate}"
                                        ProgramTemplate="{StaticResource ProgramTemplate}"
                                        SensorTemplate="{StaticResource SensorTemplate}"
-                                       SwitchTemplate="{StaticResource SwitchTemplate}" />
+                                       ShutterTemplate="{StaticResource ShutterTemplate}"
+                                       SwitchTemplate="{StaticResource SwitchTemplate}"
+                                       TemperatureTemplate="{StaticResource TemperatureTemplate}"
+                                       WidgetTemplate="{StaticResource WidgetTemplate}" />
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Pin" Label="pin" />
+            <AppBarButton Command="{Binding PinModuleCommand,
+                                            Mode=OneTime}"
+                          Icon="{Binding PinUnpinIcon}"
+                          Label="{Binding PinUnpinText}" />
         </CommandBar>
     </Page.BottomAppBar>
 

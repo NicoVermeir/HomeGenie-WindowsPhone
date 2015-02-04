@@ -29,11 +29,11 @@ namespace HGUniversal
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
-    public App()
-    {
-        this.InitializeComponent();
-        this.Suspending += this.OnSuspending;
-    }
+        public App()
+        {
+            this.InitializeComponent();
+            this.Suspending += this.OnSuspending;
+        }
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -100,12 +100,19 @@ namespace HGUniversal
             //launched from secondary tile
             if (!string.IsNullOrWhiteSpace(e.Arguments))
             {
-                switch (e.Arguments)
+                if (e.Arguments.Contains("|"))
                 {
-                    case "group":
-                        rootFrame.Navigate(typeof(GroupPage));
-                        Messenger.Default.Send(new GroupSelectedMessage(new Group { Name = e.TileId }, true));
-                        break;
+                    var args = e.Arguments.Split('|');
+
+                    //module
+                    rootFrame.Navigate(typeof(ModulePage));
+                    Messenger.Default.Send(new ModuleSelectedMessage(e.TileId, new Group { Name = args[1] }));
+                }
+                else
+                {
+                    //group
+                    rootFrame.Navigate(typeof(GroupPage));
+                    Messenger.Default.Send(new GroupSelectedMessage(new Group { Name = e.TileId }, true));
                 }
             }
 

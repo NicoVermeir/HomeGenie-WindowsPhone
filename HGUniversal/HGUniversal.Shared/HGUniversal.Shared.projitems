@@ -35,6 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\HomeGenieDesignTimeApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTimeData\SettingsDesignTimeService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Messages\GroupSelectedMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\ModuleSelectedMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Connection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Event.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StateContainer.cs" />

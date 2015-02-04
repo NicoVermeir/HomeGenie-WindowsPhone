@@ -24,6 +24,10 @@ namespace HGUniversal.BackgroundTasks
                 foreach (SecondaryTile tile in tiles)
                 {
                     List<Module> modules = await api.LoadGroupModules(tile.TileId);
+
+                    if (modules == null)
+                        continue;
+
                     double? temp = FindGroupTemperature(modules);
                     double? luminance = FindGroupLuminance(modules);
 

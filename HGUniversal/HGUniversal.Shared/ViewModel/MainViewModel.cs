@@ -78,6 +78,10 @@ namespace HGUniversal.ViewModel
                 try
                 {
                     await LoadGroups();
+
+                    //wait for bindings to update, this is necessary
+                    await Task.Delay(100);
+
                     await LoadGroupModules();
 
 #if WINDOWS_APP

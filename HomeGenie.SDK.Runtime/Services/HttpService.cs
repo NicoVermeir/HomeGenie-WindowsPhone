@@ -50,7 +50,8 @@ namespace HomeGenie.SDK.Services
             {
                 try
                 {
-                    return await _client.GetStringAsync(new Uri(fullUrl));
+                    string a = await _client.GetStringAsync(new Uri(fullUrl));
+                    return a;
                 }
                 catch (Exception ex)
                 {
