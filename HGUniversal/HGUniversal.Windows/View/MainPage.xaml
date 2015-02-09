@@ -1,16 +1,60 @@
 ﻿<Page x:Class="HGUniversal.View.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:common="using:HGUniversal.Common"
+      xmlns:controls="using:HGUniversal.Controls"
       xmlns:converters="using:HGUniversal.Converters"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       x:Name="pageRoot"
-      DataContext="{Binding Main,
-                            Source={StaticResource Locator}}"
       RequestedTheme="Light"
       mc:Ignorable="d">
 
     <Page.Resources>
+        <DataTemplate x:Key="DimmerTemplate">
+            <controls:DimmerModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ColorlightTemplate">
+            <controls:ColorLightModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="SwitchTemplate">
+            <controls:SwitchModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ProgramTemplate">
+            <controls:ProgramModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="SensorTemplate">
+            <controls:SensorControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="TemperatureTemplate">
+            <controls:TemperatureModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ShutterTemplate">
+            <controls:ShutterModuleControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="WidgetTemplate">
+            <controls:WidgetControl />
+        </DataTemplate>
+
+        <common:ModuleTemplateSelector x:Key="ModuleTemplateSelector"
+                                       ColorLightTemplate="{StaticResource ColorlightTemplate}"
+                                       DimmerTemplate="{StaticResource DimmerTemplate}"
+                                       ProgramTemplate="{StaticResource ProgramTemplate}"
+                                       SensorTemplate="{StaticResource SensorTemplate}"
+                                       ShutterTemplate="{StaticResource ShutterTemplate}"
+                                       SwitchTemplate="{StaticResource SwitchTemplate}"
+                                       TemperatureTemplate="{StaticResource TemperatureTemplate}"
+                                       WidgetTemplate="{StaticResource WidgetTemplate}" />
+
         <CollectionViewSource x:Name="cvsGroups"
                               IsSourceGrouped="True"
                               Source="{Binding GroupedItems}" />
@@ -38,6 +82,10 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
+
+    <Page.DataContext>
+        <Binding Path="Main" Source="{StaticResource Locator}" />
+    </Page.DataContext>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -92,8 +140,28 @@
                   ItemsSource="{Binding Source={StaticResource cvsGroups}}"
                   Padding="120, 0, 0, 50"
                   ScrollViewer.IsHorizontalScrollChainingEnabled="False"
-                  SelectionMode="None">
+                  SelectionMode="None"
+                  common:ItemClickCommand.Command="{Binding ModuleSelectedCommand}">
+            <FlyoutBase.AttachedFlyout>
+                <Flyout common:FlyoutHelper.IsOpen="{Binding IsOpen, Mode=TwoWay}" common:FlyoutHelper.Parent="{Binding ElementName=ItemGridView}">
+                    <Flyout.FlyoutPresenterStyle>
+                        <Style TargetType="FlyoutPresenter">
+                            <Setter Property="MinHeight" Value="600" />
+                            <Setter Property="MinWidth" Value="400" />
+                        </Style>
+                    </Flyout.FlyoutPresenterStyle>
 
+                    <Grid HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          DataContext="{Binding Group,
+                                                Source={StaticResource Locator}}">
+                        <ContentControl HorizontalAlignment="Stretch"
+                                        HorizontalContentAlignment="Stretch"
+                                        Content="{Binding CurrentModule}"
+                                        ContentTemplateSelector="{StaticResource ModuleTemplateSelector}" />
+                    </Grid>
+                </Flyout>
+            </FlyoutBase.AttachedFlyout>
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid GroupPadding="0,0,40,0" MaximumRowsOrColumns="3" />
@@ -117,11 +185,13 @@
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
             </GridView.GroupStyle>
+
         </GridView>
         <Image Grid.Row="2"
                Margin="0,0,12,12"
                HorizontalAlignment="Right"
                VerticalAlignment="Bottom"
                Source="ms-appx:///Assets/backgroundLogo.png" />
+
     </Grid>
 </Page>

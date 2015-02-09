@@ -7,11 +7,13 @@ namespace HGUniversal.Messages
     {
         public string ModuleName { get; set; }
         public Group SelectedGroup { get; set; }
+        public bool FromSecondaryTile { get; set; }
 
-        public ModuleSelectedMessage(string moduleName, Group selectedGroup)
+        public ModuleSelectedMessage(string moduleName, Group selectedGroup, bool fromSecondaryTile)
         {
             ModuleName = moduleName;
             SelectedGroup = selectedGroup;
+            FromSecondaryTile = fromSecondaryTile;
         }
     }
 }

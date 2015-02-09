@@ -88,33 +88,6 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
-    <Compile Include="Controls\ColorLightModuleControl.xaml.cs">
-      <DependentUpon>ColorLightModuleControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShutterModuleControl.xaml.cs">
-      <DependentUpon>ShutterModuleControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SwitchModuleControl.xaml.cs">
-      <DependentUpon>SwitchModuleControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\DimmerModuleControl.xaml.cs">
-      <DependentUpon>DimmerModuleControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ModuleControls.xaml.cs">
-      <DependentUpon>ModuleControls.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ProgramModuleControl.xaml.cs">
-      <DependentUpon>ProgramModuleControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SensorControl.xaml.cs">
-      <DependentUpon>SensorControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TemperatureModuleControl.xaml.cs">
-      <DependentUpon>TemperatureModuleControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\WidgetControl.xaml.cs">
-      <DependentUpon>WidgetControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ColorPickerPage.xaml.cs">
       <DependentUpon>ColorPickerPage.xaml</DependentUpon>
     </Compile>
@@ -161,42 +134,6 @@
     <Content Include="ReadMe.Coding4Fun.Toolkit.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Controls\ColorLightModuleControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\ShutterModuleControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\SwitchModuleControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\DimmerModuleControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\ModuleControls.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\ProgramModuleControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\SensorControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\TemperatureModuleControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\WidgetControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\ColorPickerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

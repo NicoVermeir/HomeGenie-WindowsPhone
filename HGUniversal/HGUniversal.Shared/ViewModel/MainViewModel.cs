@@ -19,13 +19,35 @@ namespace HGUniversal.ViewModel
 {
     public class MainViewModel : HomeGenieViewModelBase
     {
+#if WINDOWS_APP
+        private bool _isOpen;
+        public bool IsOpen
+        {
+            get { return _isOpen; }
+            set { Set(ref _isOpen, value); }
+        }
+
+        private RelayCommand<Module> _moduleSelectedCommand;
+        public RelayCommand<Module> ModuleSelectedCommand
+        {
+            get
+            {
+                return _moduleSelectedCommand ?? (_moduleSelectedCommand = new RelayCommand<Module>(module =>
+                {
+                    IsOpen = true;
+                    Group group = Items.FirstOrDefault(g => g.Modules.Contains(module));
+                    MessengerInstance.Send(new ModuleSelectedMessage(module.Name, group, false));
+                }));
+            }
+        }
+#endif
         private readonly IHomeGenieApi _api;
         private readonly INavigationService _navigationService;
-
         private readonly ISettingsService _settingsService;
 
         public ObservableCollection<Group> Items { get; private set; }
 
+        private ObservableCollection<GroupInfoList<object>> _groupedItems;
         public ObservableCollection<GroupInfoList<object>> GroupedItems
         {
             get { return _groupedItems; }
@@ -33,7 +55,6 @@ namespace HGUniversal.ViewModel
         }
 
         private RelayCommand<Group> _groupSelectedCommand;
-        private ObservableCollection<GroupInfoList<object>> _groupedItems;
 
         public RelayCommand<Group> GroupSelectedCommand
         {
@@ -95,7 +116,7 @@ namespace HGUniversal.ViewModel
                 catch (Exception)
                 {
                     DispatcherHelper.CheckBeginInvokeOnUI(() => _navigationService.Navigate<ConnectionPage>());
-                    
+
                 }
             }
         }

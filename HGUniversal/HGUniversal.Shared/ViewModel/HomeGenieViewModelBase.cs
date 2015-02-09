@@ -41,6 +41,9 @@ namespace HGUniversal.ViewModel
 
         protected void ToggleAppBarButton(bool showPinButton)
         {
+#if WINDOWS_APP
+            return;
+#endif
             if (showPinButton)
             {
                 PinUnpinText = "pin";

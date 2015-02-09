@@ -106,7 +106,7 @@ namespace HGUniversal
 
                     //module
                     rootFrame.Navigate(typeof(ModulePage));
-                    Messenger.Default.Send(new ModuleSelectedMessage(e.TileId, new Group { Name = args[1] }));
+                    Messenger.Default.Send(new ModuleSelectedMessage(e.TileId, new Group { Name = args[1] }, true));
                 }
                 else
                 {

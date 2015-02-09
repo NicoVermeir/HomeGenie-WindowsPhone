@@ -1,4 +1,4 @@
-MainPackage=C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HGUniversal\HGUniversal.WindowsPhone\bin\Release\HGUniversal.WindowsPhone_1.1.0.2_Bundle\HGUniversal.WindowsPhone_1.1.0.2_AnyCPU.appx
-SymbolPackage=C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HGUniversal\HGUniversal.WindowsPhone\AppPackages\HGUniversal.WindowsPhone_1.1.0.2_Test\HGUniversal.WindowsPhone_1.1.0.2_AnyCPU.appxsym
-ResourcePack=C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HGUniversal\HGUniversal.WindowsPhone\bin\Release\HGUniversal.WindowsPhone_1.1.0.2_Bundle\HGUniversal.WindowsPhone_1.1.0.2_scale-100.appx
-ResourcePack=C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HGUniversal\HGUniversal.WindowsPhone\bin\Release\HGUniversal.WindowsPhone_1.1.0.2_Bundle\HGUniversal.WindowsPhone_1.1.0.2_scale-140.appx
+MainPackage=C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HGUniversal\HGUniversal.WindowsPhone\bin\Release\HGUniversal.WindowsPhone_1.1.0.3_Bundle\HGUniversal.WindowsPhone_1.1.0.3_AnyCPU.appx
+SymbolPackage=C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HGUniversal\HGUniversal.WindowsPhone\AppPackages\HGUniversal.WindowsPhone_1.1.0.3_Test\HGUniversal.WindowsPhone_1.1.0.3_AnyCPU.appxsym
+ResourcePack=C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HGUniversal\HGUniversal.WindowsPhone\bin\Release\HGUniversal.WindowsPhone_1.1.0.3_Bundle\HGUniversal.WindowsPhone_1.1.0.3_scale-100.appx
+ResourcePack=C:\Users\Nico\Documents\HomeGenie-WindowsPhone\HGUniversal\HGUniversal.WindowsPhone\bin\Release\HGUniversal.WindowsPhone_1.1.0.3_Bundle\HGUniversal.WindowsPhone_1.1.0.3_scale-140.appx

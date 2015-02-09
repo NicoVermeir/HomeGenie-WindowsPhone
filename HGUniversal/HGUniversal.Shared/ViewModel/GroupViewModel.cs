@@ -68,7 +68,9 @@ namespace HGUniversal.ViewModel
             {
                 if (Set(() => CurrentModule, ref _currentModule, value))
                 {
-                    ToggleAppBarButton(!SecondaryTile.Exists(_currentModule.Module.Name));                    
+#if WINDOWS_PHONE_APP
+                    ToggleAppBarButton(!SecondaryTile.Exists(_currentModule.Module.Name));
+#endif
                 }
             }
         }
@@ -86,7 +88,9 @@ namespace HGUniversal.ViewModel
                 if (Set(() => SelectedGroup, ref _selectedGroup, value))
                 {
                     InstantiateModules();
+#if WINDOWS_PHONE_APP
                     ToggleAppBarButton(!SecondaryTile.Exists(SelectedGroup.Name.ToString()));
+#endif
                 }
             }
         }
@@ -125,7 +129,9 @@ namespace HGUniversal.ViewModel
             {
                 SelectedGroup = msg.SelectedGroup;
 
-                await LoadModulesForGroup();
+                if (msg.FromSecondaryTile)
+                    await LoadModulesForGroup();
+
                 InstantiateModules();
 
                 CurrentModule = ModulesForCurrentGroup.FirstOrDefault(moduleVM => moduleVM.Module.Name == msg.ModuleName);
