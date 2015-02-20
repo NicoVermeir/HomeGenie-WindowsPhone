@@ -26,9 +26,9 @@ namespace HomeGenie.SDK
 
         public async Task<List<Module>> LoadGroupModules(string groupname)
         {
-            Module mod = JsonConvert.DeserializeObject<Module>(Modules.ModuleJson);
+            var mod = JsonConvert.DeserializeObject<List<Module>>(Modules.ModuleJson);
 
-            return new List<Module> { mod };
+            return mod;
         }
 
         public async Task SetModuleOn(Module module)

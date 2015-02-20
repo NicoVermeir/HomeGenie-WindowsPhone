@@ -151,13 +151,16 @@ namespace HGUniversal.ViewModel
         {
             switch (module.DeviceType)
             {
+                case Module.DeviceTypes.ColorLight:
                 case Module.DeviceTypes.Dimmer:
                     ModulesForCurrentGroup.Add(new DimmerViewModel { Module = module, Group = SelectedGroup });
                     break;
                 case Module.DeviceTypes.Program:
                     ModulesForCurrentGroup.Add(new ProgramViewModel { Module = module, Group = SelectedGroup });
                     break;
+                case Module.DeviceTypes.Light:
                 case Module.DeviceTypes.Switch:
+                case Module.DeviceTypes.Siren:
                     ModulesForCurrentGroup.Add(new SwitchViewModel { Module = module, Group = SelectedGroup });
                     break;
                 case Module.DeviceTypes.Sensor:
@@ -167,6 +170,7 @@ namespace HGUniversal.ViewModel
                     ModulesForCurrentGroup.Add(new TemperatureViewModel { Module = module, Group = SelectedGroup });
                     break;
                 case Module.DeviceTypes.Shutter:
+                case Module.DeviceTypes.DoorWindow:
                     ModulesForCurrentGroup.Add(new ShutterViewModel { Module = module, Group = SelectedGroup });
                     break;
             }

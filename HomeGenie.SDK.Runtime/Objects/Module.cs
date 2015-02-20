@@ -40,9 +40,10 @@ namespace HomeGenie.SDK.Objects
             }
             set
             {
-                _devicetype = value;
-                OnPropertyChanged("DeviceType");
-                OnPropertyChanged("IconUrl");
+                if (SetField(ref _devicetype, value, "DeviceType"))
+                {
+                    OnPropertyChanged("IconUrl");                    
+                }
             }
         } //will indicate actual device (lamp, fan, dimmer light, etc.)
 
@@ -72,21 +73,26 @@ namespace HomeGenie.SDK.Objects
                 string statussuffix = "";
                 string widget = "";
                 double doorwindow = 0;
+                bool isCamera;
+
                 try
                 {
                     foreach (ModuleParameter p in Properties)
                     {
-                        if (p.Name == "Status.Level")
+                        switch (p.Name)
                         {
-                            double.TryParse(p.Value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out level);
-                        }
-                        else if (p.Name == "Widget.DisplayModule")
-                        {
-                            widget = p.Value;
-                        }
-                        else if (p.Name == "Sensor.DoorWindow")
-                        {
-                            double.TryParse(p.Value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out doorwindow);
+                            case "Status.Level":
+                                double.TryParse(p.Value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out level);
+                                break;
+                            case "Widget.DisplayModule":
+                                widget = p.Value;
+                                break;
+                            case "Sensor.DoorWindow":
+                                double.TryParse(p.Value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out doorwindow);
+                                break;
+                            case "IpCamera.ImageURL":
+                                DeviceType = DeviceTypes.IpCamera;
+                                break;
                         }
                     }
                     //
@@ -160,6 +166,9 @@ namespace HomeGenie.SDK.Objects
                         case "homegenie/generic/colorlight":
                             imageurl = "/hg/html/pages/control/widgets/homegenie/generic/images/light_" + statussuffix + ".png";
                             break;
+                        case "homegenie/generic/camerainput":
+                            imageurl = "/hg/html/pages/control/widgets/homegenie/generic/images/camera.png";
+                            break;
                     }
                 }
                 else
@@ -188,6 +197,10 @@ namespace HomeGenie.SDK.Objects
                         case DeviceTypes.Siren:
                             imageurl = "/hg/html/pages/control/widgets/homegenie/generic/images/siren.png";
                             break;
+                        case DeviceTypes.Shutter:
+                            statussuffix = statussuffix == "on" ? "open" : "closed";
+                            imageurl = "/hg/html/pages/control/widgets/homegenie/generic/images/shutters_" + statussuffix + ".png";
+                            break;
                     }
                 }
                 return imageurl;
@@ -204,6 +217,7 @@ namespace HomeGenie.SDK.Objects
         public enum DeviceTypes
         {
             Generic = -1,
+            ColorLight,
             Program,
             Switch,
             Light,
@@ -217,6 +231,8 @@ namespace HomeGenie.SDK.Objects
             DoorWindow,
             MediaTransmitter
             //siren, alarm, motion sensor, door sensor, thermal sensor, etc.
+            ,
+            IpCamera
         }
     }
 }

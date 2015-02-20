@@ -82,7 +82,17 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Setting" Label="settings">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Click">
+                        <Core:NavigateToPageAction TargetPage="HGUniversal.View.ConnectionPage" />
+                    </Core:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+            </AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
     <Page.DataContext>
         <Binding Path="Main" Source="{StaticResource Locator}" />
     </Page.DataContext>
