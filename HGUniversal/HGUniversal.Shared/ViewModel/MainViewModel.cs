@@ -34,8 +34,13 @@ namespace HGUniversal.ViewModel
             {
                 return _moduleSelectedCommand ?? (_moduleSelectedCommand = new RelayCommand<Module>(module =>
                 {
-                    IsOpen = true;
                     Group group = Items.FirstOrDefault(g => g.Modules.Contains(module));
+                    if (module.DeviceType == Module.DeviceTypes.Program)
+                    {
+                        _api.RunProgram(module, group);
+                        return;
+                    }
+                    IsOpen = true;
                     MessengerInstance.Send(new ModuleSelectedMessage(module.Name, group, false));
                 }));
             }

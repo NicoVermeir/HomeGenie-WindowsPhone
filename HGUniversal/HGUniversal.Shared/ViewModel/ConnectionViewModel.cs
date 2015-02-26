@@ -56,6 +56,7 @@ namespace HGUniversal.ViewModel
 
         private async void SaveSettings()
         {
+            IsDataLoading = true;
             _settingsService.SetValue(Constants.ServerAddressSetting, Connection.ServerAddress);
             _settingsService.SetValue(Constants.PortSetting, Connection.Port);
             _settingsService.SetValue(Constants.UsernameSetting, Connection.Username);
@@ -76,6 +77,7 @@ namespace HGUniversal.ViewModel
                 Notifier notifier = new Notifier();
                
             }
+            IsDataLoading = false;
             _navigationService.GoBack();
         }
 

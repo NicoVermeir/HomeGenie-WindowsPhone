@@ -98,7 +98,6 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\luminance.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\plug.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\temperature.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Controls\ColorLightModuleControl.xaml">

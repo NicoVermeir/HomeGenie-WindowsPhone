@@ -1,9 +1,9 @@
 ﻿<UserControl x:Class="HGUniversal.Controls.ShutterModuleControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:HGUniversal.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="using:HGUniversal.Converters"
              DataContext="{Binding}"
              d:DesignHeight="480"
              d:DesignWidth="480"
@@ -15,6 +15,7 @@
 
     <Grid Margin="12" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -51,10 +52,14 @@
                                 Mode=OneWay}"
                Stretch="UniformToFill" />
 
-        <ToggleSwitch Grid.Row="1"
-                      Grid.Column="2"
-                      Margin="0,36,0,0"
-                      IsOn="{Binding IsSwitchedOn,
-                                     Mode=TwoWay}" />
+        <Slider Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="0, 36, 0, 0"
+                VerticalAlignment="Top"
+                Maximum="100"
+                Minimum="0"
+                Value="{Binding SliderValue,
+                                Mode=TwoWay}" />
     </Grid>
 </UserControl>

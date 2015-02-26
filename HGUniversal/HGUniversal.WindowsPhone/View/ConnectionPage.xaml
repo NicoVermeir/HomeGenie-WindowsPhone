@@ -1,59 +1,67 @@
-﻿<Page x:Class="HGUniversal.View.ConnectionPage"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:Converters="using:Cimbalino.Toolkit.Converters" x:Class="HGUniversal.View.ConnectionPage"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-      DataContext="{Binding Connection,
-                            Source={StaticResource Locator}}"
       mc:Ignorable="d" RequestedTheme="Light">
+	<Page.Resources>
+		<Converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+	</Page.Resources>
+	<Page.DataContext>
+		<Binding Path="Connection" Source="{StaticResource Locator}"/>
+	</Page.DataContext>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Command="{Binding SaveSettingsCommand,
-                                            Mode=OneWay}"
+            <AppBarButton Command="{Binding SaveSettingsCommand, Mode=OneWay}"
                           Icon="Save"
                           Label="save" />
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-            <RowDefinition Height="0*" />
-        </Grid.RowDefinitions>
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+			<RowDefinition Height="0*" />
+		</Grid.RowDefinitions>
 
-        <StackPanel Margin="12,0,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top">
-            <TextBlock Margin="0"
-                       Style="{StaticResource TitleTextBlockStyle}"
-                       Text="HOMEGENIE" />
-            <TextBlock Height="39"
-                       Margin="0,0,-276,0"
-                       Style="{StaticResource SubheaderTextBlockStyle}"
-                       Text="ADD CONNECTION" />
-        </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="12,12,0,0">
-            <TextBlock
-            	Style="{StaticResource BodyTextBlockStyle}"
-            	Text="Server" Height="25" Margin="0,0,24,0" />
-            <TextBox Text="{Binding Connection.ServerAddress, Mode=TwoWay}" Margin="0,0,12,0" FontFamily="Global User Interface" />
-            <TextBlock
-            	Style="{StaticResource BodyTextBlockStyle}"
-            	Text="Port" Height="25" Margin="0,12,24,0" />
-            <TextBox Text="{Binding Connection.Port, Mode=TwoWay}" Margin="0,0,12,0" />
-            <TextBlock
-            	Style="{StaticResource BodyTextBlockStyle}"
-            	Text="Username" Height="25" Margin="0,12,24,0" />
-            <TextBox Text="{Binding Connection.Username, Mode=TwoWay}" Margin="0,0,12,0" />
-            <TextBlock
-            	Style="{StaticResource BodyTextBlockStyle}"
-            	Text="Password" Height="25" Margin="0,12,24,0" />
-            <PasswordBox Password="{Binding Connection.Password, Mode=TwoWay}" Margin="0,0,12,0" />
-            <CheckBox
-            	Content="Enable Notifications"
-            	IsChecked="{Binding Connection.NotificationsEnabled, Mode=TwoWay}" />
-        </StackPanel>
-    </Grid>
+		<StackPanel Margin="12,0,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top">
+			<TextBlock Margin="0"
+				Style="{StaticResource TitleTextBlockStyle}"
+				Text="HOMEGENIE" />
+			<TextBlock Height="39"
+				Margin="0,0,-276,0"
+				Style="{StaticResource SubheaderTextBlockStyle}"
+				Text="ADD CONNECTION" />
+		</StackPanel>
+		<StackPanel Grid.Row="1" Orientation="Vertical" Margin="12,12,0,0">
+			<TextBlock
+				Style="{StaticResource BodyTextBlockStyle}"
+				Text="Server" Height="25" Margin="0,0,24,0" />
+			<TextBox Text="{Binding Connection.ServerAddress, Mode=TwoWay}" Margin="0,0,12,0" FontFamily="Global User Interface" />
+			<TextBlock
+				Style="{StaticResource BodyTextBlockStyle}"
+				Text="Port" Height="25" Margin="0,12,24,0" />
+			<TextBox Text="{Binding Connection.Port, Mode=TwoWay}" Margin="0,0,12,0" />
+			<TextBlock
+				Style="{StaticResource BodyTextBlockStyle}"
+				Text="Username" Height="25" Margin="0,12,24,0" />
+			<TextBox Text="{Binding Connection.Username, Mode=TwoWay}" Margin="0,0,12,0" />
+			<TextBlock
+				Style="{StaticResource BodyTextBlockStyle}"
+				Text="Password" Height="25" Margin="0,12,24,0" />
+			<PasswordBox Password="{Binding Connection.Password, Mode=TwoWay}" Margin="0,0,12,0" />
+			<CheckBox
+				Content="Enable Notifications"
+				IsChecked="{Binding Connection.NotificationsEnabled, Mode=TwoWay}" />
+			<ProgressRing IsActive="True" Background="White" Foreground="{ThemeResource PhoneAccentBrush}" BorderThickness="0,12,0,0" IsEnabled="{Binding IsDataLoading}" Visibility="{Binding IsDataLoading, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+			<TextBlock
+				Style="{StaticResource BodyTextBlockStyle}"
+				Text="Connecting" Height="25" Margin="0,12,0,0" HorizontalAlignment="Center" Visibility="{Binding IsDataLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
+		</StackPanel>
+	</Grid>
 </Page>
