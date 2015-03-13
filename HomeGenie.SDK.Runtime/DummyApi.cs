@@ -1,6 +1,8 @@
 ﻿using HomeGenie.SDK.Objects;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
+using Windows.Storage.Streams;
 using HomeGenie.SDK.DummyObjects;
 using HomeGenie.SDK.Utility;
 using Newtonsoft.Json;
@@ -31,6 +33,11 @@ namespace HomeGenie.SDK
             return mod;
         }
 
+        public Task<IRandomAccessStream> GetImageStream(string url)
+        {
+            return null;
+        }
+
         public async Task SetModuleOn(Module module)
         {
         }
@@ -49,6 +56,11 @@ namespace HomeGenie.SDK
 
         public async Task RunProgram(Module module, Group group)
         {
+        }
+
+        public async Task<Stream> GetImage(string url)
+        {
+            return null;
         }
     }
 }

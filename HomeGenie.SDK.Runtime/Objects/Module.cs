@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using Windows.UI.Xaml.Media.Imaging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -61,7 +62,6 @@ namespace HomeGenie.SDK.Objects
             }
         }
 
-        //
         public string IconUrl
         {
             get

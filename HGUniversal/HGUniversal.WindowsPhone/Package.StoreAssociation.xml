@@ -196,11 +196,14 @@
     <MainPackageIdentityName>6254spikie.BeavisandButtheadsounds</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.Belgischepostcodes</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.BlockAddiction</MainPackageIdentityName>
+    <MainPackageIdentityName>6254spikie.CAnews</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.ChildrenObservations</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.CoinShoot</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.colorgame</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.ComicCloud</MainPackageIdentityName>
+    <MainPackageIdentityName>6254spikie.ComicReleases</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.ComicList</MainPackageIdentityName>
+    <MainPackageIdentityName>6254spikie.ComicVineMashup</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.DoctorWhosoundboard</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.DoctorWhoThemes</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.FatBastardsoundboard</MainPackageIdentityName>
@@ -210,7 +213,6 @@
     <MainPackageIdentityName>6254spikie.Horrormoviesoundboard</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.JustAnotherFlashlight</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.LibraryofEorzea</MainPackageIdentityName>
-    <MainPackageIdentityName>6254spikie.LowlandsDevDemo</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.MirrorMirror</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.mmaNews</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.NicosDigitalFootprint</MainPackageIdentityName>
@@ -220,27 +222,11 @@
     <MainPackageIdentityName>6254spikie.RandomPicker</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.ResponseTime</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.Sawsoundboard</MainPackageIdentityName>
+    <MainPackageIdentityName>6254spikie.spikie.be</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.SpringFieldsoundboard</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.Stressmannetjesoundboard</MainPackageIdentityName>
+    <MainPackageIdentityName>6254spikie.TweakersNews</MainPackageIdentityName>
     <MainPackageIdentityName>6254spikie.Uki</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=3d7cdc03-dbb6-4f5c-acf2-020395f6301e">
-    <BundleInfo>
-      <PackageInfo>
-        <OsMinVersion>6.3.0.0</OsMinVersion>
-        <PackageArchitecture></PackageArchitecture>
-        <PackageMaxArchitectureVersion>1.1.0.3</PackageMaxArchitectureVersion>
-      </PackageInfo>
-      <PackageInfo>
-        <OsMinVersion>6.3.0.0</OsMinVersion>
-        <PackageArchitecture></PackageArchitecture>
-        <PackageMaxArchitectureVersion>1.1.0.3</PackageMaxArchitectureVersion>
-      </PackageInfo>
-      <PackageInfo>
-        <OsMinVersion>6.3.0.0</OsMinVersion>
-        <PackageArchitecture>neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>1.1.0.3</PackageMaxArchitectureVersion>
-      </PackageInfo>
-    </BundleInfo>
-  </PackageInfoList>
+  <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=adaaccd0-29af-4c95-9fb4-9fc7bf6796e8" />
 </StoreAssociation>

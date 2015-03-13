@@ -10,6 +10,7 @@ namespace HomeGenie.SDK.Objects
         private double? _groupTemperature;
         private double? _groupLuminance;
         private int _numberOfSwitches;
+        private double? _groupHumidity;
         public string Name { get; set; }
 
         public double? GroupTemperature
@@ -23,7 +24,16 @@ namespace HomeGenie.SDK.Objects
             }
         }
 
-        public double? GroupHumidity { get; set; }
+        public double? GroupHumidity
+        {
+            get { return _groupHumidity; }
+            set
+            {
+                if (value.Equals(_groupHumidity)) return;
+                _groupHumidity = value;
+                OnPropertyChanged();
+            }
+        }
 
         public double? GroupLuminance
         {

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Threading.Tasks;
+using Windows.Storage.Streams;
 using HomeGenie.SDK.Contracts;
 using HomeGenie.SDK.Objects;
 using HomeGenie.SDK.Services;
@@ -28,6 +30,11 @@ namespace HomeGenie.SDK
         {
             string url = "/api/HomeAutomation.HomeGenie/Config/Groups.ModulesList/" + groupname;
             return await _httpService.Get<List<Module>>(BuildUrl(url));
+        }
+
+        public async Task<IRandomAccessStream> GetImageStream(string url)
+        {
+            return await _httpService.GetImageStream(url);
         }
 
         public async Task SetModuleOn(Module module)
