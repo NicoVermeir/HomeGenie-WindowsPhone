@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:behaviors="using:Cimbalino.Toolkit.Behaviors"
       xmlns:common="using:HGUniversal.Common"
       xmlns:controls="using:HGUniversal.Controls"
       xmlns:converters="using:HGUniversal.Converters"
@@ -65,13 +66,20 @@
                   Height="180"
                   Background="#FFF1F1F1">
                 <StackPanel VerticalAlignment="Center">
-                    <Image Width="70"
+                    <Image x:Name="ModuleIcon"
+                           Width="70"
                            Height="70"
                            Margin="0,12,0,0"
-                           Source="{Binding IconUrl,
-                                            Converter={StaticResource ModuleIconUrlConverter},
-                                            Mode=OneWay}"
-                           Stretch="UniformToFill" />
+                           Stretch="UniformToFill">
+                        <Interactivity:Interaction.Behaviors>
+                            <behaviors:MultiBindingBehavior Converter="{StaticResource ModuleIconUrlConverter}"
+                                                            Mode="OneWay"
+                                                            PropertyName="Source">
+                                <behaviors:MultiBindingItem Value="{Binding ElementName=ModuleIcon}" />
+                                <behaviors:MultiBindingItem Value="{Binding IconUrl}" />
+                            </behaviors:MultiBindingBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                    </Image>
                     <TextBlock Margin="12"
                                HorizontalAlignment="Center"
                                Style="{StaticResource BodyTextBlockStyle}"
